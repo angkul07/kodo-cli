@@ -1,4 +1,3 @@
-
 import json
 from pathlib import Path
 from typing import Dict, Any
@@ -30,7 +29,7 @@ class ConfigManager:
                 self._config = self.get_default_config()
             return self._config
         except Exception as e:
-            self.console.print(f"❌ Error loading config: {e}")
+            self.console.print(f"Error loading config: {e}")
             self._config = self.get_default_config()
             return self._config
     
@@ -42,7 +41,7 @@ class ConfigManager:
                 json.dump(self._config, f, indent=2)
             return True
         except Exception as e:
-            self.console.print(f"❌ Error saving config: {e}")
+            self.console.print(f"Error saving config: {e}")
             return False
     
     def get_default_config(self) -> Dict[str, Any]:
@@ -121,16 +120,20 @@ class ConfigManager:
             default="ollama"
         )
         
-        # Get model choice
-        models = llm_manager.get_provider_models(provider_choice)
-        if models:
-            model_choice = Prompt.ask(
-                f"Choose model for {provider_choice}",
-                choices=models,
-                default=models[0]
-            )
-        else:
-            model_choice = Prompt.ask(f"Enter model name for {provider_choice}")
+        # Get provider info for suggestions
+        provider_info = llm_manager.get_provider_info(provider_choice)
+        default_model = provider_info.get("default_model", "")
+        description = provider_info.get("description", "")
+        
+        # Let user enter any model name
+        self.console.print(f"\nEnter model name for {provider_choice}")
+        if description:
+            self.console.print(f"Available models: {description}")
+        
+        model_choice = Prompt.ask(
+            f"Choose model for {provider_choice}",
+            default=default_model
+        )
         
         # Get provider-specific configuration
         config = {"model": model_choice}
@@ -158,10 +161,10 @@ class ConfigManager:
                 {"role": "user", "content": "Say 'Configuration test successful!'"}
             ])
             
-            self.console.print("✅ Configuration test passed!")
+            self.console.print("Configuration test passed!")
             
         except Exception as e:
-            self.console.print(f"❌ Configuration test failed: {e}")
+            self.console.print(f"Configuration test failed: {e} \n If you are using Ollama, make sure it is running and the model is available. If you are using Huggingface, use models listed here: https://huggingface.co/models?pipeline_tag=text-generation&inference_provider=hf-inference&sort=modified")
             if not Confirm.ask("Save configuration anyway?"):
                 return False
         
@@ -176,8 +179,8 @@ class ConfigManager:
             self.set('llm.api_key', None)
             self.set('llm.base_url', base_url)
         
-        self.console.print("✅ Configuration saved successfully!")
-        self.console.print(f"📁 Config location: {self.config_file}")
+        self.console.print("Configuration saved successfully!")
+        self.console.print(f"Config location: {self.config_file}")
         
         return True
     
@@ -185,15 +188,21 @@ class ConfigManager:
         """Show available providers in a table"""
         table = Table(title="Available LLM Providers")
         table.add_column("Key", style="cyan")
-        table.add_column("Name", style="green")
+        table.add_column("Name", style="green") 
         table.add_column("Type", style="yellow")
+        table.add_column("Example Models", style="magenta")
         
-        providers = llm_manager.get_available_providers()
-        for key, name in providers.items():
+        for key in llm_manager.get_available_providers().keys():
+            provider_info = llm_manager.get_provider_info(key)
+            name = provider_info.get("name", "")
+            description = provider_info.get("description", "")
             provider_type = "Local" if key == "ollama" else "API"
-            table.add_row(key, name, provider_type)
+            
+            table.add_row(key, name, provider_type, description)
         
         self.console.print(table)
+        self.console.print("\n💡 You can enter any model name supported by the provider!")
+        self.console.print("If the model doesn't exist, LiteLLM will show you an error with available options.")
         self.console.print()
     
     def show_current_config(self):
