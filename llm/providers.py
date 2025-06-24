@@ -105,7 +105,7 @@ class GeminiProvider(LLMProvider):
 class HfProvider(LLMProvider):
     """Huggingface API provider"""
     
-    def __init__(self, api_key: str, model: str = "deepseek-ai/DeepSeek-R1", **kwargs):
+    def __init__(self, api_key: str, model: str = "meta-llama/Llama-3.3-70B-Instruct", **kwargs):
         super().__init__(api_key, model, **kwargs)
     
     def get_completion(self, messages: List[Dict], **kwargs) -> str:
@@ -158,28 +158,33 @@ class LLMManager:
     PROVIDERS = {
         "openai": {
             "class": OpenAIProvider,
-            "name": "OpenAI (GPT-3.5, GPT-4)",
-            "models": ["gpt-3.5-turbo", "gpt-4", "gpt-4-turbo"]
+            "name": "OpenAI (GPT models)",
+            "default_model": "gpt-3.5-turbo",
+            "description": "ChatGPT, GPT-4, GPT-4o, etc."
         },
         "anthropic": {
             "class": AnthropicProvider,
-            "name": "Anthropic (Claude)",
-            "models": ["claude-3-sonnet-20240229", "claude-3-opus-20240229", "claude-3-haiku-20240307"]
+            "name": "Anthropic (Claude models)",
+            "default_model": "claude-3-sonnet-20240229",
+            "description": "Claude 3.5 Sonnet, Claude 3 Opus, Claude 3 Haiku, etc."
         },
         "gemini": {
             "class": GeminiProvider,
-            "name": "Google (Gemini)",
-            "models": ["gemini-1.5-flash", "gemini-2.5-pro", "gemini-2.0-flash-exp", "gemini-2.5-flash"]
+            "name": "Google (Gemini models)",
+            "default_model": "gemini-1.5-flash",
+            "description": "Gemini 1.5 Flash, Gemini 2.0 Flash, Gemini 2.5 Pro, etc."
         },
         "huggingface": {
             "class": HfProvider,
-            "name": "Huggingface (Hf)",
-            "models": ["deepseek-ai/DeepSeek-R1"]
+            "name": "Huggingface (Open models)",
+            "default_model": "deepseek-ai/DeepSeek-R1",
+            "description": "DeepSeek R1, Qwen, Llama, Mixtral, etc."
         },
         "ollama": {
             "class": OllamaProvider,
-            "name": "Ollama (Local)",
-            "models": ["llama3.1", "codellama", "mistral", "phi3"]
+            "name": "Ollama (Local models)",
+            "default_model": "llama3.1",
+            "description": "Llama 3.1, CodeLlama, Mistral, Phi3, etc."
         }
     }
     
@@ -190,11 +195,16 @@ class LLMManager:
         """Get list of available providers"""
         return {k: v["name"] for k, v in self.PROVIDERS.items()}
     
-    def get_provider_models(self, provider_key: str) -> List[str]:
-        """Get available models for a provider"""
+    def get_provider_info(self, provider_key: str) -> Dict[str, str]:
+        """Get provider information including default model and description"""
         if provider_key in self.PROVIDERS:
-            return self.PROVIDERS[provider_key]["models"]
-        return []
+            provider = self.PROVIDERS[provider_key]
+            return {
+                "name": provider["name"],
+                "default_model": provider["default_model"],
+                "description": provider["description"]
+            }
+        return {}
     
     def create_provider(self, provider_key: str, config: Dict) -> LLMProvider:
         """Create a provider instance"""
