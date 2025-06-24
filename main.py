@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import typer
 from rich.console import Console
 from rich.prompt import Confirm
-from rich.markdown import Markdown # Import Markdown for rich rendering
+from rich.markdown import Markdown 
 from litellm import completion
 
 from file_ops.reader import create_context_for_chat, read_file_content
@@ -51,7 +51,7 @@ Keep responses concise and practical."""
 @app.command()
 def chat(message: str):
     """Chat with AI about your code with project context"""
-    console.print("Analyzing project...")
+    console.print("Analyzing...")
     
     # Get project context
     context = create_context_for_chat(message)
@@ -60,7 +60,6 @@ def chat(message: str):
     response = model_output(message, context)
     
     console.print("Response:")
-    # Render AI response as markdown for better readability
     console.print(Markdown(response))
 
 @app.command()
