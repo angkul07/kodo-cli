@@ -2,3 +2,5 @@ typer
 rich
 litellm
 pyaml
+tree-sitter
+tree-sitter-language-pack
