@@ -5,21 +5,17 @@ import os
 import json
 from pathlib import Path
 from datetime import datetime
-from typing import Dict, List, Optional, Set
+from typing import Dict, List, Optional
 import fnmatch
-import tree_sitter_language_pack
-from tree_sitter_language_pack import get_language, get_parser
-TREE_SITTER_AVAILABLE = True
 
-# --- Enhanced tree-sitter support ---
-# try:
-#     from tree_sitter_language_pack import get_language, get_parser
-#     TREE_SITTER_AVAILABLE = True
-# except ImportError:
-#     print("Warning: tree-sitter-language-pack not found. Multi-language support will be limited.")
-#     get_language = None
-#     get_parser = None
-#     TREE_SITTER_AVAILABLE = False
+try:
+    from tree_sitter_language_pack import get_language, get_parser
+    TREE_SITTER_AVAILABLE = True
+except ImportError:
+    print("Warning: tree-sitter-language-pack not found. Multi-language support will be limited.")
+    get_language = None
+    get_parser = None
+    TREE_SITTER_AVAILABLE = False
 
 class PythonAnalyzer(ast.NodeVisitor):
     """Extracts key information from a Python AST."""

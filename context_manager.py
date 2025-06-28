@@ -1,5 +1,3 @@
-# context_manager.py
-
 import json
 import os
 from pathlib import Path
@@ -7,6 +5,8 @@ from datetime import datetime
 from typing import Dict, List, Optional, Any
 from rich.console import Console
 from rich.markdown import Markdown
+import hashlib
+from rich.progress import Progress, TaskID
 
 from ast_generator import ASTGenerator, save_ast_snapshot, load_ast_snapshot, is_ast_current
 
@@ -349,54 +349,8 @@ context_priority=main_files,recent_changes,query_relevant
         if "error" in context:
             return f"Context Error: {context['error']}"
         
-        # Format context for AI
-        formatted_context = []
-        
-        # Add project overview (this serves as system prompt)
-        if context.get("overview"):
-            formatted_context.append(context["overview"])
-            formatted_context.append("")
-        
-        # Add relevant rules
-        rules = context.get("rules", {})
-        if rules:
-            formatted_context.append("## Assistant Guidelines")
-            for key, value in rules.items():
-                if not key.startswith('#'):
-                    formatted_context.append(f"- {key}: {value}")
-            formatted_context.append("")
-        
-        # Add query-focused files
-        if context.get("query_focused", {}).get("relevant_files"):
-            formatted_context.append("## Relevant Files")
-            for file_info in context["query_focused"]["relevant_files"][:3]:  # Top 3
-                formatted_context.append(f"### {file_info['path']}")
-                if file_info.get('content_preview'):
-                    formatted_context.append("```")
-                    formatted_context.append(file_info['content_preview'])
-                    formatted_context.append("```")
-                formatted_context.append("")
-        
-        # Add recent relevant history
-        if context.get("recent_history"):
-            formatted_context.append("## Recent Development Context")
-            # Get last 2 interactions
-            history_lines = context["recent_history"].split('\n')
-            recent_entries = []
-            entry_count = 0
-            
-            for line in reversed(history_lines):
-                if line.startswith("###") and "AI Interaction" in line:
-                    entry_count += 1
-                    if entry_count > 2:  # Only last 2 interactions
-                        break
-                if entry_count > 0:
-                    recent_entries.insert(0, line)
-            
-            if recent_entries:
-                formatted_context.extend(recent_entries[:15])  # Limit length
-        
-        return "\n".join(formatted_context)
+        # Use the new enhanced formatting
+        return self._format_context(context)
     
     def _get_query_focused_context(self, query: str, ast_data: Dict, max_files: int = None) -> Dict:
         """Get context focused on the specific query using AST data"""
@@ -404,9 +358,52 @@ context_priority=main_files,recent_changes,query_relevant
         query_lower = query.lower()
         keywords = set(query_lower.split())
         
-        file_scores = []
+        # Extract explicitly mentioned files from the query
+        explicit_files = self._extract_file_mentions(query)
         
+        file_scores = []
+        explicit_file_data = []
+        
+        # First, handle explicitly mentioned files
+        for file_mention in explicit_files:
+            file_found = False
+            # Try to find the file in AST data (exact match or partial match)
+            for file_path, file_data in ast_data.get('files', {}).items():
+                if (file_mention.lower() in file_path.lower() or 
+                    file_path.lower().endswith(file_mention.lower()) or
+                    file_mention.lower() == file_path.lower()):
+                    
+                    explicit_file_data.append({
+                        "path": file_path,
+                        "score": 100,  # Highest priority
+                        "content_preview": self._get_file_content(file_path),  # Full content for explicit requests
+                        "functions": file_data.get('functions', []),
+                        "classes": file_data.get('classes', []),
+                        "explicit": True
+                    })
+                    file_found = True
+                    break
+            
+            # If file not in AST data, try to read it directly
+            if not file_found:
+                direct_content = self._try_read_file_directly(file_mention)
+                if direct_content:
+                    explicit_file_data.append({
+                        "path": file_mention,
+                        "score": 100,
+                        "content_preview": direct_content,
+                        "functions": [],
+                        "classes": [],
+                        "explicit": True,
+                        "note": "File read directly (not in AST analysis)"
+                    })
+        
+        # Then, do normal relevance scoring for additional context
         for file_path, file_data in ast_data.get('files', {}).items():
+            # Skip if already included as explicit file
+            if any(explicit['path'] == file_path for explicit in explicit_file_data):
+                continue
+                
             score = 0
             
             # Score based on filename relevance
@@ -433,24 +430,150 @@ context_priority=main_files,recent_changes,query_relevant
             if score > 0:
                 file_scores.append((file_path, score, file_data))
         
-        # Sort by score and take top files
+        # Sort by score and take top files (excluding space used by explicit files)
         file_scores.sort(key=lambda x: x[1], reverse=True)
-        relevant_files = file_scores[:max_files]
+        remaining_slots = max(0, max_files - len(explicit_file_data))
+        relevant_files = file_scores[:remaining_slots]
+        
+        # Combine explicit files with relevant files
+        all_files = explicit_file_data + [
+            {
+                "path": path,
+                "score": score,
+                "content_preview": self._get_file_preview(path),
+                "functions": data.get('functions', [])[:5],  # Top 5 functions
+                "classes": data.get('classes', [])[:3],      # Top 3 classes
+                "explicit": False
+            }
+            for path, score, data in relevant_files
+        ]
         
         return {
-            "relevant_files": [
-                {
-                    "path": path,
-                    "score": score,
-                    "content_preview": self._get_file_preview(path),
-                    "functions": data.get('functions', [])[:5],  # Top 5 functions
-                    "classes": data.get('classes', [])[:3],      # Top 3 classes
-                }
-                for path, score, data in relevant_files
-            ],
+            "relevant_files": all_files,
             "query_keywords": list(keywords),
-            "total_relevant": len(file_scores)
+            "total_relevant": len(file_scores),
+            "explicit_files": len(explicit_file_data),
+            "explicit_file_names": [f["path"] for f in explicit_file_data]
         }
+    
+    def _extract_file_mentions(self, query: str) -> List[str]:
+        """Extract explicit file mentions from a query"""
+        import re
+        
+        file_mentions = []
+        words = query.split()
+        
+        # Pattern 1: Direct file extensions
+        file_extensions = [
+            '.py', '.js', '.ts', '.jsx', '.tsx', '.go', '.rs', '.java', '.cpp', '.c', '.h', '.hpp',
+            '.php', '.rb', '.swift', '.kt', '.scala', '.dart', '.lua', '.md', '.txt', '.json', 
+            '.yaml', '.yml', '.toml', '.ini', '.cfg', '.conf', '.xml', '.html', '.css', '.scss'
+        ]
+        
+        for word in words:
+            # Remove common punctuation
+            clean_word = word.strip('.,;:!?"()[]{}')
+            
+            # Check if word has file extension
+            if any(clean_word.lower().endswith(ext) for ext in file_extensions):
+                file_mentions.append(clean_word)
+            
+            # Check for file paths (containing forward slashes)
+            elif '/' in clean_word and any(ext in clean_word.lower() for ext in file_extensions):
+                file_mentions.append(clean_word)
+        
+        # Pattern 2: Common file name patterns without extensions
+        common_filenames = [
+            'readme', 'makefile', 'dockerfile', 'requirements', 'package', 'setup',
+            'config', 'settings', 'main', 'index', 'app', 'server', '__init__'
+        ]
+        
+        for word in words:
+            clean_word = word.strip('.,;:!?"()[]{}').lower()
+            if clean_word in common_filenames:
+                # Try to find the actual file with common extensions
+                potential_files = [
+                    f"{clean_word}.py", f"{clean_word}.js", f"{clean_word}.ts", 
+                    f"{clean_word}.md", f"{clean_word}.txt", f"{clean_word}.json",
+                    clean_word  # Some files have no extension
+                ]
+                file_mentions.extend(potential_files)
+        
+        # Pattern 3: Quoted file names
+        quoted_pattern = r'["\']([^"\']*(?:\.[a-zA-Z0-9]+)?)["\']'
+        quoted_matches = re.findall(quoted_pattern, query)
+        for match in quoted_matches:
+            if any(ext in match.lower() for ext in file_extensions) or '/' in match:
+                file_mentions.append(match)
+        
+        # Remove duplicates while preserving order
+        seen = set()
+        unique_mentions = []
+        for mention in file_mentions:
+            if mention.lower() not in seen:
+                seen.add(mention.lower())
+                unique_mentions.append(mention)
+        
+        return unique_mentions
+    
+    def _get_file_content(self, file_path: str, max_lines: int = 100) -> str:
+        """Get full or partial content of a file for explicit requests"""
+        try:
+            full_path = self.project_root / file_path
+            if not full_path.exists():
+                return f"File {file_path} not found"
+            
+            # Check file size
+            file_size = full_path.stat().st_size
+            if file_size > 50000:  # 50KB limit
+                return f"File {file_path} is too large ({file_size} bytes). Showing preview:\n\n" + self._get_file_preview(file_path, lines=20)
+            
+            with open(full_path, 'r', encoding='utf-8', errors='ignore') as f:
+                lines = f.readlines()
+                
+                if len(lines) <= max_lines:
+                    return ''.join(lines)
+                else:
+                    # Show first part + indication of truncation
+                    content = ''.join(lines[:max_lines])
+                    remaining = len(lines) - max_lines
+                    content += f"\n\n... (showing first {max_lines} lines, {remaining} more lines available)"
+                    return content
+                    
+        except Exception as e:
+            return f"Error reading {file_path}: {str(e)}"
+    
+    def _try_read_file_directly(self, file_mention: str) -> Optional[str]:
+        """Try to read a file directly from the project directory"""
+        try:
+            # Try different variations of the file mention
+            possible_paths = [
+                file_mention,
+                f"./{file_mention}",
+                f"src/{file_mention}",
+                f"lib/{file_mention}",
+                f"app/{file_mention}",
+            ]
+            
+            # If no extension, try common ones
+            if '.' not in file_mention:
+                base_paths = possible_paths.copy()
+                possible_paths = []
+                for base in base_paths:
+                    possible_paths.extend([
+                        f"{base}.py", f"{base}.js", f"{base}.ts", 
+                        f"{base}.md", f"{base}.txt", f"{base}.json"
+                    ])
+            
+            for path_attempt in possible_paths:
+                full_path = self.project_root / path_attempt
+                if full_path.exists() and full_path.is_file():
+                    return self._get_file_content(path_attempt)
+            
+            return None
+            
+        except Exception:
+            return None
     
     # Helper methods for overview generation
     def _identify_key_files(self, snapshot: Dict) -> str:
@@ -613,4 +736,143 @@ context_priority=main_files,recent_changes,query_relevant
         console.print(f"• {self.overview_path.relative_to(self.project_root)}")
         console.print(f"• {self.history_path.relative_to(self.project_root)}")
         console.print(f"• {self.rules_path.relative_to(self.project_root)}")
-        console.print(f"• Cache: {self.cache_dir.relative_to(self.project_root)}") 
+        console.print(f"• Cache: {self.cache_dir.relative_to(self.project_root)}")
+    
+    def _format_context(self, context: Dict) -> str:
+        """Format context for LLM consumption"""
+        formatted = []
+        
+        # Project overview
+        overview_file = self.context_dir / "overview.md"
+        if overview_file.exists():
+            formatted.append("# Project Overview\n")
+            with open(overview_file, 'r', encoding='utf-8') as f:
+                formatted.append(f.read())
+            formatted.append("\n" + "="*50 + "\n")
+        
+        # Relevant files with explicit file handling
+        relevant_files = context.get('query_focused', {}).get('relevant_files', [])
+        if relevant_files:
+            # Separate explicit files from regular files
+            explicit_files = [f for f in relevant_files if f.get('explicit', False)]
+            regular_files = [f for f in relevant_files if not f.get('explicit', False)]
+            
+            # Show explicitly requested files first with full content
+            if explicit_files:
+                formatted.append("# Explicitly Requested Files\n")
+                for file_info in explicit_files:
+                    formatted.append(f"## File: {file_info['path']}\n")
+                    if file_info.get('note'):
+                        formatted.append(f"*{file_info['note']}*\n\n")
+                    
+                    # Include full content for explicit requests
+                    content = file_info.get('content_preview', '')
+                    if content:
+                        formatted.append(f"```{self._get_file_language(file_info['path'])}\n")
+                        formatted.append(content)
+                        if not content.endswith('\n'):
+                            formatted.append('\n')
+                        formatted.append("```\n\n")
+                    
+                    # Add function/class info if available
+                    if file_info.get('functions'):
+                        formatted.append("**Functions:**\n")
+                        for func in file_info.get('functions', [])[:10]:  # Show more for explicit files
+                            if isinstance(func, dict):
+                                formatted.append(f"- {func.get('name', 'Unknown')} (line {func.get('line', '?')})\n")
+                            else:
+                                formatted.append(f"- {func}\n")
+                        formatted.append("\n")
+                    
+                    if file_info.get('classes'):
+                        formatted.append("**Classes:**\n")
+                        for cls in file_info.get('classes', [])[:10]:  # Show more for explicit files
+                            if isinstance(cls, dict):
+                                formatted.append(f"- {cls.get('name', 'Unknown')} (line {cls.get('line', '?')})\n")
+                            else:
+                                formatted.append(f"- {cls}\n")
+                        formatted.append("\n")
+                    
+                    formatted.append("-" * 40 + "\n\n")
+            
+            # Then show additional context files with previews
+            if regular_files:
+                formatted.append("# Additional Context Files\n")
+                for file_info in regular_files:
+                    formatted.append(f"## {file_info['path']} (relevance: {file_info['score']})\n")
+                    
+                    preview = file_info.get('content_preview', '')
+                    if preview:
+                        formatted.append(f"```{self._get_file_language(file_info['path'])}\n")
+                        formatted.append(preview)
+                        if not preview.endswith('\n'):
+                            formatted.append('\n')
+                        formatted.append("```\n")
+                    
+                    if file_info.get('functions'):
+                        formatted.append("**Key Functions:** ")
+                        func_names = []
+                        for func in file_info.get('functions', [])[:5]:
+                            if isinstance(func, dict):
+                                func_names.append(func.get('name', 'Unknown'))
+                            else:
+                                func_names.append(str(func))
+                        formatted.append(", ".join(func_names) + "\n")
+                    
+                    if file_info.get('classes'):
+                        formatted.append("**Key Classes:** ")
+                        class_names = []
+                        for cls in file_info.get('classes', [])[:3]:
+                            if isinstance(cls, dict):
+                                class_names.append(cls.get('name', 'Unknown'))
+                            else:
+                                class_names.append(str(cls))
+                        formatted.append(", ".join(class_names) + "\n")
+                    
+                    formatted.append("\n")
+            
+            # Add context summary
+            formatted.append("# Context Summary\n")
+            query_focused = context.get('query_focused', {})
+            if query_focused.get('explicit_files', 0) > 0:
+                formatted.append(f"- **Explicit files included:** {query_focused.get('explicit_files', 0)} ({', '.join(query_focused.get('explicit_file_names', []))})\n")
+            formatted.append(f"- **Additional context files:** {len(regular_files)}\n")
+            formatted.append(f"- **Query keywords:** {', '.join(query_focused.get('query_keywords', []))}\n")
+            formatted.append(f"- **Total relevant files found:** {query_focused.get('total_relevant', 0)}\n\n")
+        
+        # Recent history for additional context
+        history_file = self.context_dir / "history.md"
+        if history_file.exists():
+            try:
+                with open(history_file, 'r', encoding='utf-8') as f:
+                    history_content = f.read()
+                    # Include only the most recent entries (last 1000 characters)
+                    if len(history_content) > 1000:
+                        recent_history = "..." + history_content[-1000:]
+                    else:
+                        recent_history = history_content
+                    
+                    if recent_history.strip():
+                        formatted.append("# Recent Development History\n")
+                        formatted.append(recent_history)
+                        formatted.append("\n")
+            except Exception:
+                pass  # Skip if history cannot be read
+        
+        return "\n".join(formatted)
+    
+    def _get_file_language(self, file_path: str) -> str:
+        """Get language identifier for syntax highlighting"""
+        ext = file_path.lower().split('.')[-1] if '.' in file_path else ''
+        
+        language_map = {
+            'py': 'python', 'js': 'javascript', 'ts': 'typescript', 'jsx': 'jsx', 'tsx': 'tsx',
+            'go': 'go', 'rs': 'rust', 'java': 'java', 'cpp': 'cpp', 'c': 'c', 'h': 'c',
+            'hpp': 'cpp', 'php': 'php', 'rb': 'ruby', 'swift': 'swift', 'kt': 'kotlin',
+            'scala': 'scala', 'dart': 'dart', 'lua': 'lua', 'md': 'markdown', 'txt': 'text',
+            'json': 'json', 'yaml': 'yaml', 'yml': 'yaml', 'toml': 'toml', 'ini': 'ini',
+            'xml': 'xml', 'html': 'html', 'css': 'css', 'scss': 'scss', 'sql': 'sql',
+            'sh': 'bash', 'bash': 'bash', 'zsh': 'zsh', 'fish': 'fish'
+        }
+        
+        return language_map.get(ext, 'text') 
