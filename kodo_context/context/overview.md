@@ -1,21 +1,21 @@
 # claude_new
 
 ## Project Overview
-python project with 14 files. Main technologies: python.
+python project with 14 files. Main technologies: toml, python, json.
 
 ## Key Files & Structure
-- main.py
+- kodo/main.py
 
 ## Architecture Pattern
 Modular architecture
 
 ## Development Context
-- Entry points: main.py
-- Main modules: agent, claude_env, config, file_ops, llm
-- Dependencies: __future__, abc, agent, ast, ast_generator, config, context_manager, core
+- Entry points: kodo/main.py
+- Main modules: claude_env, kodo, kodo_context
+- Dependencies: __future__, abc, ast, core, dataclasses, enum, fnmatch, hashlib
 
 ## Current State
-- Total lines: 3,167
+- Total lines: 7,780
 - Last updated: 2025-06-28
 
 ---

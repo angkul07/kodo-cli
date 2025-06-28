@@ -10,9 +10,9 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.table import Table
 from rich.markdown import Markdown
 
-from file_ops.reader import read_file_content
-from file_ops.writer import write_file_content
-from context_manager import ContextManager
+from kodo.file_ops.reader import read_file_content
+from kodo.file_ops.writer import write_file_content
+from kodo.context_manager import ContextManager
 
 
 class AgentState(Enum):

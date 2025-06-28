@@ -8,7 +8,7 @@ from rich.markdown import Markdown
 import hashlib
 from rich.progress import Progress, TaskID
 
-from ast_generator import ASTGenerator, save_ast_snapshot, load_ast_snapshot, is_ast_current
+from kodo.ast_generator import ASTGenerator, save_ast_snapshot, load_ast_snapshot, is_ast_current
 
 console = Console()
 

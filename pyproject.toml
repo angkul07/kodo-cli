@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kodo"
+version = "0.1.0"
+description = "Kodo - Claude Code alternative for terminal"
+authors = [{ name = "Angkul" }]
+readme = "AGENT_DEMO.md"
+requires-python = ">=3.8"
+dependencies = [
+    "typer[all]",
+    "rich",
+    "litellm",
+    "python-dotenv",
+    "tree-sitter-language-pack",
+    "tree-sitter"
+]
+
+[project.scripts]
+kodo = "kodo.main:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["kodo"]

@@ -5,12 +5,12 @@ from rich.console import Console
 from rich.prompt import Confirm
 from rich.markdown import Markdown
 
-from file_ops.reader import read_file_content
-from file_ops.writer import write_file_content, show_diff
-from llm.providers import LLMManager
-from config.settings import ConfigManager
-from context_manager import ContextManager
-from agent.core import CodeAgent
+from kodo.file_ops.reader import read_file_content
+from kodo.file_ops.writer import write_file_content, show_diff
+from kodo.llm.providers import LLMManager
+from kodo.config.settings import ConfigManager
+from kodo.context_manager import ContextManager
+from kodo.agent.core import CodeAgent
 
 app = typer.Typer()
 console = Console()

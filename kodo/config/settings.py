@@ -91,9 +91,9 @@ class ConfigManager:
     
     def is_configured(self) -> bool:
         """Check if LLM provider is configured"""
-        provider = self.get('llm.provider')
-        api_key = self.get('llm.api_key')
-        model = self.get('llm.model')
+        provider = self.get('kodo.llm.provider')
+        api_key = self.get('kodo.llm.api_key')
+        model = self.get('kodo.llm.model')
         
         if provider == 'ollama':
             return bool(provider and model)
@@ -102,7 +102,7 @@ class ConfigManager:
     
     def setup_interactive(self):
         """Interactive setup for LLM configuration"""
-        from llm.providers import LLMManager
+        from kodo.llm.providers import LLMManager
         
         llm_manager = LLMManager()
         
@@ -169,15 +169,15 @@ class ConfigManager:
                 return False
         
         # Save configuration
-        self.set('llm.provider', provider_choice)
-        self.set('llm.model', model_choice)
+        self.set('kodo.llm.provider', provider_choice)
+        self.set('kodo.llm.model', model_choice)
         
         if provider_choice != "ollama":
-            self.set('llm.api_key', api_key)
-            self.set('llm.base_url', None)
+            self.set('kodo.llm.api_key', api_key)
+            self.set('kodo.llm.base_url', None)
         else:
-            self.set('llm.api_key', None)
-            self.set('llm.base_url', base_url)
+            self.set('kodo.llm.api_key', None)
+            self.set('kodo.llm.base_url', base_url)
         
         self.console.print("Configuration saved successfully!")
         self.console.print(f"Config location: {self.config_file}")
@@ -211,10 +211,10 @@ class ConfigManager:
         table.add_column("Setting", style="cyan")
         table.add_column("Value", style="green")
         
-        provider = self.get('llm.provider', 'Not configured')
-        model = self.get('llm.model', 'Not configured')
-        api_key = self.get('llm.api_key')
-        base_url = self.get('llm.base_url')
+        provider = self.get('kodo.llm.provider', 'Not configured')
+        model = self.get('kodo.llm.model', 'Not configured')
+        api_key = self.get('kodo.llm.api_key')
+        base_url = self.get('kodo.llm.base_url')
         
         table.add_row("Provider", provider)
         table.add_row("Model", model)
@@ -235,15 +235,15 @@ class ConfigManager:
         """Get LLM configuration for provider creation"""
         config = {}
         
-        provider = self.get('llm.provider')
+        provider = self.get('kodo.llm.provider')
         if not provider:
             return config
         
-        config['model'] = self.get('llm.model')
+        config['model'] = self.get('kodo.llm.model')
         
         if provider != 'ollama':
-            config['api_key'] = self.get('llm.api_key')
+            config['api_key'] = self.get('kodo.llm.api_key')
         else:
-            config['base_url'] = self.get('llm.base_url', 'http://localhost:11434')
+            config['base_url'] = self.get('kodo.llm.base_url', 'http://localhost:11434')
         
         return config

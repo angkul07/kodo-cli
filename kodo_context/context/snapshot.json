@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "2.0",
-    "created_at": "2025-06-28T12:24:59.295388",
+    "created_at": "2025-06-28T16:32:04.797856",
     "project_root": "/home/angkul/Desktop/claude_new",
     "tree_sitter_available": true,
     "languages_supported": [
@@ -45,9 +45,20 @@
     ]
   },
   "files": {
-    "main.py": {
-      "mtime": 1751093424.674609,
-      "size": 15945,
+    "pyproject.toml": {
+      "mtime": 1751104700.125141,
+      "size": 492,
+      "language": "toml",
+      "error": null,
+      "line_count": 25,
+      "imports": [],
+      "classes": [],
+      "functions": [],
+      "variables": []
+    },
+    "kodo/main.py": {
+      "mtime": 1751104860.387601,
+      "size": 15975,
       "language": "python",
       "error": null,
       "line_count": 438,
@@ -91,50 +102,50 @@
           "line": 6
         },
         {
-          "name": "file_ops.reader.read_file_content",
-          "from": "file_ops.reader",
+          "name": "kodo.file_ops.reader.read_file_content",
+          "from": "kodo.file_ops.reader",
           "import": "read_file_content",
           "alias": null,
           "line": 8
         },
         {
-          "name": "file_ops.writer.write_file_content",
-          "from": "file_ops.writer",
+          "name": "kodo.file_ops.writer.write_file_content",
+          "from": "kodo.file_ops.writer",
           "import": "write_file_content",
           "alias": null,
           "line": 9
         },
         {
-          "name": "file_ops.writer.show_diff",
-          "from": "file_ops.writer",
+          "name": "kodo.file_ops.writer.show_diff",
+          "from": "kodo.file_ops.writer",
           "import": "show_diff",
           "alias": null,
           "line": 9
         },
         {
-          "name": "llm.providers.LLMManager",
-          "from": "llm.providers",
+          "name": "kodo.llm.providers.LLMManager",
+          "from": "kodo.llm.providers",
           "import": "LLMManager",
           "alias": null,
           "line": 10
         },
         {
-          "name": "config.settings.ConfigManager",
-          "from": "config.settings",
+          "name": "kodo.config.settings.ConfigManager",
+          "from": "kodo.config.settings",
           "import": "ConfigManager",
           "alias": null,
           "line": 11
         },
         {
-          "name": "context_manager.ContextManager",
-          "from": "context_manager",
+          "name": "kodo.context_manager.ContextManager",
+          "from": "kodo.context_manager",
           "import": "ContextManager",
           "alias": null,
           "line": 12
         },
         {
-          "name": "agent.core.CodeAgent",
-          "from": "agent.core",
+          "name": "kodo.agent.core.CodeAgent",
+          "from": "kodo.agent.core",
           "import": "CodeAgent",
           "alias": null,
           "line": 13
@@ -461,9 +472,9 @@
         }
       ]
     },
-    "context_manager.py": {
-      "mtime": 1751093485.3390107,
-      "size": 37446,
+    "kodo/context_manager.py": {
+      "mtime": 1751103201.852054,
+      "size": 37451,
       "language": "python",
       "error": null,
       "line_count": 878,
@@ -554,29 +565,29 @@
           "line": 9
         },
         {
-          "name": "ast_generator.ASTGenerator",
-          "from": "ast_generator",
+          "name": "kodo.ast_generator.ASTGenerator",
+          "from": "kodo.ast_generator",
           "import": "ASTGenerator",
           "alias": null,
           "line": 11
         },
         {
-          "name": "ast_generator.save_ast_snapshot",
-          "from": "ast_generator",
+          "name": "kodo.ast_generator.save_ast_snapshot",
+          "from": "kodo.ast_generator",
           "import": "save_ast_snapshot",
           "alias": null,
           "line": 11
         },
         {
-          "name": "ast_generator.load_ast_snapshot",
-          "from": "ast_generator",
+          "name": "kodo.ast_generator.load_ast_snapshot",
+          "from": "kodo.ast_generator",
           "import": "load_ast_snapshot",
           "alias": null,
           "line": 11
         },
         {
-          "name": "ast_generator.is_ast_current",
-          "from": "ast_generator",
+          "name": "kodo.ast_generator.is_ast_current",
+          "from": "kodo.ast_generator",
           "import": "is_ast_current",
           "alias": null,
           "line": 11
@@ -1363,19 +1374,8 @@
         }
       ]
     },
-    "__init__.py": {
-      "mtime": 1750680559.6911187,
-      "size": 0,
-      "language": "python",
-      "error": null,
-      "line_count": 0,
-      "imports": [],
-      "classes": [],
-      "functions": [],
-      "variables": []
-    },
-    "ast_generator.py": {
-      "mtime": 1751093509.9579084,
+    "kodo/ast_generator.py": {
+      "mtime": 1751101914.940986,
       "size": 21141,
       "language": "python",
       "error": null,
@@ -1977,108 +1977,8 @@
         }
       ]
     },
-    "mycode/calculator.py": {
-      "mtime": 1751089433.7312288,
-      "size": 1700,
-      "language": "python",
-      "error": null,
-      "line_count": 61,
-      "imports": [],
-      "classes": [],
-      "functions": [
-        {
-          "name": "add",
-          "start_line": 1,
-          "end_line": 2,
-          "args": [
-            "x",
-            "y"
-          ],
-          "decorators": []
-        },
-        {
-          "name": "subtract",
-          "start_line": 4,
-          "end_line": 5,
-          "args": [
-            "x",
-            "y"
-          ],
-          "decorators": []
-        },
-        {
-          "name": "multiply",
-          "start_line": 7,
-          "end_line": 8,
-          "args": [
-            "x",
-            "y"
-          ],
-          "decorators": []
-        },
-        {
-          "name": "divide",
-          "start_line": 10,
-          "end_line": 13,
-          "args": [
-            "x",
-            "y"
-          ],
-          "decorators": []
-        },
-        {
-          "name": "run_calculator",
-          "start_line": 15,
-          "end_line": 58,
-          "args": [],
-          "decorators": []
-        }
-      ],
-      "variables": [
-        {
-          "name": "expression",
-          "line": 23
-        },
-        {
-          "name": "parts",
-          "line": 27
-        },
-        {
-          "name": "num1",
-          "line": 32
-        },
-        {
-          "name": "operator",
-          "line": 33
-        },
-        {
-          "name": "num2",
-          "line": 34
-        },
-        {
-          "name": "result",
-          "line": 36
-        },
-        {
-          "name": "result",
-          "line": 38
-        },
-        {
-          "name": "result",
-          "line": 40
-        },
-        {
-          "name": "result",
-          "line": 42
-        },
-        {
-          "name": "result",
-          "line": 44
-        }
-      ]
-    },
-    "file_ops/reader.py": {
-      "mtime": 1750922881.117833,
+    "kodo/file_ops/reader.py": {
+      "mtime": 1751101914.941986,
       "size": 3412,
       "language": "python",
       "error": null,
@@ -2209,8 +2109,8 @@
         }
       ]
     },
-    "file_ops/writer.py": {
-      "mtime": 1750684823.4933226,
+    "kodo/file_ops/writer.py": {
+      "mtime": 1751101914.941986,
       "size": 2567,
       "language": "python",
       "error": null,
@@ -2334,8 +2234,8 @@
         }
       ]
     },
-    "file_ops/__init__.py": {
-      "mtime": 1750683798.9302375,
+    "kodo/file_ops/__init__.py": {
+      "mtime": 1751101914.941986,
       "size": 0,
       "language": "python",
       "error": null,
@@ -2345,8 +2245,8 @@
       "functions": [],
       "variables": []
     },
-    "llm/providers.py": {
-      "mtime": 1750749924.340797,
+    "kodo/llm/providers.py": {
+      "mtime": 1751101914.942986,
       "size": 8053,
       "language": "python",
       "error": null,
@@ -2836,8 +2736,8 @@
         }
       ]
     },
-    "llm/__init__.py": {
-      "mtime": 1750737521.0089118,
+    "kodo/llm/__init__.py": {
+      "mtime": 1751101914.941986,
       "size": 0,
       "language": "python",
       "error": null,
@@ -2847,68 +2747,9 @@
       "functions": [],
       "variables": []
     },
-    "claude_env/bin/activate_this.py": {
-      "mtime": 1750672925.0757167,
-      "size": 2383,
-      "language": "python",
-      "error": null,
-      "line_count": 59,
-      "imports": [
-        {
-          "name": "__future__.annotations",
-          "from": "__future__",
-          "import": "annotations",
-          "alias": null,
-          "line": 31
-        },
-        {
-          "name": "os",
-          "alias": null,
-          "line": 33
-        },
-        {
-          "name": "site",
-          "alias": null,
-          "line": 34
-        },
-        {
-          "name": "sys",
-          "alias": null,
-          "line": 35
-        }
-      ],
-      "classes": [],
-      "functions": [],
-      "variables": [
-        {
-          "name": "abs_file",
-          "line": 38
-        },
-        {
-          "name": "msg",
-          "line": 40
-        },
-        {
-          "name": "bin_dir",
-          "line": 43
-        },
-        {
-          "name": "base",
-          "line": 44
-        },
-        {
-          "name": "prev_length",
-          "line": 52
-        },
-        {
-          "name": "path",
-          "line": 54
-        }
-      ]
-    },
-    "config/settings.py": {
-      "mtime": 1751093558.117547,
-      "size": 9073,
+    "kodo/config/settings.py": {
+      "mtime": 1751107310.238618,
+      "size": 9163,
       "language": "python",
       "error": null,
       "line_count": 249,
@@ -2968,8 +2809,8 @@
           "line": 6
         },
         {
-          "name": "llm.providers.LLMManager",
-          "from": "llm.providers",
+          "name": "kodo.llm.providers.LLMManager",
+          "from": "kodo.llm.providers",
           "import": "LLMManager",
           "alias": null,
           "line": 105
@@ -3251,8 +3092,8 @@
         }
       ]
     },
-    "agent/__init__.py": {
-      "mtime": 1751086320.9605577,
+    "kodo/agent/__init__.py": {
+      "mtime": 1751101914.939986,
       "size": 318,
       "language": "python",
       "error": null,
@@ -3310,9 +3151,9 @@
         }
       ]
     },
-    "agent/core.py": {
-      "mtime": 1751091238.2894347,
-      "size": 19912,
+    "kodo/agent/core.py": {
+      "mtime": 1751104882.085788,
+      "size": 19927,
       "language": "python",
       "error": null,
       "line_count": 505,
@@ -3440,22 +3281,22 @@
           "line": 11
         },
         {
-          "name": "file_ops.reader.read_file_content",
-          "from": "file_ops.reader",
+          "name": "kodo.file_ops.reader.read_file_content",
+          "from": "kodo.file_ops.reader",
           "import": "read_file_content",
           "alias": null,
           "line": 13
         },
         {
-          "name": "file_ops.writer.write_file_content",
-          "from": "file_ops.writer",
+          "name": "kodo.file_ops.writer.write_file_content",
+          "from": "kodo.file_ops.writer",
           "import": "write_file_content",
           "alias": null,
           "line": 14
         },
         {
-          "name": "context_manager.ContextManager",
-          "from": "context_manager",
+          "name": "kodo.context_manager.ContextManager",
+          "from": "kodo.context_manager",
           "import": "ContextManager",
           "alias": null,
           "line": 15
@@ -3943,75 +3784,147 @@
           "line": 484
         }
       ]
+    },
+    "claude_env/bin/activate_this.py": {
+      "mtime": 1750672925.0757167,
+      "size": 2383,
+      "language": "python",
+      "error": null,
+      "line_count": 59,
+      "imports": [
+        {
+          "name": "__future__.annotations",
+          "from": "__future__",
+          "import": "annotations",
+          "alias": null,
+          "line": 31
+        },
+        {
+          "name": "os",
+          "alias": null,
+          "line": 33
+        },
+        {
+          "name": "site",
+          "alias": null,
+          "line": 34
+        },
+        {
+          "name": "sys",
+          "alias": null,
+          "line": 35
+        }
+      ],
+      "classes": [],
+      "functions": [],
+      "variables": [
+        {
+          "name": "abs_file",
+          "line": 38
+        },
+        {
+          "name": "msg",
+          "line": 40
+        },
+        {
+          "name": "bin_dir",
+          "line": 43
+        },
+        {
+          "name": "base",
+          "line": 44
+        },
+        {
+          "name": "prev_length",
+          "line": 52
+        },
+        {
+          "name": "path",
+          "line": 54
+        }
+      ]
+    },
+    "kodo_context/context/snapshot.json": {
+      "mtime": 1751104915.28107,
+      "size": 107911,
+      "language": "json",
+      "error": null,
+      "line_count": 4649,
+      "imports": [],
+      "classes": [],
+      "functions": [],
+      "variables": []
     }
   },
   "summary": {
     "total_files": 14,
-    "total_lines": 3167,
+    "total_lines": 7780,
     "languages": {
-      "python": 14
+      "toml": 1,
+      "python": 12,
+      "json": 1
     },
     "largest_files": [
       [
-        "context_manager.py",
-        37446
+        "kodo_context/context/snapshot.json",
+        107911
       ],
       [
-        "ast_generator.py",
+        "kodo/context_manager.py",
+        37451
+      ],
+      [
+        "kodo/ast_generator.py",
         21141
       ],
       [
-        "agent/core.py",
-        19912
+        "kodo/agent/core.py",
+        19927
       ],
       [
-        "main.py",
-        15945
+        "kodo/main.py",
+        15975
       ],
       [
-        "config/settings.py",
-        9073
+        "kodo/config/settings.py",
+        9163
       ],
       [
-        "llm/providers.py",
+        "kodo/llm/providers.py",
         8053
       ],
       [
-        "file_ops/reader.py",
+        "kodo/file_ops/reader.py",
         3412
       ],
       [
-        "file_ops/writer.py",
+        "kodo/file_ops/writer.py",
         2567
       ],
       [
         "claude_env/bin/activate_this.py",
         2383
-      ],
-      [
-        "mycode/calculator.py",
-        1700
       ]
     ]
   },
   "indexes": {
     "import_graph": {
-      "main.py": [
+      "kodo/main.py": [
         "pathlib.Path",
         "typer",
         "json",
         "rich.console.Console",
         "rich.prompt.Confirm",
         "rich.markdown.Markdown",
-        "file_ops.reader.read_file_content",
-        "file_ops.writer.write_file_content",
-        "file_ops.writer.show_diff",
-        "llm.providers.LLMManager",
-        "config.settings.ConfigManager",
-        "context_manager.ContextManager",
-        "agent.core.CodeAgent"
+        "kodo.file_ops.reader.read_file_content",
+        "kodo.file_ops.writer.write_file_content",
+        "kodo.file_ops.writer.show_diff",
+        "kodo.llm.providers.LLMManager",
+        "kodo.config.settings.ConfigManager",
+        "kodo.context_manager.ContextManager",
+        "kodo.agent.core.CodeAgent"
       ],
-      "context_manager.py": [
+      "kodo/context_manager.py": [
         "json",
         "os",
         "pathlib.Path",
@@ -4025,13 +3938,13 @@
         "hashlib",
         "rich.progress.Progress",
         "rich.progress.TaskID",
-        "ast_generator.ASTGenerator",
-        "ast_generator.save_ast_snapshot",
-        "ast_generator.load_ast_snapshot",
-        "ast_generator.is_ast_current",
+        "kodo.ast_generator.ASTGenerator",
+        "kodo.ast_generator.save_ast_snapshot",
+        "kodo.ast_generator.load_ast_snapshot",
+        "kodo.ast_generator.is_ast_current",
         "re"
       ],
-      "ast_generator.py": [
+      "kodo/ast_generator.py": [
         "ast",
         "os",
         "json",
@@ -4044,18 +3957,18 @@
         "tree_sitter_language_pack.get_language",
         "tree_sitter_language_pack.get_parser"
       ],
-      "file_ops/reader.py": [
+      "kodo/file_ops/reader.py": [
         "os",
         "pathlib.Path",
         "typing.List"
       ],
-      "file_ops/writer.py": [
+      "kodo/file_ops/writer.py": [
         "pathlib.Path",
         "typing.Optional",
         "datetime.datetime",
         "rich.console.Console"
       ],
-      "llm/providers.py": [
+      "kodo/llm/providers.py": [
         "abc.ABC",
         "abc.abstractmethod",
         "typing.Dict",
@@ -4064,13 +3977,7 @@
         "litellm.completion",
         "os"
       ],
-      "claude_env/bin/activate_this.py": [
-        "__future__.annotations",
-        "os",
-        "site",
-        "sys"
-      ],
-      "config/settings.py": [
+      "kodo/config/settings.py": [
         "json",
         "pathlib.Path",
         "typing.Dict",
@@ -4079,9 +3986,9 @@
         "rich.prompt.Prompt",
         "rich.prompt.Confirm",
         "rich.table.Table",
-        "llm.providers.LLMManager"
+        "kodo.llm.providers.LLMManager"
       ],
-      "agent/__init__.py": [
+      "kodo/agent/__init__.py": [
         "core.CodeAgent",
         "core.AgentState",
         "core.ActionType",
@@ -4089,7 +3996,7 @@
         "core.ActionResult",
         "core.ExecutionPlan"
       ],
-      "agent/core.py": [
+      "kodo/agent/core.py": [
         "json",
         "time",
         "typing.List",
@@ -4108,159 +4015,214 @@
         "rich.progress.TextColumn",
         "rich.table.Table",
         "rich.markdown.Markdown",
-        "file_ops.reader.read_file_content",
-        "file_ops.writer.write_file_content",
-        "context_manager.ContextManager",
+        "kodo.file_ops.reader.read_file_content",
+        "kodo.file_ops.writer.write_file_content",
+        "kodo.context_manager.ContextManager",
         "rich.prompt.Confirm",
         "rich.prompt.Confirm"
+      ],
+      "claude_env/bin/activate_this.py": [
+        "__future__.annotations",
+        "os",
+        "site",
+        "sys"
       ]
     },
     "dependency_map": {
       "pathlib.Path": [
-        "main.py",
-        "context_manager.py",
-        "ast_generator.py",
-        "file_ops/reader.py",
-        "file_ops/writer.py",
-        "config/settings.py",
-        "agent/core.py"
+        "kodo/main.py",
+        "kodo/context_manager.py",
+        "kodo/ast_generator.py",
+        "kodo/file_ops/reader.py",
+        "kodo/file_ops/writer.py",
+        "kodo/config/settings.py",
+        "kodo/agent/core.py"
       ],
       "typer": [
-        "main.py"
+        "kodo/main.py"
       ],
       "json": [
-        "main.py",
-        "context_manager.py",
-        "ast_generator.py",
-        "config/settings.py",
-        "agent/core.py"
+        "kodo/main.py",
+        "kodo/context_manager.py",
+        "kodo/ast_generator.py",
+        "kodo/config/settings.py",
+        "kodo/agent/core.py"
       ],
       "rich.console.Console": [
-        "main.py",
-        "context_manager.py",
-        "file_ops/writer.py",
-        "config/settings.py",
-        "agent/core.py"
+        "kodo/main.py",
+        "kodo/context_manager.py",
+        "kodo/file_ops/writer.py",
+        "kodo/config/settings.py",
+        "kodo/agent/core.py"
       ],
       "rich.prompt.Confirm": [
-        "main.py",
-        "config/settings.py",
-        "agent/core.py",
-        "agent/core.py"
+        "kodo/main.py",
+        "kodo/config/settings.py",
+        "kodo/agent/core.py",
+        "kodo/agent/core.py"
       ],
       "rich.markdown.Markdown": [
-        "main.py",
-        "context_manager.py",
-        "agent/core.py"
+        "kodo/main.py",
+        "kodo/context_manager.py",
+        "kodo/agent/core.py"
       ],
-      "file_ops.reader.read_file_content": [
-        "main.py",
-        "agent/core.py"
+      "kodo.file_ops.reader.read_file_content": [
+        "kodo/main.py",
+        "kodo/agent/core.py"
       ],
-      "file_ops.writer.write_file_content": [
-        "main.py",
-        "agent/core.py"
+      "kodo.file_ops.writer.write_file_content": [
+        "kodo/main.py",
+        "kodo/agent/core.py"
       ],
-      "file_ops.writer.show_diff": [
-        "main.py"
+      "kodo.file_ops.writer.show_diff": [
+        "kodo/main.py"
       ],
-      "llm.providers.LLMManager": [
-        "main.py",
-        "config/settings.py"
+      "kodo.llm.providers.LLMManager": [
+        "kodo/main.py",
+        "kodo/config/settings.py"
       ],
-      "config.settings.ConfigManager": [
-        "main.py"
+      "kodo.config.settings.ConfigManager": [
+        "kodo/main.py"
       ],
-      "context_manager.ContextManager": [
-        "main.py",
-        "agent/core.py"
+      "kodo.context_manager.ContextManager": [
+        "kodo/main.py",
+        "kodo/agent/core.py"
       ],
-      "agent.core.CodeAgent": [
-        "main.py"
+      "kodo.agent.core.CodeAgent": [
+        "kodo/main.py"
       ],
       "os": [
-        "context_manager.py",
-        "ast_generator.py",
-        "file_ops/reader.py",
-        "llm/providers.py",
+        "kodo/context_manager.py",
+        "kodo/ast_generator.py",
+        "kodo/file_ops/reader.py",
+        "kodo/llm/providers.py",
         "claude_env/bin/activate_this.py"
       ],
       "datetime.datetime": [
-        "context_manager.py",
-        "ast_generator.py",
-        "file_ops/writer.py"
+        "kodo/context_manager.py",
+        "kodo/ast_generator.py",
+        "kodo/file_ops/writer.py"
       ],
       "typing.Dict": [
-        "context_manager.py",
-        "ast_generator.py",
-        "llm/providers.py",
-        "config/settings.py",
-        "agent/core.py"
+        "kodo/context_manager.py",
+        "kodo/ast_generator.py",
+        "kodo/llm/providers.py",
+        "kodo/config/settings.py",
+        "kodo/agent/core.py"
       ],
       "typing.List": [
-        "context_manager.py",
-        "ast_generator.py",
-        "file_ops/reader.py",
-        "llm/providers.py",
-        "agent/core.py"
+        "kodo/context_manager.py",
+        "kodo/ast_generator.py",
+        "kodo/file_ops/reader.py",
+        "kodo/llm/providers.py",
+        "kodo/agent/core.py"
       ],
       "typing.Optional": [
-        "context_manager.py",
-        "ast_generator.py",
-        "file_ops/writer.py",
-        "llm/providers.py",
-        "agent/core.py"
+        "kodo/context_manager.py",
+        "kodo/ast_generator.py",
+        "kodo/file_ops/writer.py",
+        "kodo/llm/providers.py",
+        "kodo/agent/core.py"
       ],
       "typing.Any": [
-        "context_manager.py",
-        "config/settings.py",
-        "agent/core.py"
+        "kodo/context_manager.py",
+        "kodo/config/settings.py",
+        "kodo/agent/core.py"
       ],
       "hashlib": [
-        "context_manager.py"
+        "kodo/context_manager.py"
       ],
       "rich.progress.Progress": [
-        "context_manager.py",
-        "agent/core.py"
+        "kodo/context_manager.py",
+        "kodo/agent/core.py"
       ],
       "rich.progress.TaskID": [
-        "context_manager.py"
+        "kodo/context_manager.py"
       ],
-      "ast_generator.ASTGenerator": [
-        "context_manager.py"
+      "kodo.ast_generator.ASTGenerator": [
+        "kodo/context_manager.py"
       ],
-      "ast_generator.save_ast_snapshot": [
-        "context_manager.py"
+      "kodo.ast_generator.save_ast_snapshot": [
+        "kodo/context_manager.py"
       ],
-      "ast_generator.load_ast_snapshot": [
-        "context_manager.py"
+      "kodo.ast_generator.load_ast_snapshot": [
+        "kodo/context_manager.py"
       ],
-      "ast_generator.is_ast_current": [
-        "context_manager.py"
+      "kodo.ast_generator.is_ast_current": [
+        "kodo/context_manager.py"
       ],
       "re": [
-        "context_manager.py"
+        "kodo/context_manager.py"
       ],
       "ast": [
-        "ast_generator.py"
+        "kodo/ast_generator.py"
       ],
       "fnmatch": [
-        "ast_generator.py"
+        "kodo/ast_generator.py"
       ],
       "tree_sitter_language_pack.get_language": [
-        "ast_generator.py"
+        "kodo/ast_generator.py"
       ],
       "tree_sitter_language_pack.get_parser": [
-        "ast_generator.py"
+        "kodo/ast_generator.py"
       ],
       "abc.ABC": [
-        "llm/providers.py"
+        "kodo/llm/providers.py"
       ],
       "abc.abstractmethod": [
-        "llm/providers.py"
+        "kodo/llm/providers.py"
       ],
       "litellm.completion": [
-        "llm/providers.py"
+        "kodo/llm/providers.py"
+      ],
+      "rich.prompt.Prompt": [
+        "kodo/config/settings.py"
+      ],
+      "rich.table.Table": [
+        "kodo/config/settings.py",
+        "kodo/agent/core.py"
+      ],
+      "core.CodeAgent": [
+        "kodo/agent/__init__.py"
+      ],
+      "core.AgentState": [
+        "kodo/agent/__init__.py"
+      ],
+      "core.ActionType": [
+        "kodo/agent/__init__.py"
+      ],
+      "core.Action": [
+        "kodo/agent/__init__.py"
+      ],
+      "core.ActionResult": [
+        "kodo/agent/__init__.py"
+      ],
+      "core.ExecutionPlan": [
+        "kodo/agent/__init__.py"
+      ],
+      "time": [
+        "kodo/agent/core.py"
+      ],
+      "typing.Tuple": [
+        "kodo/agent/core.py"
+      ],
+      "enum.Enum": [
+        "kodo/agent/core.py"
+      ],
+      "dataclasses.dataclass": [
+        "kodo/agent/core.py"
+      ],
+      "dataclasses.asdict": [
+        "kodo/agent/core.py"
+      ],
+      "rich.panel.Panel": [
+        "kodo/agent/core.py"
+      ],
+      "rich.progress.SpinnerColumn": [
+        "kodo/agent/core.py"
+      ],
+      "rich.progress.TextColumn": [
+        "kodo/agent/core.py"
       ],
       "__future__.annotations": [
         "claude_env/bin/activate_this.py"
@@ -4270,474 +4232,416 @@
       ],
       "sys": [
         "claude_env/bin/activate_this.py"
-      ],
-      "rich.prompt.Prompt": [
-        "config/settings.py"
-      ],
-      "rich.table.Table": [
-        "config/settings.py",
-        "agent/core.py"
-      ],
-      "core.CodeAgent": [
-        "agent/__init__.py"
-      ],
-      "core.AgentState": [
-        "agent/__init__.py"
-      ],
-      "core.ActionType": [
-        "agent/__init__.py"
-      ],
-      "core.Action": [
-        "agent/__init__.py"
-      ],
-      "core.ActionResult": [
-        "agent/__init__.py"
-      ],
-      "core.ExecutionPlan": [
-        "agent/__init__.py"
-      ],
-      "time": [
-        "agent/core.py"
-      ],
-      "typing.Tuple": [
-        "agent/core.py"
-      ],
-      "enum.Enum": [
-        "agent/core.py"
-      ],
-      "dataclasses.dataclass": [
-        "agent/core.py"
-      ],
-      "dataclasses.asdict": [
-        "agent/core.py"
-      ],
-      "rich.panel.Panel": [
-        "agent/core.py"
-      ],
-      "rich.progress.SpinnerColumn": [
-        "agent/core.py"
-      ],
-      "rich.progress.TextColumn": [
-        "agent/core.py"
       ]
     },
     "class_locations": {
-      "ContextManager": "context_manager.py",
-      "PythonAnalyzer": "ast_generator.py",
-      "TreeSitterAnalyzer": "ast_generator.py",
-      "ASTGenerator": "ast_generator.py",
-      "LLMProvider": "llm/providers.py",
-      "OpenAIProvider": "llm/providers.py",
-      "AnthropicProvider": "llm/providers.py",
-      "GeminiProvider": "llm/providers.py",
-      "HfProvider": "llm/providers.py",
-      "OllamaProvider": "llm/providers.py",
-      "LLMManager": "llm/providers.py",
-      "ConfigManager": "config/settings.py",
-      "AgentState": "agent/core.py",
-      "ActionType": "agent/core.py",
-      "Action": "agent/core.py",
-      "ActionResult": "agent/core.py",
-      "ExecutionPlan": "agent/core.py",
-      "CodeAgent": "agent/core.py"
+      "ContextManager": "kodo/context_manager.py",
+      "PythonAnalyzer": "kodo/ast_generator.py",
+      "TreeSitterAnalyzer": "kodo/ast_generator.py",
+      "ASTGenerator": "kodo/ast_generator.py",
+      "LLMProvider": "kodo/llm/providers.py",
+      "OpenAIProvider": "kodo/llm/providers.py",
+      "AnthropicProvider": "kodo/llm/providers.py",
+      "GeminiProvider": "kodo/llm/providers.py",
+      "HfProvider": "kodo/llm/providers.py",
+      "OllamaProvider": "kodo/llm/providers.py",
+      "LLMManager": "kodo/llm/providers.py",
+      "ConfigManager": "kodo/config/settings.py",
+      "AgentState": "kodo/agent/core.py",
+      "ActionType": "kodo/agent/core.py",
+      "Action": "kodo/agent/core.py",
+      "ActionResult": "kodo/agent/core.py",
+      "ExecutionPlan": "kodo/agent/core.py",
+      "CodeAgent": "kodo/agent/core.py"
     },
     "function_locations": {
-      "ensure_configured": "main.py",
-      "model_output": "main.py",
-      "configure": "main.py",
-      "status": "main.py",
-      "init": "main.py",
-      "chat": "main.py",
-      "edit": "main.py",
-      "generate": "main.py",
-      "context": "main.py",
-      "update_context": "main.py",
-      "agent": "main.py",
-      "_extract_files_from_query": "main.py",
-      "__init__": "agent/core.py",
-      "initialize_context": "context_manager.py",
-      "_create_overview": "context_manager.py",
-      "_initialize_history": "context_manager.py",
-      "_create_default_rules": "context_manager.py",
-      "_create_cache_metadata": "context_manager.py",
-      "log_interaction": "context_manager.py",
-      "update_history": "context_manager.py",
-      "_update_ast_cache": "context_manager.py",
-      "_update_cache_metadata": "context_manager.py",
-      "_check_auto_update": "context_manager.py",
-      "load_context": "context_manager.py",
-      "get_context_for_query": "context_manager.py",
-      "_get_query_focused_context": "context_manager.py",
-      "_extract_file_mentions": "context_manager.py",
-      "_get_file_content": "context_manager.py",
-      "_try_read_file_directly": "context_manager.py",
-      "_identify_key_files": "context_manager.py",
-      "_detect_architecture_pattern": "context_manager.py",
-      "_find_entry_points": "context_manager.py",
-      "_get_main_modules": "context_manager.py",
-      "_get_key_dependencies": "context_manager.py",
-      "_load_overview": "context_manager.py",
-      "_load_rules": "context_manager.py",
-      "_load_recent_history": "context_manager.py",
-      "_get_max_context_files": "context_manager.py",
-      "_get_file_preview": "context_manager.py",
-      "_format_change_details": "context_manager.py",
-      "_show_context_summary": "context_manager.py",
-      "_format_context": "context_manager.py",
-      "_get_file_language": "context_manager.py",
-      "visit_Import": "ast_generator.py",
-      "visit_ImportFrom": "ast_generator.py",
-      "visit_ClassDef": "ast_generator.py",
-      "visit_FunctionDef": "ast_generator.py",
-      "visit_Assign": "ast_generator.py",
-      "_get_name": "ast_generator.py",
-      "analyze": "ast_generator.py",
-      "_extract_imports": "ast_generator.py",
-      "_extract_classes": "ast_generator.py",
-      "_extract_functions": "ast_generator.py",
-      "_extract_variables": "ast_generator.py",
-      "_find_nodes_by_type": "ast_generator.py",
-      "_find_first_child_by_type": "ast_generator.py",
-      "_get_node_text": "ast_generator.py",
-      "_should_ignore": "ast_generator.py",
-      "generate_snapshot": "ast_generator.py",
-      "_walk_code_files": "ast_generator.py",
-      "_process_file": "ast_generator.py",
-      "_parse_python": "ast_generator.py",
-      "_build_indexes": "ast_generator.py",
-      "_analyze_file_relationships": "ast_generator.py",
-      "save_ast_snapshot": "ast_generator.py",
-      "load_ast_snapshot": "ast_generator.py",
-      "is_ast_current": "ast_generator.py",
-      "add": "mycode/calculator.py",
-      "subtract": "mycode/calculator.py",
-      "multiply": "mycode/calculator.py",
-      "divide": "mycode/calculator.py",
-      "run_calculator": "mycode/calculator.py",
-      "get_project_structure": "file_ops/reader.py",
-      "read_file_content": "file_ops/reader.py",
-      "get_relevant_files": "file_ops/reader.py",
-      "create_context_for_chat": "file_ops/reader.py",
-      "write_file_content": "file_ops/writer.py",
-      "create_backup_file": "file_ops/writer.py",
-      "show_diff": "file_ops/writer.py",
-      "get_completion": "llm/providers.py",
-      "validate_config": "llm/providers.py",
-      "get_required_fields": "llm/providers.py",
-      "get_available_providers": "llm/providers.py",
-      "get_provider_info": "llm/providers.py",
-      "create_provider": "llm/providers.py",
-      "set_provider": "llm/providers.py",
-      "ensure_config_dir": "config/settings.py",
-      "load_config": "config/settings.py",
-      "save_config": "config/settings.py",
-      "get_default_config": "config/settings.py",
-      "get": "config/settings.py",
-      "set": "config/settings.py",
-      "is_configured": "config/settings.py",
-      "setup_interactive": "config/settings.py",
-      "show_providers_table": "config/settings.py",
-      "show_current_config": "config/settings.py",
-      "get_llm_config": "config/settings.py",
-      "__post_init__": "agent/core.py",
-      "execute_goal": "agent/core.py",
-      "_plan_execution": "agent/core.py",
-      "_validate_and_approve_plan": "agent/core.py",
-      "_display_plan": "agent/core.py",
-      "_execute_plan": "agent/core.py",
-      "_execute_action": "agent/core.py",
-      "_read_file_action": "agent/core.py",
-      "_write_file_action": "agent/core.py",
-      "_create_file_action": "agent/core.py",
-      "_analyze_code_action": "agent/core.py",
-      "_search_codebase_action": "agent/core.py",
-      "_handle_action_failure": "agent/core.py",
-      "_extract_json_from_response": "agent/core.py",
-      "_log_session_to_history": "agent/core.py",
-      "get_session_summary": "agent/core.py"
+      "ensure_configured": "kodo/main.py",
+      "model_output": "kodo/main.py",
+      "configure": "kodo/main.py",
+      "status": "kodo/main.py",
+      "init": "kodo/main.py",
+      "chat": "kodo/main.py",
+      "edit": "kodo/main.py",
+      "generate": "kodo/main.py",
+      "context": "kodo/main.py",
+      "update_context": "kodo/main.py",
+      "agent": "kodo/main.py",
+      "_extract_files_from_query": "kodo/main.py",
+      "__init__": "kodo/agent/core.py",
+      "initialize_context": "kodo/context_manager.py",
+      "_create_overview": "kodo/context_manager.py",
+      "_initialize_history": "kodo/context_manager.py",
+      "_create_default_rules": "kodo/context_manager.py",
+      "_create_cache_metadata": "kodo/context_manager.py",
+      "log_interaction": "kodo/context_manager.py",
+      "update_history": "kodo/context_manager.py",
+      "_update_ast_cache": "kodo/context_manager.py",
+      "_update_cache_metadata": "kodo/context_manager.py",
+      "_check_auto_update": "kodo/context_manager.py",
+      "load_context": "kodo/context_manager.py",
+      "get_context_for_query": "kodo/context_manager.py",
+      "_get_query_focused_context": "kodo/context_manager.py",
+      "_extract_file_mentions": "kodo/context_manager.py",
+      "_get_file_content": "kodo/context_manager.py",
+      "_try_read_file_directly": "kodo/context_manager.py",
+      "_identify_key_files": "kodo/context_manager.py",
+      "_detect_architecture_pattern": "kodo/context_manager.py",
+      "_find_entry_points": "kodo/context_manager.py",
+      "_get_main_modules": "kodo/context_manager.py",
+      "_get_key_dependencies": "kodo/context_manager.py",
+      "_load_overview": "kodo/context_manager.py",
+      "_load_rules": "kodo/context_manager.py",
+      "_load_recent_history": "kodo/context_manager.py",
+      "_get_max_context_files": "kodo/context_manager.py",
+      "_get_file_preview": "kodo/context_manager.py",
+      "_format_change_details": "kodo/context_manager.py",
+      "_show_context_summary": "kodo/context_manager.py",
+      "_format_context": "kodo/context_manager.py",
+      "_get_file_language": "kodo/context_manager.py",
+      "visit_Import": "kodo/ast_generator.py",
+      "visit_ImportFrom": "kodo/ast_generator.py",
+      "visit_ClassDef": "kodo/ast_generator.py",
+      "visit_FunctionDef": "kodo/ast_generator.py",
+      "visit_Assign": "kodo/ast_generator.py",
+      "_get_name": "kodo/ast_generator.py",
+      "analyze": "kodo/ast_generator.py",
+      "_extract_imports": "kodo/ast_generator.py",
+      "_extract_classes": "kodo/ast_generator.py",
+      "_extract_functions": "kodo/ast_generator.py",
+      "_extract_variables": "kodo/ast_generator.py",
+      "_find_nodes_by_type": "kodo/ast_generator.py",
+      "_find_first_child_by_type": "kodo/ast_generator.py",
+      "_get_node_text": "kodo/ast_generator.py",
+      "_should_ignore": "kodo/ast_generator.py",
+      "generate_snapshot": "kodo/ast_generator.py",
+      "_walk_code_files": "kodo/ast_generator.py",
+      "_process_file": "kodo/ast_generator.py",
+      "_parse_python": "kodo/ast_generator.py",
+      "_build_indexes": "kodo/ast_generator.py",
+      "_analyze_file_relationships": "kodo/ast_generator.py",
+      "save_ast_snapshot": "kodo/ast_generator.py",
+      "load_ast_snapshot": "kodo/ast_generator.py",
+      "is_ast_current": "kodo/ast_generator.py",
+      "get_project_structure": "kodo/file_ops/reader.py",
+      "read_file_content": "kodo/file_ops/reader.py",
+      "get_relevant_files": "kodo/file_ops/reader.py",
+      "create_context_for_chat": "kodo/file_ops/reader.py",
+      "write_file_content": "kodo/file_ops/writer.py",
+      "create_backup_file": "kodo/file_ops/writer.py",
+      "show_diff": "kodo/file_ops/writer.py",
+      "get_completion": "kodo/llm/providers.py",
+      "validate_config": "kodo/llm/providers.py",
+      "get_required_fields": "kodo/llm/providers.py",
+      "get_available_providers": "kodo/llm/providers.py",
+      "get_provider_info": "kodo/llm/providers.py",
+      "create_provider": "kodo/llm/providers.py",
+      "set_provider": "kodo/llm/providers.py",
+      "ensure_config_dir": "kodo/config/settings.py",
+      "load_config": "kodo/config/settings.py",
+      "save_config": "kodo/config/settings.py",
+      "get_default_config": "kodo/config/settings.py",
+      "get": "kodo/config/settings.py",
+      "set": "kodo/config/settings.py",
+      "is_configured": "kodo/config/settings.py",
+      "setup_interactive": "kodo/config/settings.py",
+      "show_providers_table": "kodo/config/settings.py",
+      "show_current_config": "kodo/config/settings.py",
+      "get_llm_config": "kodo/config/settings.py",
+      "__post_init__": "kodo/agent/core.py",
+      "execute_goal": "kodo/agent/core.py",
+      "_plan_execution": "kodo/agent/core.py",
+      "_validate_and_approve_plan": "kodo/agent/core.py",
+      "_display_plan": "kodo/agent/core.py",
+      "_execute_plan": "kodo/agent/core.py",
+      "_execute_action": "kodo/agent/core.py",
+      "_read_file_action": "kodo/agent/core.py",
+      "_write_file_action": "kodo/agent/core.py",
+      "_create_file_action": "kodo/agent/core.py",
+      "_analyze_code_action": "kodo/agent/core.py",
+      "_search_codebase_action": "kodo/agent/core.py",
+      "_handle_action_failure": "kodo/agent/core.py",
+      "_extract_json_from_response": "kodo/agent/core.py",
+      "_log_session_to_history": "kodo/agent/core.py",
+      "get_session_summary": "kodo/agent/core.py"
     },
     "variable_locations": {
-      "app": "main.py",
-      "console": "file_ops/writer.py",
-      "config_manager": "main.py",
-      "llm_manager": "config/settings.py",
-      "provider_key": "main.py",
-      "llm_config": "main.py",
-      "provider": "config/settings.py",
-      "system_message": "main.py",
-      "user_message": "main.py",
-      "messages": "main.py",
-      "local_config": "main.py",
-      "project_config": "main.py",
-      "context_manager": "main.py",
-      "context": "agent/core.py",
-      "response": "agent/core.py",
-      "response_summary": "main.py",
-      "original_content": "main.py",
-      "project_context": "main.py",
-      "edit_prompt": "main.py",
-      "new_content": "main.py",
-      "lines": "context_manager.py",
-      "backup_enabled": "main.py",
-      "generation_prompt": "main.py",
-      "content": "agent/core.py",
-      "overview": "main.py",
-      "history": "main.py",
-      "recent_entries": "main.py",
-      "entry_count": "main.py",
-      "agent": "main.py",
-      "success": "agent/core.py",
-      "summary": "main.py",
-      "words": "context_manager.py",
-      "files": "context_manager.py",
-      "ast_generator": "context_manager.py",
-      "snapshot": "ast_generator.py",
-      "project_name": "context_manager.py",
-      "total_files": "context_manager.py",
-      "languages": "context_manager.py",
-      "main_lang": "context_manager.py",
-      "key_files": "context_manager.py",
-      "overview_content": "context_manager.py",
-      "history_content": "context_manager.py",
-      "rules_content": "context_manager.py",
-      "cache_metadata": "context_manager.py",
-      "cache_file": "context_manager.py",
-      "files_involved": "agent/core.py",
-      "entry": "context_manager.py",
-      "ast_data": "context_manager.py",
-      "updated": "context_manager.py",
-      "file_path_obj": "context_manager.py",
-      "rel_path": "ast_generator.py",
-      "metadata": "context_manager.py",
-      "last_update": "context_manager.py",
-      "hours_since_update": "context_manager.py",
-      "base_context": "context_manager.py",
-      "max_files": "context_manager.py",
-      "query_lower": "file_ops/reader.py",
-      "keywords": "file_ops/reader.py",
-      "explicit_files": "context_manager.py",
-      "file_scores": "context_manager.py",
-      "explicit_file_data": "context_manager.py",
-      "file_found": "context_manager.py",
-      "direct_content": "context_manager.py",
-      "score": "context_manager.py",
-      "func_name": "ast_generator.py",
-      "cls_name": "context_manager.py",
-      "imp_name": "context_manager.py",
-      "remaining_slots": "context_manager.py",
-      "relevant_files": "file_ops/reader.py",
-      "all_files": "context_manager.py",
-      "file_mentions": "context_manager.py",
-      "file_extensions": "context_manager.py",
-      "clean_word": "context_manager.py",
-      "common_filenames": "context_manager.py",
-      "potential_files": "context_manager.py",
-      "quoted_pattern": "context_manager.py",
-      "quoted_matches": "context_manager.py",
-      "seen": "context_manager.py",
-      "unique_mentions": "context_manager.py",
-      "full_path": "context_manager.py",
-      "file_size": "ast_generator.py",
-      "remaining": "context_manager.py",
-      "possible_paths": "context_manager.py",
-      "base_paths": "context_manager.py",
-      "important_patterns": "context_manager.py",
-      "file_paths": "context_manager.py",
-      "entry_points": "context_manager.py",
-      "dirs": "context_manager.py",
-      "parts": "mycode/calculator.py",
-      "dependencies": "context_manager.py",
-      "dep": "context_manager.py",
-      "rules": "context_manager.py",
-      "preview_lines": "context_manager.py",
-      "formatted": "context_manager.py",
-      "overview_file": "context_manager.py",
-      "regular_files": "context_manager.py",
-      "preview": "context_manager.py",
-      "func_names": "context_manager.py",
-      "class_names": "context_manager.py",
-      "query_focused": "context_manager.py",
-      "history_file": "context_manager.py",
-      "recent_history": "context_manager.py",
-      "ext": "context_manager.py",
-      "language_map": "context_manager.py",
-      "TREE_SITTER_AVAILABLE": "ast_generator.py",
-      "get_language": "ast_generator.py",
-      "get_parser": "ast_generator.py",
-      "source_bytes": "ast_generator.py",
-      "tree": "ast_generator.py",
-      "imports": "ast_generator.py",
-      "import_queries": "ast_generator.py",
-      "query_types": "ast_generator.py",
-      "classes": "ast_generator.py",
-      "class_queries": "ast_generator.py",
-      "name_node": "ast_generator.py",
-      "functions": "ast_generator.py",
-      "function_queries": "ast_generator.py",
-      "variables": "ast_generator.py",
-      "var_queries": "ast_generator.py",
-      "rel_path_str": "ast_generator.py",
-      "file_sizes": "ast_generator.py",
-      "total_lines": "ast_generator.py",
-      "language_counts": "ast_generator.py",
-      "file_data": "ast_generator.py",
-      "lang": "ast_generator.py",
-      "root_path": "ast_generator.py",
-      "filepath": "ast_generator.py",
-      "analyzer": "ast_generator.py",
-      "source": "ast_generator.py",
-      "import_graph": "ast_generator.py",
-      "class_locations": "ast_generator.py",
-      "function_locations": "ast_generator.py",
-      "variable_locations": "ast_generator.py",
-      "dependency_map": "ast_generator.py",
-      "class_name": "ast_generator.py",
-      "var_name": "ast_generator.py",
-      "relationships": "ast_generator.py",
-      "expression": "mycode/calculator.py",
-      "num1": "mycode/calculator.py",
-      "operator": "mycode/calculator.py",
-      "num2": "mycode/calculator.py",
-      "result": "agent/core.py",
-      "current_dir": "file_ops/reader.py",
-      "structure": "file_ops/reader.py",
-      "code_extensions": "file_ops/reader.py",
-      "level": "file_ops/reader.py",
-      "indent": "file_ops/reader.py",
-      "subindent": "file_ops/reader.py",
+      "app": "kodo/main.py",
+      "console": "kodo/file_ops/writer.py",
+      "config_manager": "kodo/main.py",
+      "llm_manager": "kodo/config/settings.py",
+      "provider_key": "kodo/main.py",
+      "llm_config": "kodo/main.py",
+      "provider": "kodo/config/settings.py",
+      "system_message": "kodo/main.py",
+      "user_message": "kodo/main.py",
+      "messages": "kodo/main.py",
+      "local_config": "kodo/main.py",
+      "project_config": "kodo/main.py",
+      "context_manager": "kodo/main.py",
+      "context": "kodo/agent/core.py",
+      "response": "kodo/agent/core.py",
+      "response_summary": "kodo/main.py",
+      "original_content": "kodo/main.py",
+      "project_context": "kodo/main.py",
+      "edit_prompt": "kodo/main.py",
+      "new_content": "kodo/main.py",
+      "lines": "kodo/context_manager.py",
+      "backup_enabled": "kodo/main.py",
+      "generation_prompt": "kodo/main.py",
+      "content": "kodo/agent/core.py",
+      "overview": "kodo/main.py",
+      "history": "kodo/main.py",
+      "recent_entries": "kodo/main.py",
+      "entry_count": "kodo/main.py",
+      "agent": "kodo/main.py",
+      "success": "kodo/agent/core.py",
+      "summary": "kodo/main.py",
+      "words": "kodo/context_manager.py",
+      "files": "kodo/context_manager.py",
+      "ast_generator": "kodo/context_manager.py",
+      "snapshot": "kodo/ast_generator.py",
+      "project_name": "kodo/context_manager.py",
+      "total_files": "kodo/context_manager.py",
+      "languages": "kodo/context_manager.py",
+      "main_lang": "kodo/context_manager.py",
+      "key_files": "kodo/context_manager.py",
+      "overview_content": "kodo/context_manager.py",
+      "history_content": "kodo/context_manager.py",
+      "rules_content": "kodo/context_manager.py",
+      "cache_metadata": "kodo/context_manager.py",
+      "cache_file": "kodo/context_manager.py",
+      "files_involved": "kodo/agent/core.py",
+      "entry": "kodo/context_manager.py",
+      "ast_data": "kodo/context_manager.py",
+      "updated": "kodo/context_manager.py",
+      "file_path_obj": "kodo/context_manager.py",
+      "rel_path": "kodo/ast_generator.py",
+      "metadata": "kodo/context_manager.py",
+      "last_update": "kodo/context_manager.py",
+      "hours_since_update": "kodo/context_manager.py",
+      "base_context": "kodo/context_manager.py",
+      "max_files": "kodo/context_manager.py",
+      "query_lower": "kodo/file_ops/reader.py",
+      "keywords": "kodo/file_ops/reader.py",
+      "explicit_files": "kodo/context_manager.py",
+      "file_scores": "kodo/context_manager.py",
+      "explicit_file_data": "kodo/context_manager.py",
+      "file_found": "kodo/context_manager.py",
+      "direct_content": "kodo/context_manager.py",
+      "score": "kodo/context_manager.py",
+      "func_name": "kodo/ast_generator.py",
+      "cls_name": "kodo/context_manager.py",
+      "imp_name": "kodo/context_manager.py",
+      "remaining_slots": "kodo/context_manager.py",
+      "relevant_files": "kodo/file_ops/reader.py",
+      "all_files": "kodo/context_manager.py",
+      "file_mentions": "kodo/context_manager.py",
+      "file_extensions": "kodo/context_manager.py",
+      "clean_word": "kodo/context_manager.py",
+      "common_filenames": "kodo/context_manager.py",
+      "potential_files": "kodo/context_manager.py",
+      "quoted_pattern": "kodo/context_manager.py",
+      "quoted_matches": "kodo/context_manager.py",
+      "seen": "kodo/context_manager.py",
+      "unique_mentions": "kodo/context_manager.py",
+      "full_path": "kodo/context_manager.py",
+      "file_size": "kodo/ast_generator.py",
+      "remaining": "kodo/context_manager.py",
+      "possible_paths": "kodo/context_manager.py",
+      "base_paths": "kodo/context_manager.py",
+      "important_patterns": "kodo/context_manager.py",
+      "file_paths": "kodo/context_manager.py",
+      "entry_points": "kodo/context_manager.py",
+      "dirs": "kodo/context_manager.py",
+      "parts": "kodo/context_manager.py",
+      "dependencies": "kodo/context_manager.py",
+      "dep": "kodo/context_manager.py",
+      "rules": "kodo/context_manager.py",
+      "preview_lines": "kodo/context_manager.py",
+      "formatted": "kodo/context_manager.py",
+      "overview_file": "kodo/context_manager.py",
+      "regular_files": "kodo/context_manager.py",
+      "preview": "kodo/context_manager.py",
+      "func_names": "kodo/context_manager.py",
+      "class_names": "kodo/context_manager.py",
+      "query_focused": "kodo/context_manager.py",
+      "history_file": "kodo/context_manager.py",
+      "recent_history": "kodo/context_manager.py",
+      "ext": "kodo/context_manager.py",
+      "language_map": "kodo/context_manager.py",
+      "TREE_SITTER_AVAILABLE": "kodo/ast_generator.py",
+      "get_language": "kodo/ast_generator.py",
+      "get_parser": "kodo/ast_generator.py",
+      "source_bytes": "kodo/ast_generator.py",
+      "tree": "kodo/ast_generator.py",
+      "imports": "kodo/ast_generator.py",
+      "import_queries": "kodo/ast_generator.py",
+      "query_types": "kodo/ast_generator.py",
+      "classes": "kodo/ast_generator.py",
+      "class_queries": "kodo/ast_generator.py",
+      "name_node": "kodo/ast_generator.py",
+      "functions": "kodo/ast_generator.py",
+      "function_queries": "kodo/ast_generator.py",
+      "variables": "kodo/ast_generator.py",
+      "var_queries": "kodo/ast_generator.py",
+      "rel_path_str": "kodo/ast_generator.py",
+      "file_sizes": "kodo/ast_generator.py",
+      "total_lines": "kodo/ast_generator.py",
+      "language_counts": "kodo/ast_generator.py",
+      "file_data": "kodo/ast_generator.py",
+      "lang": "kodo/ast_generator.py",
+      "root_path": "kodo/ast_generator.py",
+      "filepath": "kodo/ast_generator.py",
+      "analyzer": "kodo/ast_generator.py",
+      "source": "kodo/ast_generator.py",
+      "import_graph": "kodo/ast_generator.py",
+      "class_locations": "kodo/ast_generator.py",
+      "function_locations": "kodo/ast_generator.py",
+      "variable_locations": "kodo/ast_generator.py",
+      "dependency_map": "kodo/ast_generator.py",
+      "class_name": "kodo/ast_generator.py",
+      "var_name": "kodo/ast_generator.py",
+      "relationships": "kodo/ast_generator.py",
+      "current_dir": "kodo/file_ops/reader.py",
+      "structure": "kodo/file_ops/reader.py",
+      "code_extensions": "kodo/file_ops/reader.py",
+      "level": "kodo/file_ops/reader.py",
+      "indent": "kodo/file_ops/reader.py",
+      "subindent": "kodo/file_ops/reader.py",
       "path": "claude_env/bin/activate_this.py",
-      "file_str": "file_ops/reader.py",
-      "backup_path": "file_ops/writer.py",
-      "timestamp": "file_ops/writer.py",
-      "backup_name": "file_ops/writer.py",
-      "original_lines": "file_ops/writer.py",
-      "new_lines": "file_ops/writer.py",
-      "max_lines": "file_ops/writer.py",
-      "orig_line": "file_ops/writer.py",
-      "new_line": "file_ops/writer.py",
-      "PROVIDERS": "llm/providers.py",
-      "provider_class": "llm/providers.py",
+      "file_str": "kodo/file_ops/reader.py",
+      "backup_path": "kodo/file_ops/writer.py",
+      "timestamp": "kodo/file_ops/writer.py",
+      "backup_name": "kodo/file_ops/writer.py",
+      "original_lines": "kodo/file_ops/writer.py",
+      "new_lines": "kodo/file_ops/writer.py",
+      "max_lines": "kodo/file_ops/writer.py",
+      "orig_line": "kodo/file_ops/writer.py",
+      "new_line": "kodo/file_ops/writer.py",
+      "PROVIDERS": "kodo/llm/providers.py",
+      "provider_class": "kodo/llm/providers.py",
+      "keys": "kodo/config/settings.py",
+      "value": "kodo/config/settings.py",
+      "config": "kodo/config/settings.py",
+      "api_key": "kodo/config/settings.py",
+      "model": "kodo/config/settings.py",
+      "providers": "kodo/config/settings.py",
+      "provider_choice": "kodo/config/settings.py",
+      "provider_info": "kodo/config/settings.py",
+      "default_model": "kodo/config/settings.py",
+      "description": "kodo/config/settings.py",
+      "model_choice": "kodo/config/settings.py",
+      "base_url": "kodo/config/settings.py",
+      "test_response": "kodo/config/settings.py",
+      "table": "kodo/config/settings.py",
+      "name": "kodo/config/settings.py",
+      "provider_type": "kodo/config/settings.py",
+      "masked_key": "kodo/config/settings.py",
+      "__all__": "kodo/agent/__init__.py",
+      "PLANNING": "kodo/agent/core.py",
+      "ACTING": "kodo/agent/core.py",
+      "OBSERVING": "kodo/agent/core.py",
+      "REFLECTING": "kodo/agent/core.py",
+      "COMPLETED": "kodo/agent/core.py",
+      "FAILED": "kodo/agent/core.py",
+      "READ_FILE": "kodo/agent/core.py",
+      "WRITE_FILE": "kodo/agent/core.py",
+      "CREATE_FILE": "kodo/agent/core.py",
+      "ANALYZE_CODE": "kodo/agent/core.py",
+      "SEARCH_CODEBASE": "kodo/agent/core.py",
+      "RUN_TESTS": "kodo/agent/core.py",
+      "plan": "kodo/agent/core.py",
+      "planning_prompt": "kodo/agent/core.py",
+      "plan_data": "kodo/agent/core.py",
+      "actions": "kodo/agent/core.py",
+      "action_type_str": "kodo/agent/core.py",
+      "action_type": "kodo/agent/core.py",
+      "action": "kodo/agent/core.py",
+      "summary_table": "kodo/agent/core.py",
+      "steps_table": "kodo/agent/core.py",
+      "success_count": "kodo/agent/core.py",
+      "task": "kodo/agent/core.py",
+      "result": "kodo/agent/core.py",
+      "file_path": "kodo/agent/core.py",
+      "analysis_prompt": "kodo/agent/core.py",
+      "clean_response": "kodo/agent/core.py",
+      "start_idx": "kodo/agent/core.py",
+      "end_idx": "kodo/agent/core.py",
+      "json_str": "kodo/agent/core.py",
+      "session_summary": "kodo/agent/core.py",
       "abs_file": "claude_env/bin/activate_this.py",
       "msg": "claude_env/bin/activate_this.py",
       "bin_dir": "claude_env/bin/activate_this.py",
       "base": "claude_env/bin/activate_this.py",
-      "prev_length": "claude_env/bin/activate_this.py",
-      "keys": "config/settings.py",
-      "value": "config/settings.py",
-      "config": "config/settings.py",
-      "api_key": "config/settings.py",
-      "model": "config/settings.py",
-      "providers": "config/settings.py",
-      "provider_choice": "config/settings.py",
-      "provider_info": "config/settings.py",
-      "default_model": "config/settings.py",
-      "description": "config/settings.py",
-      "model_choice": "config/settings.py",
-      "base_url": "config/settings.py",
-      "test_response": "config/settings.py",
-      "table": "config/settings.py",
-      "name": "config/settings.py",
-      "provider_type": "config/settings.py",
-      "masked_key": "config/settings.py",
-      "__all__": "agent/__init__.py",
-      "PLANNING": "agent/core.py",
-      "ACTING": "agent/core.py",
-      "OBSERVING": "agent/core.py",
-      "REFLECTING": "agent/core.py",
-      "COMPLETED": "agent/core.py",
-      "FAILED": "agent/core.py",
-      "READ_FILE": "agent/core.py",
-      "WRITE_FILE": "agent/core.py",
-      "CREATE_FILE": "agent/core.py",
-      "ANALYZE_CODE": "agent/core.py",
-      "SEARCH_CODEBASE": "agent/core.py",
-      "RUN_TESTS": "agent/core.py",
-      "plan": "agent/core.py",
-      "planning_prompt": "agent/core.py",
-      "plan_data": "agent/core.py",
-      "actions": "agent/core.py",
-      "action_type_str": "agent/core.py",
-      "action_type": "agent/core.py",
-      "action": "agent/core.py",
-      "summary_table": "agent/core.py",
-      "steps_table": "agent/core.py",
-      "success_count": "agent/core.py",
-      "task": "agent/core.py",
-      "file_path": "agent/core.py",
-      "analysis_prompt": "agent/core.py",
-      "clean_response": "agent/core.py",
-      "start_idx": "agent/core.py",
-      "end_idx": "agent/core.py",
-      "json_str": "agent/core.py",
-      "session_summary": "agent/core.py"
+      "prev_length": "claude_env/bin/activate_this.py"
     },
     "file_relationships": {
-      "main.py": {
+      "kodo/main.py": {
         "imports_count": 13,
         "imported_by": [],
         "related_files": []
       },
-      "context_manager.py": {
+      "kodo/context_manager.py": {
         "imports_count": 18,
         "imported_by": [
-          "main.py",
-          "agent/core.py"
+          "kodo/main.py",
+          "kodo/agent/core.py"
         ],
         "related_files": []
       },
-      "ast_generator.py": {
+      "kodo/ast_generator.py": {
         "imports_count": 11,
         "imported_by": [
-          "context_manager.py"
+          "kodo/context_manager.py"
         ],
         "related_files": []
       },
-      "file_ops/reader.py": {
+      "kodo/file_ops/reader.py": {
         "imports_count": 3,
         "imported_by": [
-          "main.py",
-          "agent/core.py"
+          "kodo/main.py",
+          "kodo/agent/core.py"
         ],
         "related_files": []
       },
-      "file_ops/writer.py": {
+      "kodo/file_ops/writer.py": {
         "imports_count": 4,
         "imported_by": [
-          "main.py",
-          "agent/core.py"
+          "kodo/main.py",
+          "kodo/agent/core.py"
         ],
         "related_files": []
       },
-      "llm/providers.py": {
+      "kodo/llm/providers.py": {
         "imports_count": 7,
         "imported_by": [
-          "main.py",
-          "config/settings.py"
+          "kodo/main.py",
+          "kodo/config/settings.py"
+        ],
+        "related_files": []
+      },
+      "kodo/config/settings.py": {
+        "imports_count": 9,
+        "imported_by": [
+          "kodo/main.py"
+        ],
+        "related_files": []
+      },
+      "kodo/agent/__init__.py": {
+        "imports_count": 6,
+        "imported_by": [],
+        "related_files": []
+      },
+      "kodo/agent/core.py": {
+        "imports_count": 23,
+        "imported_by": [
+          "kodo/main.py"
         ],
         "related_files": []
       },
       "claude_env/bin/activate_this.py": {
         "imports_count": 4,
         "imported_by": [],
-        "related_files": []
-      },
-      "config/settings.py": {
-        "imports_count": 9,
-        "imported_by": [
-          "main.py"
-        ],
-        "related_files": []
-      },
-      "agent/__init__.py": {
-        "imports_count": 6,
-        "imported_by": [],
-        "related_files": []
-      },
-      "agent/core.py": {
-        "imports_count": 23,
-        "imported_by": [
-          "main.py"
-        ],
         "related_files": []
       }
     }
