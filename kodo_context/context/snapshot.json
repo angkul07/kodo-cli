@@ -1,0 +1,4745 @@
+{
+  "meta": {
+    "version": "2.0",
+    "created_at": "2025-06-28T12:24:59.295388",
+    "project_root": "/home/angkul/Desktop/claude_new",
+    "tree_sitter_available": true,
+    "languages_supported": [
+      ".py",
+      ".pyi",
+      ".pyx",
+      ".js",
+      ".jsx",
+      ".mjs",
+      ".ts",
+      ".tsx",
+      ".go",
+      ".rs",
+      ".c",
+      ".cpp",
+      ".cc",
+      ".cxx",
+      ".h",
+      ".hpp",
+      ".java",
+      ".kt",
+      ".scala",
+      ".html",
+      ".css",
+      ".scss",
+      ".vue",
+      ".svelte",
+      ".sh",
+      ".bash",
+      ".zsh",
+      ".json",
+      ".yaml",
+      ".yml",
+      ".toml",
+      ".ini",
+      ".php",
+      ".rb",
+      ".swift",
+      ".dart",
+      ".lua"
+    ]
+  },
+  "files": {
+    "main.py": {
+      "mtime": 1751093424.674609,
+      "size": 15945,
+      "language": "python",
+      "error": null,
+      "line_count": 438,
+      "imports": [
+        {
+          "name": "pathlib.Path",
+          "from": "pathlib",
+          "import": "Path",
+          "alias": null,
+          "line": 1
+        },
+        {
+          "name": "typer",
+          "alias": null,
+          "line": 2
+        },
+        {
+          "name": "json",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "rich.console.Console",
+          "from": "rich.console",
+          "import": "Console",
+          "alias": null,
+          "line": 4
+        },
+        {
+          "name": "rich.prompt.Confirm",
+          "from": "rich.prompt",
+          "import": "Confirm",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "name": "rich.markdown.Markdown",
+          "from": "rich.markdown",
+          "import": "Markdown",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "name": "file_ops.reader.read_file_content",
+          "from": "file_ops.reader",
+          "import": "read_file_content",
+          "alias": null,
+          "line": 8
+        },
+        {
+          "name": "file_ops.writer.write_file_content",
+          "from": "file_ops.writer",
+          "import": "write_file_content",
+          "alias": null,
+          "line": 9
+        },
+        {
+          "name": "file_ops.writer.show_diff",
+          "from": "file_ops.writer",
+          "import": "show_diff",
+          "alias": null,
+          "line": 9
+        },
+        {
+          "name": "llm.providers.LLMManager",
+          "from": "llm.providers",
+          "import": "LLMManager",
+          "alias": null,
+          "line": 10
+        },
+        {
+          "name": "config.settings.ConfigManager",
+          "from": "config.settings",
+          "import": "ConfigManager",
+          "alias": null,
+          "line": 11
+        },
+        {
+          "name": "context_manager.ContextManager",
+          "from": "context_manager",
+          "import": "ContextManager",
+          "alias": null,
+          "line": 12
+        },
+        {
+          "name": "agent.core.CodeAgent",
+          "from": "agent.core",
+          "import": "CodeAgent",
+          "alias": null,
+          "line": 13
+        }
+      ],
+      "classes": [],
+      "functions": [
+        {
+          "name": "ensure_configured",
+          "start_line": 22,
+          "end_line": 38,
+          "args": [],
+          "decorators": []
+        },
+        {
+          "name": "model_output",
+          "start_line": 41,
+          "end_line": 63,
+          "args": [
+            "query",
+            "context",
+            "system_message"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "configure",
+          "start_line": 66,
+          "end_line": 77,
+          "args": [],
+          "decorators": [
+            "unknown"
+          ]
+        },
+        {
+          "name": "status",
+          "start_line": 80,
+          "end_line": 89,
+          "args": [],
+          "decorators": [
+            "unknown"
+          ]
+        },
+        {
+          "name": "init",
+          "start_line": 92,
+          "end_line": 132,
+          "args": [],
+          "decorators": [
+            "unknown"
+          ]
+        },
+        {
+          "name": "chat",
+          "start_line": 135,
+          "end_line": 160,
+          "args": [
+            "message"
+          ],
+          "decorators": [
+            "unknown"
+          ]
+        },
+        {
+          "name": "edit",
+          "start_line": 163,
+          "end_line": 247,
+          "args": [
+            "filepath",
+            "prompt"
+          ],
+          "decorators": [
+            "unknown"
+          ]
+        },
+        {
+          "name": "generate",
+          "start_line": 250,
+          "end_line": 325,
+          "args": [
+            "filename",
+            "prompt"
+          ],
+          "decorators": [
+            "unknown"
+          ]
+        },
+        {
+          "name": "context",
+          "start_line": 328,
+          "end_line": 365,
+          "args": [],
+          "decorators": [
+            "unknown"
+          ]
+        },
+        {
+          "name": "update_context",
+          "start_line": 368,
+          "end_line": 386,
+          "args": [],
+          "decorators": [
+            "unknown"
+          ]
+        },
+        {
+          "name": "agent",
+          "start_line": 389,
+          "end_line": 420,
+          "args": [
+            "goal",
+            "auto_approve"
+          ],
+          "decorators": [
+            "unknown"
+          ]
+        },
+        {
+          "name": "_extract_files_from_query",
+          "start_line": 422,
+          "end_line": 435,
+          "args": [
+            "query"
+          ],
+          "decorators": []
+        }
+      ],
+      "variables": [
+        {
+          "name": "app",
+          "line": 15
+        },
+        {
+          "name": "console",
+          "line": 16
+        },
+        {
+          "name": "config_manager",
+          "line": 19
+        },
+        {
+          "name": "llm_manager",
+          "line": 20
+        },
+        {
+          "name": "provider_key",
+          "line": 31
+        },
+        {
+          "name": "llm_config",
+          "line": 32
+        },
+        {
+          "name": "provider",
+          "line": 33
+        },
+        {
+          "name": "system_message",
+          "line": 44
+        },
+        {
+          "name": "user_message",
+          "line": 54
+        },
+        {
+          "name": "user_message",
+          "line": 56
+        },
+        {
+          "name": "messages",
+          "line": 58
+        },
+        {
+          "name": "local_config",
+          "line": 105
+        },
+        {
+          "name": "project_config",
+          "line": 107
+        },
+        {
+          "name": "context_manager",
+          "line": 121
+        },
+        {
+          "name": "context_manager",
+          "line": 141
+        },
+        {
+          "name": "context",
+          "line": 142
+        },
+        {
+          "name": "response",
+          "line": 146
+        },
+        {
+          "name": "response_summary",
+          "line": 151
+        },
+        {
+          "name": "original_content",
+          "line": 173
+        },
+        {
+          "name": "context_manager",
+          "line": 179
+        },
+        {
+          "name": "project_context",
+          "line": 180
+        },
+        {
+          "name": "edit_prompt",
+          "line": 182
+        },
+        {
+          "name": "new_content",
+          "line": 198
+        },
+        {
+          "name": "lines",
+          "line": 202
+        },
+        {
+          "name": "lines",
+          "line": 205
+        },
+        {
+          "name": "lines",
+          "line": 207
+        },
+        {
+          "name": "new_content",
+          "line": 208
+        },
+        {
+          "name": "backup_enabled",
+          "line": 215
+        },
+        {
+          "name": "context_manager",
+          "line": 264
+        },
+        {
+          "name": "project_context",
+          "line": 265
+        },
+        {
+          "name": "generation_prompt",
+          "line": 267
+        },
+        {
+          "name": "content",
+          "line": 275
+        },
+        {
+          "name": "lines",
+          "line": 279
+        },
+        {
+          "name": "lines",
+          "line": 281
+        },
+        {
+          "name": "lines",
+          "line": 283
+        },
+        {
+          "name": "content",
+          "line": 284
+        },
+        {
+          "name": "context_manager",
+          "line": 330
+        },
+        {
+          "name": "overview",
+          "line": 341
+        },
+        {
+          "name": "history",
+          "line": 347
+        },
+        {
+          "name": "lines",
+          "line": 350
+        },
+        {
+          "name": "recent_entries",
+          "line": 351
+        },
+        {
+          "name": "entry_count",
+          "line": 352
+        },
+        {
+          "name": "context_manager",
+          "line": 372
+        },
+        {
+          "name": "agent",
+          "line": 398
+        },
+        {
+          "name": "success",
+          "line": 401
+        },
+        {
+          "name": "summary",
+          "line": 407
+        },
+        {
+          "name": "summary",
+          "line": 415
+        },
+        {
+          "name": "words",
+          "line": 424
+        },
+        {
+          "name": "files",
+          "line": 425
+        }
+      ]
+    },
+    "context_manager.py": {
+      "mtime": 1751093485.3390107,
+      "size": 37446,
+      "language": "python",
+      "error": null,
+      "line_count": 878,
+      "imports": [
+        {
+          "name": "json",
+          "alias": null,
+          "line": 1
+        },
+        {
+          "name": "os",
+          "alias": null,
+          "line": 2
+        },
+        {
+          "name": "pathlib.Path",
+          "from": "pathlib",
+          "import": "Path",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "datetime.datetime",
+          "from": "datetime",
+          "import": "datetime",
+          "alias": null,
+          "line": 4
+        },
+        {
+          "name": "typing.Dict",
+          "from": "typing",
+          "import": "Dict",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "name": "typing.List",
+          "from": "typing",
+          "import": "List",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "name": "typing.Optional",
+          "from": "typing",
+          "import": "Optional",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "name": "typing.Any",
+          "from": "typing",
+          "import": "Any",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "name": "rich.console.Console",
+          "from": "rich.console",
+          "import": "Console",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "name": "rich.markdown.Markdown",
+          "from": "rich.markdown",
+          "import": "Markdown",
+          "alias": null,
+          "line": 7
+        },
+        {
+          "name": "hashlib",
+          "alias": null,
+          "line": 8
+        },
+        {
+          "name": "rich.progress.Progress",
+          "from": "rich.progress",
+          "import": "Progress",
+          "alias": null,
+          "line": 9
+        },
+        {
+          "name": "rich.progress.TaskID",
+          "from": "rich.progress",
+          "import": "TaskID",
+          "alias": null,
+          "line": 9
+        },
+        {
+          "name": "ast_generator.ASTGenerator",
+          "from": "ast_generator",
+          "import": "ASTGenerator",
+          "alias": null,
+          "line": 11
+        },
+        {
+          "name": "ast_generator.save_ast_snapshot",
+          "from": "ast_generator",
+          "import": "save_ast_snapshot",
+          "alias": null,
+          "line": 11
+        },
+        {
+          "name": "ast_generator.load_ast_snapshot",
+          "from": "ast_generator",
+          "import": "load_ast_snapshot",
+          "alias": null,
+          "line": 11
+        },
+        {
+          "name": "ast_generator.is_ast_current",
+          "from": "ast_generator",
+          "import": "is_ast_current",
+          "alias": null,
+          "line": 11
+        },
+        {
+          "name": "re",
+          "alias": null,
+          "line": 461
+        }
+      ],
+      "classes": [
+        {
+          "name": "ContextManager",
+          "start_line": 15,
+          "end_line": 878,
+          "bases": [],
+          "methods": [
+            "__init__",
+            "initialize_context",
+            "_create_overview",
+            "_initialize_history",
+            "_create_default_rules",
+            "_create_cache_metadata",
+            "log_interaction",
+            "update_history",
+            "_update_ast_cache",
+            "_update_cache_metadata",
+            "_check_auto_update",
+            "load_context",
+            "get_context_for_query",
+            "_get_query_focused_context",
+            "_extract_file_mentions",
+            "_get_file_content",
+            "_try_read_file_directly",
+            "_identify_key_files",
+            "_detect_architecture_pattern",
+            "_find_entry_points",
+            "_get_main_modules",
+            "_get_key_dependencies",
+            "_load_overview",
+            "_load_rules",
+            "_load_recent_history",
+            "_get_max_context_files",
+            "_get_file_preview",
+            "_format_change_details",
+            "_show_context_summary",
+            "_format_context",
+            "_get_file_language"
+          ]
+        }
+      ],
+      "functions": [
+        {
+          "name": "__init__",
+          "start_line": 18,
+          "end_line": 27,
+          "args": [
+            "self",
+            "project_root"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "initialize_context",
+          "start_line": 29,
+          "end_line": 66,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_create_overview",
+          "start_line": 68,
+          "end_line": 103,
+          "args": [
+            "self",
+            "snapshot"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_initialize_history",
+          "start_line": 105,
+          "end_line": 124,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_create_default_rules",
+          "start_line": 126,
+          "end_line": 161,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_create_cache_metadata",
+          "start_line": 163,
+          "end_line": 175,
+          "args": [
+            "self",
+            "snapshot"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "log_interaction",
+          "start_line": 177,
+          "end_line": 204,
+          "args": [
+            "self",
+            "query",
+            "response_summary",
+            "files_involved"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "update_history",
+          "start_line": 206,
+          "end_line": 232,
+          "args": [
+            "self",
+            "change_type",
+            "details"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_update_ast_cache",
+          "start_line": 234,
+          "end_line": 277,
+          "args": [
+            "self",
+            "changed_files"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_update_cache_metadata",
+          "start_line": 279,
+          "end_line": 296,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_check_auto_update",
+          "start_line": 298,
+          "end_line": 319,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "load_context",
+          "start_line": 321,
+          "end_line": 343,
+          "args": [
+            "self",
+            "query",
+            "max_files"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_context_for_query",
+          "start_line": 345,
+          "end_line": 353,
+          "args": [
+            "self",
+            "query"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_get_query_focused_context",
+          "start_line": 355,
+          "end_line": 457,
+          "args": [
+            "self",
+            "query",
+            "ast_data",
+            "max_files"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_extract_file_mentions",
+          "start_line": 459,
+          "end_line": 517,
+          "args": [
+            "self",
+            "query"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_get_file_content",
+          "start_line": 519,
+          "end_line": 544,
+          "args": [
+            "self",
+            "file_path",
+            "max_lines"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_try_read_file_directly",
+          "start_line": 546,
+          "end_line": 576,
+          "args": [
+            "self",
+            "file_mention"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_identify_key_files",
+          "start_line": 579,
+          "end_line": 597,
+          "args": [
+            "self",
+            "snapshot"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_detect_architecture_pattern",
+          "start_line": 599,
+          "end_line": 613,
+          "args": [
+            "self",
+            "snapshot"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_find_entry_points",
+          "start_line": 615,
+          "end_line": 624,
+          "args": [
+            "self",
+            "snapshot"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_get_main_modules",
+          "start_line": 626,
+          "end_line": 636,
+          "args": [
+            "self",
+            "snapshot"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_get_key_dependencies",
+          "start_line": 638,
+          "end_line": 652,
+          "args": [
+            "self",
+            "snapshot"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_load_overview",
+          "start_line": 655,
+          "end_line": 662,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_load_rules",
+          "start_line": 664,
+          "end_line": 676,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_load_recent_history",
+          "start_line": 678,
+          "end_line": 687,
+          "args": [
+            "self",
+            "days"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_get_max_context_files",
+          "start_line": 689,
+          "end_line": 695,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_get_file_preview",
+          "start_line": 697,
+          "end_line": 707,
+          "args": [
+            "self",
+            "file_path",
+            "lines"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_format_change_details",
+          "start_line": 709,
+          "end_line": 722,
+          "args": [
+            "self",
+            "details"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_show_context_summary",
+          "start_line": 724,
+          "end_line": 739,
+          "args": [
+            "self",
+            "snapshot"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_format_context",
+          "start_line": 741,
+          "end_line": 862,
+          "args": [
+            "self",
+            "context"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_get_file_language",
+          "start_line": 864,
+          "end_line": 878,
+          "args": [
+            "self",
+            "file_path"
+          ],
+          "decorators": []
+        }
+      ],
+      "variables": [
+        {
+          "name": "console",
+          "line": 13
+        },
+        {
+          "name": "ast_generator",
+          "line": 40
+        },
+        {
+          "name": "snapshot",
+          "line": 41
+        },
+        {
+          "name": "project_name",
+          "line": 70
+        },
+        {
+          "name": "total_files",
+          "line": 71
+        },
+        {
+          "name": "languages",
+          "line": 72
+        },
+        {
+          "name": "main_lang",
+          "line": 73
+        },
+        {
+          "name": "key_files",
+          "line": 76
+        },
+        {
+          "name": "overview_content",
+          "line": 78
+        },
+        {
+          "name": "history_content",
+          "line": 107
+        },
+        {
+          "name": "rules_content",
+          "line": 128
+        },
+        {
+          "name": "cache_metadata",
+          "line": 165
+        },
+        {
+          "name": "cache_file",
+          "line": 173
+        },
+        {
+          "name": "files_involved",
+          "line": 180
+        },
+        {
+          "name": "entry",
+          "line": 182
+        },
+        {
+          "name": "entry",
+          "line": 209
+        },
+        {
+          "name": "ast_data",
+          "line": 237
+        },
+        {
+          "name": "ast_generator",
+          "line": 241
+        },
+        {
+          "name": "updated",
+          "line": 242
+        },
+        {
+          "name": "file_path_obj",
+          "line": 247
+        },
+        {
+          "name": "file_path_obj",
+          "line": 249
+        },
+        {
+          "name": "rel_path",
+          "line": 255
+        },
+        {
+          "name": "updated",
+          "line": 261
+        },
+        {
+          "name": "cache_file",
+          "line": 281
+        },
+        {
+          "name": "metadata",
+          "line": 285
+        },
+        {
+          "name": "metadata",
+          "line": 287
+        },
+        {
+          "name": "cache_file",
+          "line": 302
+        },
+        {
+          "name": "metadata",
+          "line": 307
+        },
+        {
+          "name": "last_update",
+          "line": 310
+        },
+        {
+          "name": "hours_since_update",
+          "line": 311
+        },
+        {
+          "name": "base_context",
+          "line": 325
+        },
+        {
+          "name": "context",
+          "line": 347
+        },
+        {
+          "name": "max_files",
+          "line": 357
+        },
+        {
+          "name": "query_lower",
+          "line": 358
+        },
+        {
+          "name": "keywords",
+          "line": 359
+        },
+        {
+          "name": "explicit_files",
+          "line": 362
+        },
+        {
+          "name": "file_scores",
+          "line": 364
+        },
+        {
+          "name": "explicit_file_data",
+          "line": 365
+        },
+        {
+          "name": "file_found",
+          "line": 369
+        },
+        {
+          "name": "file_found",
+          "line": 384
+        },
+        {
+          "name": "direct_content",
+          "line": 389
+        },
+        {
+          "name": "score",
+          "line": 407
+        },
+        {
+          "name": "func_name",
+          "line": 415
+        },
+        {
+          "name": "cls_name",
+          "line": 420
+        },
+        {
+          "name": "imp_name",
+          "line": 426
+        },
+        {
+          "name": "remaining_slots",
+          "line": 435
+        },
+        {
+          "name": "relevant_files",
+          "line": 436
+        },
+        {
+          "name": "all_files",
+          "line": 439
+        },
+        {
+          "name": "file_mentions",
+          "line": 463
+        },
+        {
+          "name": "words",
+          "line": 464
+        },
+        {
+          "name": "file_extensions",
+          "line": 467
+        },
+        {
+          "name": "clean_word",
+          "line": 475
+        },
+        {
+          "name": "common_filenames",
+          "line": 486
+        },
+        {
+          "name": "clean_word",
+          "line": 492
+        },
+        {
+          "name": "potential_files",
+          "line": 495
+        },
+        {
+          "name": "quoted_pattern",
+          "line": 503
+        },
+        {
+          "name": "quoted_matches",
+          "line": 504
+        },
+        {
+          "name": "seen",
+          "line": 510
+        },
+        {
+          "name": "unique_mentions",
+          "line": 511
+        },
+        {
+          "name": "full_path",
+          "line": 522
+        },
+        {
+          "name": "file_size",
+          "line": 527
+        },
+        {
+          "name": "lines",
+          "line": 532
+        },
+        {
+          "name": "content",
+          "line": 538
+        },
+        {
+          "name": "remaining",
+          "line": 539
+        },
+        {
+          "name": "possible_paths",
+          "line": 550
+        },
+        {
+          "name": "base_paths",
+          "line": 560
+        },
+        {
+          "name": "possible_paths",
+          "line": 561
+        },
+        {
+          "name": "full_path",
+          "line": 569
+        },
+        {
+          "name": "files",
+          "line": 581
+        },
+        {
+          "name": "key_files",
+          "line": 582
+        },
+        {
+          "name": "important_patterns",
+          "line": 585
+        },
+        {
+          "name": "files",
+          "line": 601
+        },
+        {
+          "name": "file_paths",
+          "line": 602
+        },
+        {
+          "name": "files",
+          "line": 617
+        },
+        {
+          "name": "entry_points",
+          "line": 618
+        },
+        {
+          "name": "files",
+          "line": 628
+        },
+        {
+          "name": "dirs",
+          "line": 629
+        },
+        {
+          "name": "parts",
+          "line": 632
+        },
+        {
+          "name": "files",
+          "line": 640
+        },
+        {
+          "name": "dependencies",
+          "line": 641
+        },
+        {
+          "name": "imp_name",
+          "line": 645
+        },
+        {
+          "name": "dep",
+          "line": 648
+        },
+        {
+          "name": "rules",
+          "line": 666
+        },
+        {
+          "name": "content",
+          "line": 669
+        },
+        {
+          "name": "content",
+          "line": 682
+        },
+        {
+          "name": "rules",
+          "line": 691
+        },
+        {
+          "name": "full_path",
+          "line": 700
+        },
+        {
+          "name": "preview_lines",
+          "line": 703
+        },
+        {
+          "name": "formatted",
+          "line": 711
+        },
+        {
+          "name": "formatted",
+          "line": 743
+        },
+        {
+          "name": "overview_file",
+          "line": 746
+        },
+        {
+          "name": "relevant_files",
+          "line": 754
+        },
+        {
+          "name": "explicit_files",
+          "line": 757
+        },
+        {
+          "name": "regular_files",
+          "line": 758
+        },
+        {
+          "name": "content",
+          "line": 769
+        },
+        {
+          "name": "preview",
+          "line": 804
+        },
+        {
+          "name": "func_names",
+          "line": 814
+        },
+        {
+          "name": "class_names",
+          "line": 824
+        },
+        {
+          "name": "query_focused",
+          "line": 836
+        },
+        {
+          "name": "history_file",
+          "line": 844
+        },
+        {
+          "name": "history_content",
+          "line": 848
+        },
+        {
+          "name": "recent_history",
+          "line": 851
+        },
+        {
+          "name": "recent_history",
+          "line": 853
+        },
+        {
+          "name": "ext",
+          "line": 866
+        },
+        {
+          "name": "language_map",
+          "line": 868
+        }
+      ]
+    },
+    "__init__.py": {
+      "mtime": 1750680559.6911187,
+      "size": 0,
+      "language": "python",
+      "error": null,
+      "line_count": 0,
+      "imports": [],
+      "classes": [],
+      "functions": [],
+      "variables": []
+    },
+    "ast_generator.py": {
+      "mtime": 1751093509.9579084,
+      "size": 21141,
+      "language": "python",
+      "error": null,
+      "line_count": 558,
+      "imports": [
+        {
+          "name": "ast",
+          "alias": null,
+          "line": 1
+        },
+        {
+          "name": "os",
+          "alias": null,
+          "line": 2
+        },
+        {
+          "name": "json",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "pathlib.Path",
+          "from": "pathlib",
+          "import": "Path",
+          "alias": null,
+          "line": 4
+        },
+        {
+          "name": "datetime.datetime",
+          "from": "datetime",
+          "import": "datetime",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "name": "typing.Dict",
+          "from": "typing",
+          "import": "Dict",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "name": "typing.List",
+          "from": "typing",
+          "import": "List",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "name": "typing.Optional",
+          "from": "typing",
+          "import": "Optional",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "name": "fnmatch",
+          "alias": null,
+          "line": 7
+        },
+        {
+          "name": "tree_sitter_language_pack.get_language",
+          "from": "tree_sitter_language_pack",
+          "import": "get_language",
+          "alias": null,
+          "line": 10
+        },
+        {
+          "name": "tree_sitter_language_pack.get_parser",
+          "from": "tree_sitter_language_pack",
+          "import": "get_parser",
+          "alias": null,
+          "line": 10
+        }
+      ],
+      "classes": [
+        {
+          "name": "PythonAnalyzer",
+          "start_line": 18,
+          "end_line": 84,
+          "bases": [
+            "ast.NodeVisitor"
+          ],
+          "methods": [
+            "__init__",
+            "visit_Import",
+            "visit_ImportFrom",
+            "visit_ClassDef",
+            "visit_FunctionDef",
+            "visit_Assign",
+            "_get_name"
+          ]
+        },
+        {
+          "name": "TreeSitterAnalyzer",
+          "start_line": 87,
+          "end_line": 235,
+          "bases": [],
+          "methods": [
+            "__init__",
+            "analyze",
+            "_extract_imports",
+            "_extract_classes",
+            "_extract_functions",
+            "_extract_variables",
+            "_find_nodes_by_type",
+            "_find_first_child_by_type",
+            "_get_node_text"
+          ]
+        },
+        {
+          "name": "ASTGenerator",
+          "start_line": 238,
+          "end_line": 526,
+          "bases": [],
+          "methods": [
+            "__init__",
+            "_should_ignore",
+            "generate_snapshot",
+            "_walk_code_files",
+            "_process_file",
+            "_parse_python",
+            "_build_indexes",
+            "_analyze_file_relationships"
+          ]
+        }
+      ],
+      "functions": [
+        {
+          "name": "__init__",
+          "start_line": 20,
+          "end_line": 24,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "visit_Import",
+          "start_line": 26,
+          "end_line": 33,
+          "args": [
+            "self",
+            "node"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "visit_ImportFrom",
+          "start_line": 35,
+          "end_line": 45,
+          "args": [
+            "self",
+            "node"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "visit_ClassDef",
+          "start_line": 47,
+          "end_line": 55,
+          "args": [
+            "self",
+            "node"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "visit_FunctionDef",
+          "start_line": 57,
+          "end_line": 65,
+          "args": [
+            "self",
+            "node"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "visit_Assign",
+          "start_line": 67,
+          "end_line": 74,
+          "args": [
+            "self",
+            "node"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_get_name",
+          "start_line": 76,
+          "end_line": 84,
+          "args": [
+            "self",
+            "node"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "__init__",
+          "start_line": 90,
+          "end_line": 92,
+          "args": [
+            "self",
+            "language"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "analyze",
+          "start_line": 94,
+          "end_line": 110,
+          "args": [
+            "self",
+            "filepath"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_extract_imports",
+          "start_line": 112,
+          "end_line": 135,
+          "args": [
+            "self",
+            "node",
+            "source_bytes"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_extract_classes",
+          "start_line": 137,
+          "end_line": 163,
+          "args": [
+            "self",
+            "node",
+            "source_bytes"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_extract_functions",
+          "start_line": 165,
+          "end_line": 191,
+          "args": [
+            "self",
+            "node",
+            "source_bytes"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_extract_variables",
+          "start_line": 193,
+          "end_line": 217,
+          "args": [
+            "self",
+            "node",
+            "source_bytes"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_find_nodes_by_type",
+          "start_line": 219,
+          "end_line": 224,
+          "args": [
+            "self",
+            "node",
+            "node_type"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_find_first_child_by_type",
+          "start_line": 226,
+          "end_line": 231,
+          "args": [
+            "self",
+            "node",
+            "node_type"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_get_node_text",
+          "start_line": 233,
+          "end_line": 235,
+          "args": [
+            "self",
+            "node",
+            "source_bytes"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "__init__",
+          "start_line": 239,
+          "end_line": 307,
+          "args": [
+            "self",
+            "root_path"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_should_ignore",
+          "start_line": 309,
+          "end_line": 326,
+          "args": [
+            "self",
+            "path"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "generate_snapshot",
+          "start_line": 328,
+          "end_line": 374,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_walk_code_files",
+          "start_line": 376,
+          "end_line": 392,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_process_file",
+          "start_line": 394,
+          "end_line": 434,
+          "args": [
+            "self",
+            "filepath"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_parse_python",
+          "start_line": 436,
+          "end_line": 456,
+          "args": [
+            "self",
+            "filepath"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_build_indexes",
+          "start_line": 458,
+          "end_line": 505,
+          "args": [
+            "self",
+            "snapshot"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_analyze_file_relationships",
+          "start_line": 507,
+          "end_line": 526,
+          "args": [
+            "self",
+            "import_graph"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "save_ast_snapshot",
+          "start_line": 529,
+          "end_line": 533,
+          "args": [
+            "snapshot",
+            "path"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "load_ast_snapshot",
+          "start_line": 536,
+          "end_line": 544,
+          "args": [
+            "path"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "is_ast_current",
+          "start_line": 547,
+          "end_line": 558,
+          "args": [
+            "filepath",
+            "ast_cache"
+          ],
+          "decorators": []
+        }
+      ],
+      "variables": [
+        {
+          "name": "TREE_SITTER_AVAILABLE",
+          "line": 11
+        },
+        {
+          "name": "get_language",
+          "line": 14
+        },
+        {
+          "name": "get_parser",
+          "line": 15
+        },
+        {
+          "name": "TREE_SITTER_AVAILABLE",
+          "line": 16
+        },
+        {
+          "name": "source_bytes",
+          "line": 100
+        },
+        {
+          "name": "tree",
+          "line": 101
+        },
+        {
+          "name": "imports",
+          "line": 114
+        },
+        {
+          "name": "import_queries",
+          "line": 117
+        },
+        {
+          "name": "query_types",
+          "line": 127
+        },
+        {
+          "name": "classes",
+          "line": 139
+        },
+        {
+          "name": "class_queries",
+          "line": 141
+        },
+        {
+          "name": "query_types",
+          "line": 151
+        },
+        {
+          "name": "name_node",
+          "line": 154
+        },
+        {
+          "name": "functions",
+          "line": 167
+        },
+        {
+          "name": "function_queries",
+          "line": 169
+        },
+        {
+          "name": "query_types",
+          "line": 179
+        },
+        {
+          "name": "name_node",
+          "line": 182
+        },
+        {
+          "name": "variables",
+          "line": 195
+        },
+        {
+          "name": "var_queries",
+          "line": 197
+        },
+        {
+          "name": "query_types",
+          "line": 207
+        },
+        {
+          "name": "name_node",
+          "line": 210
+        },
+        {
+          "name": "rel_path_str",
+          "line": 312
+        },
+        {
+          "name": "snapshot",
+          "line": 330
+        },
+        {
+          "name": "file_sizes",
+          "line": 347
+        },
+        {
+          "name": "total_lines",
+          "line": 348
+        },
+        {
+          "name": "language_counts",
+          "line": 349
+        },
+        {
+          "name": "rel_path",
+          "line": 352
+        },
+        {
+          "name": "file_data",
+          "line": 353
+        },
+        {
+          "name": "file_size",
+          "line": 357
+        },
+        {
+          "name": "lang",
+          "line": 363
+        },
+        {
+          "name": "root_path",
+          "line": 379
+        },
+        {
+          "name": "filepath",
+          "line": 388
+        },
+        {
+          "name": "file_data",
+          "line": 396
+        },
+        {
+          "name": "lang",
+          "line": 413
+        },
+        {
+          "name": "analyzer",
+          "line": 414
+        },
+        {
+          "name": "source",
+          "line": 439
+        },
+        {
+          "name": "tree",
+          "line": 440
+        },
+        {
+          "name": "analyzer",
+          "line": 441
+        },
+        {
+          "name": "import_graph",
+          "line": 460
+        },
+        {
+          "name": "class_locations",
+          "line": 461
+        },
+        {
+          "name": "function_locations",
+          "line": 462
+        },
+        {
+          "name": "variable_locations",
+          "line": 463
+        },
+        {
+          "name": "dependency_map",
+          "line": 464
+        },
+        {
+          "name": "class_name",
+          "line": 477
+        },
+        {
+          "name": "func_name",
+          "line": 482
+        },
+        {
+          "name": "var_name",
+          "line": 487
+        },
+        {
+          "name": "relationships",
+          "line": 509
+        },
+        {
+          "name": "rel_path",
+          "line": 552
+        },
+        {
+          "name": "file_data",
+          "line": 553
+        }
+      ]
+    },
+    "mycode/calculator.py": {
+      "mtime": 1751089433.7312288,
+      "size": 1700,
+      "language": "python",
+      "error": null,
+      "line_count": 61,
+      "imports": [],
+      "classes": [],
+      "functions": [
+        {
+          "name": "add",
+          "start_line": 1,
+          "end_line": 2,
+          "args": [
+            "x",
+            "y"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "subtract",
+          "start_line": 4,
+          "end_line": 5,
+          "args": [
+            "x",
+            "y"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "multiply",
+          "start_line": 7,
+          "end_line": 8,
+          "args": [
+            "x",
+            "y"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "divide",
+          "start_line": 10,
+          "end_line": 13,
+          "args": [
+            "x",
+            "y"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "run_calculator",
+          "start_line": 15,
+          "end_line": 58,
+          "args": [],
+          "decorators": []
+        }
+      ],
+      "variables": [
+        {
+          "name": "expression",
+          "line": 23
+        },
+        {
+          "name": "parts",
+          "line": 27
+        },
+        {
+          "name": "num1",
+          "line": 32
+        },
+        {
+          "name": "operator",
+          "line": 33
+        },
+        {
+          "name": "num2",
+          "line": 34
+        },
+        {
+          "name": "result",
+          "line": 36
+        },
+        {
+          "name": "result",
+          "line": 38
+        },
+        {
+          "name": "result",
+          "line": 40
+        },
+        {
+          "name": "result",
+          "line": 42
+        },
+        {
+          "name": "result",
+          "line": 44
+        }
+      ]
+    },
+    "file_ops/reader.py": {
+      "mtime": 1750922881.117833,
+      "size": 3412,
+      "language": "python",
+      "error": null,
+      "line_count": 98,
+      "imports": [
+        {
+          "name": "os",
+          "alias": null,
+          "line": 1
+        },
+        {
+          "name": "pathlib.Path",
+          "from": "pathlib",
+          "import": "Path",
+          "alias": null,
+          "line": 2
+        },
+        {
+          "name": "typing.List",
+          "from": "typing",
+          "import": "List",
+          "alias": null,
+          "line": 3
+        }
+      ],
+      "classes": [],
+      "functions": [
+        {
+          "name": "get_project_structure",
+          "start_line": 5,
+          "end_line": 33,
+          "args": [],
+          "decorators": []
+        },
+        {
+          "name": "read_file_content",
+          "start_line": 35,
+          "end_line": 49,
+          "args": [
+            "filepath"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_relevant_files",
+          "start_line": 52,
+          "end_line": 74,
+          "args": [
+            "query",
+            "max_files"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "create_context_for_chat",
+          "start_line": 76,
+          "end_line": 98,
+          "args": [
+            "query"
+          ],
+          "decorators": []
+        }
+      ],
+      "variables": [
+        {
+          "name": "current_dir",
+          "line": 7
+        },
+        {
+          "name": "structure",
+          "line": 8
+        },
+        {
+          "name": "code_extensions",
+          "line": 11
+        },
+        {
+          "name": "level",
+          "line": 17
+        },
+        {
+          "name": "indent",
+          "line": 24
+        },
+        {
+          "name": "subindent",
+          "line": 28
+        },
+        {
+          "name": "path",
+          "line": 38
+        },
+        {
+          "name": "current_dir",
+          "line": 54
+        },
+        {
+          "name": "code_extensions",
+          "line": 55
+        },
+        {
+          "name": "relevant_files",
+          "line": 56
+        },
+        {
+          "name": "query_lower",
+          "line": 58
+        },
+        {
+          "name": "keywords",
+          "line": 59
+        },
+        {
+          "name": "file_str",
+          "line": 67
+        },
+        {
+          "name": "context",
+          "line": 78
+        },
+        {
+          "name": "relevant_files",
+          "line": 86
+        },
+        {
+          "name": "content",
+          "line": 91
+        }
+      ]
+    },
+    "file_ops/writer.py": {
+      "mtime": 1750684823.4933226,
+      "size": 2567,
+      "language": "python",
+      "error": null,
+      "line_count": 77,
+      "imports": [
+        {
+          "name": "pathlib.Path",
+          "from": "pathlib",
+          "import": "Path",
+          "alias": null,
+          "line": 1
+        },
+        {
+          "name": "typing.Optional",
+          "from": "typing",
+          "import": "Optional",
+          "alias": null,
+          "line": 2
+        },
+        {
+          "name": "datetime.datetime",
+          "from": "datetime",
+          "import": "datetime",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "rich.console.Console",
+          "from": "rich.console",
+          "import": "Console",
+          "alias": null,
+          "line": 54
+        }
+      ],
+      "classes": [],
+      "functions": [
+        {
+          "name": "write_file_content",
+          "start_line": 5,
+          "end_line": 26,
+          "args": [
+            "filepath",
+            "content",
+            "create_backup"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "create_backup_file",
+          "start_line": 28,
+          "end_line": 50,
+          "args": [
+            "filepath"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "show_diff",
+          "start_line": 52,
+          "end_line": 77,
+          "args": [
+            "original_content",
+            "new_content",
+            "filepath"
+          ],
+          "decorators": []
+        }
+      ],
+      "variables": [
+        {
+          "name": "path",
+          "line": 8
+        },
+        {
+          "name": "backup_path",
+          "line": 12
+        },
+        {
+          "name": "path",
+          "line": 31
+        },
+        {
+          "name": "timestamp",
+          "line": 36
+        },
+        {
+          "name": "backup_name",
+          "line": 37
+        },
+        {
+          "name": "backup_path",
+          "line": 38
+        },
+        {
+          "name": "content",
+          "line": 42
+        },
+        {
+          "name": "console",
+          "line": 56
+        },
+        {
+          "name": "original_lines",
+          "line": 59
+        },
+        {
+          "name": "new_lines",
+          "line": 60
+        },
+        {
+          "name": "max_lines",
+          "line": 65
+        },
+        {
+          "name": "orig_line",
+          "line": 68
+        },
+        {
+          "name": "new_line",
+          "line": 69
+        }
+      ]
+    },
+    "file_ops/__init__.py": {
+      "mtime": 1750683798.9302375,
+      "size": 0,
+      "language": "python",
+      "error": null,
+      "line_count": 0,
+      "imports": [],
+      "classes": [],
+      "functions": [],
+      "variables": []
+    },
+    "llm/providers.py": {
+      "mtime": 1750749924.340797,
+      "size": 8053,
+      "language": "python",
+      "error": null,
+      "line_count": 228,
+      "imports": [
+        {
+          "name": "abc.ABC",
+          "from": "abc",
+          "import": "ABC",
+          "alias": null,
+          "line": 1
+        },
+        {
+          "name": "abc.abstractmethod",
+          "from": "abc",
+          "import": "abstractmethod",
+          "alias": null,
+          "line": 1
+        },
+        {
+          "name": "typing.Dict",
+          "from": "typing",
+          "import": "Dict",
+          "alias": null,
+          "line": 2
+        },
+        {
+          "name": "typing.List",
+          "from": "typing",
+          "import": "List",
+          "alias": null,
+          "line": 2
+        },
+        {
+          "name": "typing.Optional",
+          "from": "typing",
+          "import": "Optional",
+          "alias": null,
+          "line": 2
+        },
+        {
+          "name": "litellm.completion",
+          "from": "litellm",
+          "import": "completion",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "os",
+          "alias": null,
+          "line": 4
+        }
+      ],
+      "classes": [
+        {
+          "name": "LLMProvider",
+          "start_line": 6,
+          "end_line": 27,
+          "bases": [
+            "ABC"
+          ],
+          "methods": [
+            "__init__",
+            "get_completion",
+            "validate_config",
+            "get_required_fields"
+          ]
+        },
+        {
+          "name": "OpenAIProvider",
+          "start_line": 29,
+          "end_line": 53,
+          "bases": [
+            "LLMProvider"
+          ],
+          "methods": [
+            "__init__",
+            "get_completion",
+            "validate_config",
+            "get_required_fields"
+          ]
+        },
+        {
+          "name": "AnthropicProvider",
+          "start_line": 55,
+          "end_line": 78,
+          "bases": [
+            "LLMProvider"
+          ],
+          "methods": [
+            "__init__",
+            "get_completion",
+            "validate_config",
+            "get_required_fields"
+          ]
+        },
+        {
+          "name": "GeminiProvider",
+          "start_line": 80,
+          "end_line": 103,
+          "bases": [
+            "LLMProvider"
+          ],
+          "methods": [
+            "__init__",
+            "get_completion",
+            "validate_config",
+            "get_required_fields"
+          ]
+        },
+        {
+          "name": "HfProvider",
+          "start_line": 105,
+          "end_line": 128,
+          "bases": [
+            "LLMProvider"
+          ],
+          "methods": [
+            "__init__",
+            "get_completion",
+            "validate_config",
+            "get_required_fields"
+          ]
+        },
+        {
+          "name": "OllamaProvider",
+          "start_line": 130,
+          "end_line": 153,
+          "bases": [
+            "LLMProvider"
+          ],
+          "methods": [
+            "__init__",
+            "get_completion",
+            "validate_config",
+            "get_required_fields"
+          ]
+        },
+        {
+          "name": "LLMManager",
+          "start_line": 155,
+          "end_line": 228,
+          "bases": [],
+          "methods": [
+            "__init__",
+            "get_available_providers",
+            "get_provider_info",
+            "create_provider",
+            "set_provider",
+            "get_completion"
+          ]
+        }
+      ],
+      "functions": [
+        {
+          "name": "__init__",
+          "start_line": 9,
+          "end_line": 12,
+          "args": [
+            "self",
+            "api_key",
+            "model"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_completion",
+          "start_line": 15,
+          "end_line": 17,
+          "args": [
+            "self",
+            "messages"
+          ],
+          "decorators": [
+            "abstractmethod"
+          ]
+        },
+        {
+          "name": "validate_config",
+          "start_line": 20,
+          "end_line": 22,
+          "args": [
+            "self"
+          ],
+          "decorators": [
+            "abstractmethod"
+          ]
+        },
+        {
+          "name": "get_required_fields",
+          "start_line": 25,
+          "end_line": 27,
+          "args": [
+            "self"
+          ],
+          "decorators": [
+            "abstractmethod"
+          ]
+        },
+        {
+          "name": "__init__",
+          "start_line": 32,
+          "end_line": 33,
+          "args": [
+            "self",
+            "api_key",
+            "model"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_completion",
+          "start_line": 35,
+          "end_line": 47,
+          "args": [
+            "self",
+            "messages"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "validate_config",
+          "start_line": 49,
+          "end_line": 50,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_required_fields",
+          "start_line": 52,
+          "end_line": 53,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "__init__",
+          "start_line": 58,
+          "end_line": 59,
+          "args": [
+            "self",
+            "api_key",
+            "model"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_completion",
+          "start_line": 61,
+          "end_line": 72,
+          "args": [
+            "self",
+            "messages"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "validate_config",
+          "start_line": 74,
+          "end_line": 75,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_required_fields",
+          "start_line": 77,
+          "end_line": 78,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "__init__",
+          "start_line": 83,
+          "end_line": 84,
+          "args": [
+            "self",
+            "api_key",
+            "model"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_completion",
+          "start_line": 86,
+          "end_line": 97,
+          "args": [
+            "self",
+            "messages"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "validate_config",
+          "start_line": 99,
+          "end_line": 100,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_required_fields",
+          "start_line": 102,
+          "end_line": 103,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "__init__",
+          "start_line": 108,
+          "end_line": 109,
+          "args": [
+            "self",
+            "api_key",
+            "model"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_completion",
+          "start_line": 111,
+          "end_line": 122,
+          "args": [
+            "self",
+            "messages"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "validate_config",
+          "start_line": 124,
+          "end_line": 125,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_required_fields",
+          "start_line": 127,
+          "end_line": 128,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "__init__",
+          "start_line": 133,
+          "end_line": 135,
+          "args": [
+            "self",
+            "model",
+            "base_url"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_completion",
+          "start_line": 137,
+          "end_line": 147,
+          "args": [
+            "self",
+            "messages"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "validate_config",
+          "start_line": 149,
+          "end_line": 150,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_required_fields",
+          "start_line": 152,
+          "end_line": 153,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "__init__",
+          "start_line": 191,
+          "end_line": 192,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_available_providers",
+          "start_line": 194,
+          "end_line": 196,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_provider_info",
+          "start_line": 198,
+          "end_line": 207,
+          "args": [
+            "self",
+            "provider_key"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "create_provider",
+          "start_line": 209,
+          "end_line": 215,
+          "args": [
+            "self",
+            "provider_key",
+            "config"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "set_provider",
+          "start_line": 217,
+          "end_line": 221,
+          "args": [
+            "self",
+            "provider"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_completion",
+          "start_line": 223,
+          "end_line": 228,
+          "args": [
+            "self",
+            "messages"
+          ],
+          "decorators": []
+        }
+      ],
+      "variables": [
+        {
+          "name": "response",
+          "line": 40
+        },
+        {
+          "name": "response",
+          "line": 65
+        },
+        {
+          "name": "response",
+          "line": 90
+        },
+        {
+          "name": "response",
+          "line": 115
+        },
+        {
+          "name": "response",
+          "line": 139
+        },
+        {
+          "name": "PROVIDERS",
+          "line": 158
+        },
+        {
+          "name": "provider",
+          "line": 201
+        },
+        {
+          "name": "provider_class",
+          "line": 214
+        }
+      ]
+    },
+    "llm/__init__.py": {
+      "mtime": 1750737521.0089118,
+      "size": 0,
+      "language": "python",
+      "error": null,
+      "line_count": 0,
+      "imports": [],
+      "classes": [],
+      "functions": [],
+      "variables": []
+    },
+    "claude_env/bin/activate_this.py": {
+      "mtime": 1750672925.0757167,
+      "size": 2383,
+      "language": "python",
+      "error": null,
+      "line_count": 59,
+      "imports": [
+        {
+          "name": "__future__.annotations",
+          "from": "__future__",
+          "import": "annotations",
+          "alias": null,
+          "line": 31
+        },
+        {
+          "name": "os",
+          "alias": null,
+          "line": 33
+        },
+        {
+          "name": "site",
+          "alias": null,
+          "line": 34
+        },
+        {
+          "name": "sys",
+          "alias": null,
+          "line": 35
+        }
+      ],
+      "classes": [],
+      "functions": [],
+      "variables": [
+        {
+          "name": "abs_file",
+          "line": 38
+        },
+        {
+          "name": "msg",
+          "line": 40
+        },
+        {
+          "name": "bin_dir",
+          "line": 43
+        },
+        {
+          "name": "base",
+          "line": 44
+        },
+        {
+          "name": "prev_length",
+          "line": 52
+        },
+        {
+          "name": "path",
+          "line": 54
+        }
+      ]
+    },
+    "config/settings.py": {
+      "mtime": 1751093558.117547,
+      "size": 9073,
+      "language": "python",
+      "error": null,
+      "line_count": 249,
+      "imports": [
+        {
+          "name": "json",
+          "alias": null,
+          "line": 1
+        },
+        {
+          "name": "pathlib.Path",
+          "from": "pathlib",
+          "import": "Path",
+          "alias": null,
+          "line": 2
+        },
+        {
+          "name": "typing.Dict",
+          "from": "typing",
+          "import": "Dict",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "typing.Any",
+          "from": "typing",
+          "import": "Any",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "rich.console.Console",
+          "from": "rich.console",
+          "import": "Console",
+          "alias": null,
+          "line": 4
+        },
+        {
+          "name": "rich.prompt.Prompt",
+          "from": "rich.prompt",
+          "import": "Prompt",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "name": "rich.prompt.Confirm",
+          "from": "rich.prompt",
+          "import": "Confirm",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "name": "rich.table.Table",
+          "from": "rich.table",
+          "import": "Table",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "name": "llm.providers.LLMManager",
+          "from": "llm.providers",
+          "import": "LLMManager",
+          "alias": null,
+          "line": 105
+        }
+      ],
+      "classes": [
+        {
+          "name": "ConfigManager",
+          "start_line": 8,
+          "end_line": 249,
+          "bases": [],
+          "methods": [
+            "__init__",
+            "ensure_config_dir",
+            "load_config",
+            "save_config",
+            "get_default_config",
+            "get",
+            "set",
+            "is_configured",
+            "setup_interactive",
+            "show_providers_table",
+            "show_current_config",
+            "get_llm_config"
+          ]
+        }
+      ],
+      "functions": [
+        {
+          "name": "__init__",
+          "start_line": 11,
+          "end_line": 16,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "ensure_config_dir",
+          "start_line": 18,
+          "end_line": 20,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "load_config",
+          "start_line": 22,
+          "end_line": 34,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "save_config",
+          "start_line": 36,
+          "end_line": 45,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_default_config",
+          "start_line": 47,
+          "end_line": 63,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get",
+          "start_line": 65,
+          "end_line": 75,
+          "args": [
+            "self",
+            "key",
+            "default"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "set",
+          "start_line": 77,
+          "end_line": 90,
+          "args": [
+            "self",
+            "key",
+            "value"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "is_configured",
+          "start_line": 92,
+          "end_line": 101,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "setup_interactive",
+          "start_line": 103,
+          "end_line": 185,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "show_providers_table",
+          "start_line": 187,
+          "end_line": 206,
+          "args": [
+            "self",
+            "llm_manager"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "show_current_config",
+          "start_line": 208,
+          "end_line": 232,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_llm_config",
+          "start_line": 234,
+          "end_line": 249,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        }
+      ],
+      "variables": [
+        {
+          "name": "keys",
+          "line": 67
+        },
+        {
+          "name": "value",
+          "line": 68
+        },
+        {
+          "name": "value",
+          "line": 72
+        },
+        {
+          "name": "keys",
+          "line": 79
+        },
+        {
+          "name": "config",
+          "line": 80
+        },
+        {
+          "name": "config",
+          "line": 86
+        },
+        {
+          "name": "provider",
+          "line": 94
+        },
+        {
+          "name": "api_key",
+          "line": 95
+        },
+        {
+          "name": "model",
+          "line": 96
+        },
+        {
+          "name": "llm_manager",
+          "line": 107
+        },
+        {
+          "name": "providers",
+          "line": 116
+        },
+        {
+          "name": "provider_choice",
+          "line": 117
+        },
+        {
+          "name": "provider_info",
+          "line": 124
+        },
+        {
+          "name": "default_model",
+          "line": 125
+        },
+        {
+          "name": "description",
+          "line": 126
+        },
+        {
+          "name": "model_choice",
+          "line": 133
+        },
+        {
+          "name": "config",
+          "line": 139
+        },
+        {
+          "name": "api_key",
+          "line": 143
+        },
+        {
+          "name": "base_url",
+          "line": 147
+        },
+        {
+          "name": "provider",
+          "line": 156
+        },
+        {
+          "name": "test_response",
+          "line": 160
+        },
+        {
+          "name": "table",
+          "line": 189
+        },
+        {
+          "name": "provider_info",
+          "line": 196
+        },
+        {
+          "name": "name",
+          "line": 197
+        },
+        {
+          "name": "description",
+          "line": 198
+        },
+        {
+          "name": "provider_type",
+          "line": 199
+        },
+        {
+          "name": "table",
+          "line": 210
+        },
+        {
+          "name": "provider",
+          "line": 214
+        },
+        {
+          "name": "model",
+          "line": 215
+        },
+        {
+          "name": "api_key",
+          "line": 216
+        },
+        {
+          "name": "base_url",
+          "line": 217
+        },
+        {
+          "name": "masked_key",
+          "line": 223
+        },
+        {
+          "name": "config",
+          "line": 236
+        },
+        {
+          "name": "provider",
+          "line": 238
+        }
+      ]
+    },
+    "agent/__init__.py": {
+      "mtime": 1751086320.9605577,
+      "size": 318,
+      "language": "python",
+      "error": null,
+      "line_count": 16,
+      "imports": [
+        {
+          "name": "core.CodeAgent",
+          "from": "core",
+          "import": "CodeAgent",
+          "alias": null,
+          "line": 7
+        },
+        {
+          "name": "core.AgentState",
+          "from": "core",
+          "import": "AgentState",
+          "alias": null,
+          "line": 7
+        },
+        {
+          "name": "core.ActionType",
+          "from": "core",
+          "import": "ActionType",
+          "alias": null,
+          "line": 7
+        },
+        {
+          "name": "core.Action",
+          "from": "core",
+          "import": "Action",
+          "alias": null,
+          "line": 7
+        },
+        {
+          "name": "core.ActionResult",
+          "from": "core",
+          "import": "ActionResult",
+          "alias": null,
+          "line": 7
+        },
+        {
+          "name": "core.ExecutionPlan",
+          "from": "core",
+          "import": "ExecutionPlan",
+          "alias": null,
+          "line": 7
+        }
+      ],
+      "classes": [],
+      "functions": [],
+      "variables": [
+        {
+          "name": "__all__",
+          "line": 9
+        }
+      ]
+    },
+    "agent/core.py": {
+      "mtime": 1751091238.2894347,
+      "size": 19912,
+      "language": "python",
+      "error": null,
+      "line_count": 505,
+      "imports": [
+        {
+          "name": "json",
+          "alias": null,
+          "line": 1
+        },
+        {
+          "name": "time",
+          "alias": null,
+          "line": 2
+        },
+        {
+          "name": "typing.List",
+          "from": "typing",
+          "import": "List",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "typing.Dict",
+          "from": "typing",
+          "import": "Dict",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "typing.Any",
+          "from": "typing",
+          "import": "Any",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "typing.Optional",
+          "from": "typing",
+          "import": "Optional",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "typing.Tuple",
+          "from": "typing",
+          "import": "Tuple",
+          "alias": null,
+          "line": 3
+        },
+        {
+          "name": "pathlib.Path",
+          "from": "pathlib",
+          "import": "Path",
+          "alias": null,
+          "line": 4
+        },
+        {
+          "name": "enum.Enum",
+          "from": "enum",
+          "import": "Enum",
+          "alias": null,
+          "line": 5
+        },
+        {
+          "name": "dataclasses.dataclass",
+          "from": "dataclasses",
+          "import": "dataclass",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "name": "dataclasses.asdict",
+          "from": "dataclasses",
+          "import": "asdict",
+          "alias": null,
+          "line": 6
+        },
+        {
+          "name": "rich.console.Console",
+          "from": "rich.console",
+          "import": "Console",
+          "alias": null,
+          "line": 7
+        },
+        {
+          "name": "rich.panel.Panel",
+          "from": "rich.panel",
+          "import": "Panel",
+          "alias": null,
+          "line": 8
+        },
+        {
+          "name": "rich.progress.Progress",
+          "from": "rich.progress",
+          "import": "Progress",
+          "alias": null,
+          "line": 9
+        },
+        {
+          "name": "rich.progress.SpinnerColumn",
+          "from": "rich.progress",
+          "import": "SpinnerColumn",
+          "alias": null,
+          "line": 9
+        },
+        {
+          "name": "rich.progress.TextColumn",
+          "from": "rich.progress",
+          "import": "TextColumn",
+          "alias": null,
+          "line": 9
+        },
+        {
+          "name": "rich.table.Table",
+          "from": "rich.table",
+          "import": "Table",
+          "alias": null,
+          "line": 10
+        },
+        {
+          "name": "rich.markdown.Markdown",
+          "from": "rich.markdown",
+          "import": "Markdown",
+          "alias": null,
+          "line": 11
+        },
+        {
+          "name": "file_ops.reader.read_file_content",
+          "from": "file_ops.reader",
+          "import": "read_file_content",
+          "alias": null,
+          "line": 13
+        },
+        {
+          "name": "file_ops.writer.write_file_content",
+          "from": "file_ops.writer",
+          "import": "write_file_content",
+          "alias": null,
+          "line": 14
+        },
+        {
+          "name": "context_manager.ContextManager",
+          "from": "context_manager",
+          "import": "ContextManager",
+          "alias": null,
+          "line": 15
+        },
+        {
+          "name": "rich.prompt.Confirm",
+          "from": "rich.prompt",
+          "import": "Confirm",
+          "alias": null,
+          "line": 242
+        },
+        {
+          "name": "rich.prompt.Confirm",
+          "from": "rich.prompt",
+          "import": "Confirm",
+          "alias": null,
+          "line": 248
+        }
+      ],
+      "classes": [
+        {
+          "name": "AgentState",
+          "start_line": 18,
+          "end_line": 24,
+          "bases": [
+            "Enum"
+          ],
+          "methods": []
+        },
+        {
+          "name": "ActionType",
+          "start_line": 27,
+          "end_line": 33,
+          "bases": [
+            "Enum"
+          ],
+          "methods": []
+        },
+        {
+          "name": "Action",
+          "start_line": 37,
+          "end_line": 46,
+          "bases": [],
+          "methods": [
+            "__post_init__"
+          ]
+        },
+        {
+          "name": "ActionResult",
+          "start_line": 50,
+          "end_line": 58,
+          "bases": [],
+          "methods": [
+            "__post_init__"
+          ]
+        },
+        {
+          "name": "ExecutionPlan",
+          "start_line": 62,
+          "end_line": 67,
+          "bases": [],
+          "methods": []
+        },
+        {
+          "name": "CodeAgent",
+          "start_line": 70,
+          "end_line": 505,
+          "bases": [],
+          "methods": [
+            "__init__",
+            "execute_goal",
+            "_plan_execution",
+            "_validate_and_approve_plan",
+            "_display_plan",
+            "_execute_plan",
+            "_execute_action",
+            "_read_file_action",
+            "_write_file_action",
+            "_create_file_action",
+            "_analyze_code_action",
+            "_search_codebase_action",
+            "_handle_action_failure",
+            "_extract_json_from_response",
+            "_log_session_to_history",
+            "get_session_summary"
+          ]
+        }
+      ],
+      "functions": [
+        {
+          "name": "__post_init__",
+          "start_line": 44,
+          "end_line": 46,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "__post_init__",
+          "start_line": 56,
+          "end_line": 58,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "__init__",
+          "start_line": 73,
+          "end_line": 84,
+          "args": [
+            "self",
+            "llm_manager",
+            "project_root"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "execute_goal",
+          "start_line": 86,
+          "end_line": 112,
+          "args": [
+            "self",
+            "goal",
+            "auto_approve"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_plan_execution",
+          "start_line": 114,
+          "end_line": 230,
+          "args": [
+            "self",
+            "goal"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_validate_and_approve_plan",
+          "start_line": 232,
+          "end_line": 252,
+          "args": [
+            "self",
+            "plan",
+            "auto_approve"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_display_plan",
+          "start_line": 254,
+          "end_line": 285,
+          "args": [
+            "self",
+            "plan"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_execute_plan",
+          "start_line": 287,
+          "end_line": 327,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_execute_action",
+          "start_line": 329,
+          "end_line": 347,
+          "args": [
+            "self",
+            "action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_read_file_action",
+          "start_line": 349,
+          "end_line": 359,
+          "args": [
+            "self",
+            "action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_write_file_action",
+          "start_line": 361,
+          "end_line": 371,
+          "args": [
+            "self",
+            "action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_create_file_action",
+          "start_line": 373,
+          "end_line": 388,
+          "args": [
+            "self",
+            "action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_analyze_code_action",
+          "start_line": 390,
+          "end_line": 416,
+          "args": [
+            "self",
+            "action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_search_codebase_action",
+          "start_line": 418,
+          "end_line": 423,
+          "args": [
+            "self",
+            "action"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_handle_action_failure",
+          "start_line": 425,
+          "end_line": 437,
+          "args": [
+            "self",
+            "action",
+            "result"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_extract_json_from_response",
+          "start_line": 439,
+          "end_line": 471,
+          "args": [
+            "self",
+            "response"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "_log_session_to_history",
+          "start_line": 473,
+          "end_line": 493,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        },
+        {
+          "name": "get_session_summary",
+          "start_line": 495,
+          "end_line": 505,
+          "args": [
+            "self"
+          ],
+          "decorators": []
+        }
+      ],
+      "variables": [
+        {
+          "name": "PLANNING",
+          "line": 19
+        },
+        {
+          "name": "ACTING",
+          "line": 20
+        },
+        {
+          "name": "OBSERVING",
+          "line": 21
+        },
+        {
+          "name": "REFLECTING",
+          "line": 22
+        },
+        {
+          "name": "COMPLETED",
+          "line": 23
+        },
+        {
+          "name": "FAILED",
+          "line": 24
+        },
+        {
+          "name": "READ_FILE",
+          "line": 28
+        },
+        {
+          "name": "WRITE_FILE",
+          "line": 29
+        },
+        {
+          "name": "CREATE_FILE",
+          "line": 30
+        },
+        {
+          "name": "ANALYZE_CODE",
+          "line": 31
+        },
+        {
+          "name": "SEARCH_CODEBASE",
+          "line": 32
+        },
+        {
+          "name": "RUN_TESTS",
+          "line": 33
+        },
+        {
+          "name": "plan",
+          "line": 94
+        },
+        {
+          "name": "success",
+          "line": 102
+        },
+        {
+          "name": "context",
+          "line": 119
+        },
+        {
+          "name": "planning_prompt",
+          "line": 121
+        },
+        {
+          "name": "response",
+          "line": 163
+        },
+        {
+          "name": "plan_data",
+          "line": 170
+        },
+        {
+          "name": "actions",
+          "line": 173
+        },
+        {
+          "name": "action_type_str",
+          "line": 177
+        },
+        {
+          "name": "action_type",
+          "line": 181
+        },
+        {
+          "name": "action_type",
+          "line": 183
+        },
+        {
+          "name": "action_type",
+          "line": 185
+        },
+        {
+          "name": "action_type",
+          "line": 187
+        },
+        {
+          "name": "action_type",
+          "line": 189
+        },
+        {
+          "name": "action",
+          "line": 194
+        },
+        {
+          "name": "actions",
+          "line": 209
+        },
+        {
+          "name": "plan",
+          "line": 211
+        },
+        {
+          "name": "summary_table",
+          "line": 258
+        },
+        {
+          "name": "steps_table",
+          "line": 271
+        },
+        {
+          "name": "success_count",
+          "line": 291
+        },
+        {
+          "name": "task",
+          "line": 300
+        },
+        {
+          "name": "result",
+          "line": 303
+        },
+        {
+          "name": "content",
+          "line": 351
+        },
+        {
+          "name": "success",
+          "line": 366
+        },
+        {
+          "name": "file_path",
+          "line": 375
+        },
+        {
+          "name": "success",
+          "line": 383
+        },
+        {
+          "name": "context",
+          "line": 393
+        },
+        {
+          "name": "analysis_prompt",
+          "line": 395
+        },
+        {
+          "name": "response",
+          "line": 408
+        },
+        {
+          "name": "context",
+          "line": 421
+        },
+        {
+          "name": "clean_response",
+          "line": 442
+        },
+        {
+          "name": "clean_response",
+          "line": 445
+        },
+        {
+          "name": "clean_response",
+          "line": 447
+        },
+        {
+          "name": "clean_response",
+          "line": 450
+        },
+        {
+          "name": "clean_response",
+          "line": 452
+        },
+        {
+          "name": "start_idx",
+          "line": 455
+        },
+        {
+          "name": "end_idx",
+          "line": 456
+        },
+        {
+          "name": "start_idx",
+          "line": 460
+        },
+        {
+          "name": "end_idx",
+          "line": 461
+        },
+        {
+          "name": "json_str",
+          "line": 464
+        },
+        {
+          "name": "json_str",
+          "line": 466
+        },
+        {
+          "name": "session_summary",
+          "line": 475
+        },
+        {
+          "name": "files_involved",
+          "line": 484
+        }
+      ]
+    }
+  },
+  "summary": {
+    "total_files": 14,
+    "total_lines": 3167,
+    "languages": {
+      "python": 14
+    },
+    "largest_files": [
+      [
+        "context_manager.py",
+        37446
+      ],
+      [
+        "ast_generator.py",
+        21141
+      ],
+      [
+        "agent/core.py",
+        19912
+      ],
+      [
+        "main.py",
+        15945
+      ],
+      [
+        "config/settings.py",
+        9073
+      ],
+      [
+        "llm/providers.py",
+        8053
+      ],
+      [
+        "file_ops/reader.py",
+        3412
+      ],
+      [
+        "file_ops/writer.py",
+        2567
+      ],
+      [
+        "claude_env/bin/activate_this.py",
+        2383
+      ],
+      [
+        "mycode/calculator.py",
+        1700
+      ]
+    ]
+  },
+  "indexes": {
+    "import_graph": {
+      "main.py": [
+        "pathlib.Path",
+        "typer",
+        "json",
+        "rich.console.Console",
+        "rich.prompt.Confirm",
+        "rich.markdown.Markdown",
+        "file_ops.reader.read_file_content",
+        "file_ops.writer.write_file_content",
+        "file_ops.writer.show_diff",
+        "llm.providers.LLMManager",
+        "config.settings.ConfigManager",
+        "context_manager.ContextManager",
+        "agent.core.CodeAgent"
+      ],
+      "context_manager.py": [
+        "json",
+        "os",
+        "pathlib.Path",
+        "datetime.datetime",
+        "typing.Dict",
+        "typing.List",
+        "typing.Optional",
+        "typing.Any",
+        "rich.console.Console",
+        "rich.markdown.Markdown",
+        "hashlib",
+        "rich.progress.Progress",
+        "rich.progress.TaskID",
+        "ast_generator.ASTGenerator",
+        "ast_generator.save_ast_snapshot",
+        "ast_generator.load_ast_snapshot",
+        "ast_generator.is_ast_current",
+        "re"
+      ],
+      "ast_generator.py": [
+        "ast",
+        "os",
+        "json",
+        "pathlib.Path",
+        "datetime.datetime",
+        "typing.Dict",
+        "typing.List",
+        "typing.Optional",
+        "fnmatch",
+        "tree_sitter_language_pack.get_language",
+        "tree_sitter_language_pack.get_parser"
+      ],
+      "file_ops/reader.py": [
+        "os",
+        "pathlib.Path",
+        "typing.List"
+      ],
+      "file_ops/writer.py": [
+        "pathlib.Path",
+        "typing.Optional",
+        "datetime.datetime",
+        "rich.console.Console"
+      ],
+      "llm/providers.py": [
+        "abc.ABC",
+        "abc.abstractmethod",
+        "typing.Dict",
+        "typing.List",
+        "typing.Optional",
+        "litellm.completion",
+        "os"
+      ],
+      "claude_env/bin/activate_this.py": [
+        "__future__.annotations",
+        "os",
+        "site",
+        "sys"
+      ],
+      "config/settings.py": [
+        "json",
+        "pathlib.Path",
+        "typing.Dict",
+        "typing.Any",
+        "rich.console.Console",
+        "rich.prompt.Prompt",
+        "rich.prompt.Confirm",
+        "rich.table.Table",
+        "llm.providers.LLMManager"
+      ],
+      "agent/__init__.py": [
+        "core.CodeAgent",
+        "core.AgentState",
+        "core.ActionType",
+        "core.Action",
+        "core.ActionResult",
+        "core.ExecutionPlan"
+      ],
+      "agent/core.py": [
+        "json",
+        "time",
+        "typing.List",
+        "typing.Dict",
+        "typing.Any",
+        "typing.Optional",
+        "typing.Tuple",
+        "pathlib.Path",
+        "enum.Enum",
+        "dataclasses.dataclass",
+        "dataclasses.asdict",
+        "rich.console.Console",
+        "rich.panel.Panel",
+        "rich.progress.Progress",
+        "rich.progress.SpinnerColumn",
+        "rich.progress.TextColumn",
+        "rich.table.Table",
+        "rich.markdown.Markdown",
+        "file_ops.reader.read_file_content",
+        "file_ops.writer.write_file_content",
+        "context_manager.ContextManager",
+        "rich.prompt.Confirm",
+        "rich.prompt.Confirm"
+      ]
+    },
+    "dependency_map": {
+      "pathlib.Path": [
+        "main.py",
+        "context_manager.py",
+        "ast_generator.py",
+        "file_ops/reader.py",
+        "file_ops/writer.py",
+        "config/settings.py",
+        "agent/core.py"
+      ],
+      "typer": [
+        "main.py"
+      ],
+      "json": [
+        "main.py",
+        "context_manager.py",
+        "ast_generator.py",
+        "config/settings.py",
+        "agent/core.py"
+      ],
+      "rich.console.Console": [
+        "main.py",
+        "context_manager.py",
+        "file_ops/writer.py",
+        "config/settings.py",
+        "agent/core.py"
+      ],
+      "rich.prompt.Confirm": [
+        "main.py",
+        "config/settings.py",
+        "agent/core.py",
+        "agent/core.py"
+      ],
+      "rich.markdown.Markdown": [
+        "main.py",
+        "context_manager.py",
+        "agent/core.py"
+      ],
+      "file_ops.reader.read_file_content": [
+        "main.py",
+        "agent/core.py"
+      ],
+      "file_ops.writer.write_file_content": [
+        "main.py",
+        "agent/core.py"
+      ],
+      "file_ops.writer.show_diff": [
+        "main.py"
+      ],
+      "llm.providers.LLMManager": [
+        "main.py",
+        "config/settings.py"
+      ],
+      "config.settings.ConfigManager": [
+        "main.py"
+      ],
+      "context_manager.ContextManager": [
+        "main.py",
+        "agent/core.py"
+      ],
+      "agent.core.CodeAgent": [
+        "main.py"
+      ],
+      "os": [
+        "context_manager.py",
+        "ast_generator.py",
+        "file_ops/reader.py",
+        "llm/providers.py",
+        "claude_env/bin/activate_this.py"
+      ],
+      "datetime.datetime": [
+        "context_manager.py",
+        "ast_generator.py",
+        "file_ops/writer.py"
+      ],
+      "typing.Dict": [
+        "context_manager.py",
+        "ast_generator.py",
+        "llm/providers.py",
+        "config/settings.py",
+        "agent/core.py"
+      ],
+      "typing.List": [
+        "context_manager.py",
+        "ast_generator.py",
+        "file_ops/reader.py",
+        "llm/providers.py",
+        "agent/core.py"
+      ],
+      "typing.Optional": [
+        "context_manager.py",
+        "ast_generator.py",
+        "file_ops/writer.py",
+        "llm/providers.py",
+        "agent/core.py"
+      ],
+      "typing.Any": [
+        "context_manager.py",
+        "config/settings.py",
+        "agent/core.py"
+      ],
+      "hashlib": [
+        "context_manager.py"
+      ],
+      "rich.progress.Progress": [
+        "context_manager.py",
+        "agent/core.py"
+      ],
+      "rich.progress.TaskID": [
+        "context_manager.py"
+      ],
+      "ast_generator.ASTGenerator": [
+        "context_manager.py"
+      ],
+      "ast_generator.save_ast_snapshot": [
+        "context_manager.py"
+      ],
+      "ast_generator.load_ast_snapshot": [
+        "context_manager.py"
+      ],
+      "ast_generator.is_ast_current": [
+        "context_manager.py"
+      ],
+      "re": [
+        "context_manager.py"
+      ],
+      "ast": [
+        "ast_generator.py"
+      ],
+      "fnmatch": [
+        "ast_generator.py"
+      ],
+      "tree_sitter_language_pack.get_language": [
+        "ast_generator.py"
+      ],
+      "tree_sitter_language_pack.get_parser": [
+        "ast_generator.py"
+      ],
+      "abc.ABC": [
+        "llm/providers.py"
+      ],
+      "abc.abstractmethod": [
+        "llm/providers.py"
+      ],
+      "litellm.completion": [
+        "llm/providers.py"
+      ],
+      "__future__.annotations": [
+        "claude_env/bin/activate_this.py"
+      ],
+      "site": [
+        "claude_env/bin/activate_this.py"
+      ],
+      "sys": [
+        "claude_env/bin/activate_this.py"
+      ],
+      "rich.prompt.Prompt": [
+        "config/settings.py"
+      ],
+      "rich.table.Table": [
+        "config/settings.py",
+        "agent/core.py"
+      ],
+      "core.CodeAgent": [
+        "agent/__init__.py"
+      ],
+      "core.AgentState": [
+        "agent/__init__.py"
+      ],
+      "core.ActionType": [
+        "agent/__init__.py"
+      ],
+      "core.Action": [
+        "agent/__init__.py"
+      ],
+      "core.ActionResult": [
+        "agent/__init__.py"
+      ],
+      "core.ExecutionPlan": [
+        "agent/__init__.py"
+      ],
+      "time": [
+        "agent/core.py"
+      ],
+      "typing.Tuple": [
+        "agent/core.py"
+      ],
+      "enum.Enum": [
+        "agent/core.py"
+      ],
+      "dataclasses.dataclass": [
+        "agent/core.py"
+      ],
+      "dataclasses.asdict": [
+        "agent/core.py"
+      ],
+      "rich.panel.Panel": [
+        "agent/core.py"
+      ],
+      "rich.progress.SpinnerColumn": [
+        "agent/core.py"
+      ],
+      "rich.progress.TextColumn": [
+        "agent/core.py"
+      ]
+    },
+    "class_locations": {
+      "ContextManager": "context_manager.py",
+      "PythonAnalyzer": "ast_generator.py",
+      "TreeSitterAnalyzer": "ast_generator.py",
+      "ASTGenerator": "ast_generator.py",
+      "LLMProvider": "llm/providers.py",
+      "OpenAIProvider": "llm/providers.py",
+      "AnthropicProvider": "llm/providers.py",
+      "GeminiProvider": "llm/providers.py",
+      "HfProvider": "llm/providers.py",
+      "OllamaProvider": "llm/providers.py",
+      "LLMManager": "llm/providers.py",
+      "ConfigManager": "config/settings.py",
+      "AgentState": "agent/core.py",
+      "ActionType": "agent/core.py",
+      "Action": "agent/core.py",
+      "ActionResult": "agent/core.py",
+      "ExecutionPlan": "agent/core.py",
+      "CodeAgent": "agent/core.py"
+    },
+    "function_locations": {
+      "ensure_configured": "main.py",
+      "model_output": "main.py",
+      "configure": "main.py",
+      "status": "main.py",
+      "init": "main.py",
+      "chat": "main.py",
+      "edit": "main.py",
+      "generate": "main.py",
+      "context": "main.py",
+      "update_context": "main.py",
+      "agent": "main.py",
+      "_extract_files_from_query": "main.py",
+      "__init__": "agent/core.py",
+      "initialize_context": "context_manager.py",
+      "_create_overview": "context_manager.py",
+      "_initialize_history": "context_manager.py",
+      "_create_default_rules": "context_manager.py",
+      "_create_cache_metadata": "context_manager.py",
+      "log_interaction": "context_manager.py",
+      "update_history": "context_manager.py",
+      "_update_ast_cache": "context_manager.py",
+      "_update_cache_metadata": "context_manager.py",
+      "_check_auto_update": "context_manager.py",
+      "load_context": "context_manager.py",
+      "get_context_for_query": "context_manager.py",
+      "_get_query_focused_context": "context_manager.py",
+      "_extract_file_mentions": "context_manager.py",
+      "_get_file_content": "context_manager.py",
+      "_try_read_file_directly": "context_manager.py",
+      "_identify_key_files": "context_manager.py",
+      "_detect_architecture_pattern": "context_manager.py",
+      "_find_entry_points": "context_manager.py",
+      "_get_main_modules": "context_manager.py",
+      "_get_key_dependencies": "context_manager.py",
+      "_load_overview": "context_manager.py",
+      "_load_rules": "context_manager.py",
+      "_load_recent_history": "context_manager.py",
+      "_get_max_context_files": "context_manager.py",
+      "_get_file_preview": "context_manager.py",
+      "_format_change_details": "context_manager.py",
+      "_show_context_summary": "context_manager.py",
+      "_format_context": "context_manager.py",
+      "_get_file_language": "context_manager.py",
+      "visit_Import": "ast_generator.py",
+      "visit_ImportFrom": "ast_generator.py",
+      "visit_ClassDef": "ast_generator.py",
+      "visit_FunctionDef": "ast_generator.py",
+      "visit_Assign": "ast_generator.py",
+      "_get_name": "ast_generator.py",
+      "analyze": "ast_generator.py",
+      "_extract_imports": "ast_generator.py",
+      "_extract_classes": "ast_generator.py",
+      "_extract_functions": "ast_generator.py",
+      "_extract_variables": "ast_generator.py",
+      "_find_nodes_by_type": "ast_generator.py",
+      "_find_first_child_by_type": "ast_generator.py",
+      "_get_node_text": "ast_generator.py",
+      "_should_ignore": "ast_generator.py",
+      "generate_snapshot": "ast_generator.py",
+      "_walk_code_files": "ast_generator.py",
+      "_process_file": "ast_generator.py",
+      "_parse_python": "ast_generator.py",
+      "_build_indexes": "ast_generator.py",
+      "_analyze_file_relationships": "ast_generator.py",
+      "save_ast_snapshot": "ast_generator.py",
+      "load_ast_snapshot": "ast_generator.py",
+      "is_ast_current": "ast_generator.py",
+      "add": "mycode/calculator.py",
+      "subtract": "mycode/calculator.py",
+      "multiply": "mycode/calculator.py",
+      "divide": "mycode/calculator.py",
+      "run_calculator": "mycode/calculator.py",
+      "get_project_structure": "file_ops/reader.py",
+      "read_file_content": "file_ops/reader.py",
+      "get_relevant_files": "file_ops/reader.py",
+      "create_context_for_chat": "file_ops/reader.py",
+      "write_file_content": "file_ops/writer.py",
+      "create_backup_file": "file_ops/writer.py",
+      "show_diff": "file_ops/writer.py",
+      "get_completion": "llm/providers.py",
+      "validate_config": "llm/providers.py",
+      "get_required_fields": "llm/providers.py",
+      "get_available_providers": "llm/providers.py",
+      "get_provider_info": "llm/providers.py",
+      "create_provider": "llm/providers.py",
+      "set_provider": "llm/providers.py",
+      "ensure_config_dir": "config/settings.py",
+      "load_config": "config/settings.py",
+      "save_config": "config/settings.py",
+      "get_default_config": "config/settings.py",
+      "get": "config/settings.py",
+      "set": "config/settings.py",
+      "is_configured": "config/settings.py",
+      "setup_interactive": "config/settings.py",
+      "show_providers_table": "config/settings.py",
+      "show_current_config": "config/settings.py",
+      "get_llm_config": "config/settings.py",
+      "__post_init__": "agent/core.py",
+      "execute_goal": "agent/core.py",
+      "_plan_execution": "agent/core.py",
+      "_validate_and_approve_plan": "agent/core.py",
+      "_display_plan": "agent/core.py",
+      "_execute_plan": "agent/core.py",
+      "_execute_action": "agent/core.py",
+      "_read_file_action": "agent/core.py",
+      "_write_file_action": "agent/core.py",
+      "_create_file_action": "agent/core.py",
+      "_analyze_code_action": "agent/core.py",
+      "_search_codebase_action": "agent/core.py",
+      "_handle_action_failure": "agent/core.py",
+      "_extract_json_from_response": "agent/core.py",
+      "_log_session_to_history": "agent/core.py",
+      "get_session_summary": "agent/core.py"
+    },
+    "variable_locations": {
+      "app": "main.py",
+      "console": "file_ops/writer.py",
+      "config_manager": "main.py",
+      "llm_manager": "config/settings.py",
+      "provider_key": "main.py",
+      "llm_config": "main.py",
+      "provider": "config/settings.py",
+      "system_message": "main.py",
+      "user_message": "main.py",
+      "messages": "main.py",
+      "local_config": "main.py",
+      "project_config": "main.py",
+      "context_manager": "main.py",
+      "context": "agent/core.py",
+      "response": "agent/core.py",
+      "response_summary": "main.py",
+      "original_content": "main.py",
+      "project_context": "main.py",
+      "edit_prompt": "main.py",
+      "new_content": "main.py",
+      "lines": "context_manager.py",
+      "backup_enabled": "main.py",
+      "generation_prompt": "main.py",
+      "content": "agent/core.py",
+      "overview": "main.py",
+      "history": "main.py",
+      "recent_entries": "main.py",
+      "entry_count": "main.py",
+      "agent": "main.py",
+      "success": "agent/core.py",
+      "summary": "main.py",
+      "words": "context_manager.py",
+      "files": "context_manager.py",
+      "ast_generator": "context_manager.py",
+      "snapshot": "ast_generator.py",
+      "project_name": "context_manager.py",
+      "total_files": "context_manager.py",
+      "languages": "context_manager.py",
+      "main_lang": "context_manager.py",
+      "key_files": "context_manager.py",
+      "overview_content": "context_manager.py",
+      "history_content": "context_manager.py",
+      "rules_content": "context_manager.py",
+      "cache_metadata": "context_manager.py",
+      "cache_file": "context_manager.py",
+      "files_involved": "agent/core.py",
+      "entry": "context_manager.py",
+      "ast_data": "context_manager.py",
+      "updated": "context_manager.py",
+      "file_path_obj": "context_manager.py",
+      "rel_path": "ast_generator.py",
+      "metadata": "context_manager.py",
+      "last_update": "context_manager.py",
+      "hours_since_update": "context_manager.py",
+      "base_context": "context_manager.py",
+      "max_files": "context_manager.py",
+      "query_lower": "file_ops/reader.py",
+      "keywords": "file_ops/reader.py",
+      "explicit_files": "context_manager.py",
+      "file_scores": "context_manager.py",
+      "explicit_file_data": "context_manager.py",
+      "file_found": "context_manager.py",
+      "direct_content": "context_manager.py",
+      "score": "context_manager.py",
+      "func_name": "ast_generator.py",
+      "cls_name": "context_manager.py",
+      "imp_name": "context_manager.py",
+      "remaining_slots": "context_manager.py",
+      "relevant_files": "file_ops/reader.py",
+      "all_files": "context_manager.py",
+      "file_mentions": "context_manager.py",
+      "file_extensions": "context_manager.py",
+      "clean_word": "context_manager.py",
+      "common_filenames": "context_manager.py",
+      "potential_files": "context_manager.py",
+      "quoted_pattern": "context_manager.py",
+      "quoted_matches": "context_manager.py",
+      "seen": "context_manager.py",
+      "unique_mentions": "context_manager.py",
+      "full_path": "context_manager.py",
+      "file_size": "ast_generator.py",
+      "remaining": "context_manager.py",
+      "possible_paths": "context_manager.py",
+      "base_paths": "context_manager.py",
+      "important_patterns": "context_manager.py",
+      "file_paths": "context_manager.py",
+      "entry_points": "context_manager.py",
+      "dirs": "context_manager.py",
+      "parts": "mycode/calculator.py",
+      "dependencies": "context_manager.py",
+      "dep": "context_manager.py",
+      "rules": "context_manager.py",
+      "preview_lines": "context_manager.py",
+      "formatted": "context_manager.py",
+      "overview_file": "context_manager.py",
+      "regular_files": "context_manager.py",
+      "preview": "context_manager.py",
+      "func_names": "context_manager.py",
+      "class_names": "context_manager.py",
+      "query_focused": "context_manager.py",
+      "history_file": "context_manager.py",
+      "recent_history": "context_manager.py",
+      "ext": "context_manager.py",
+      "language_map": "context_manager.py",
+      "TREE_SITTER_AVAILABLE": "ast_generator.py",
+      "get_language": "ast_generator.py",
+      "get_parser": "ast_generator.py",
+      "source_bytes": "ast_generator.py",
+      "tree": "ast_generator.py",
+      "imports": "ast_generator.py",
+      "import_queries": "ast_generator.py",
+      "query_types": "ast_generator.py",
+      "classes": "ast_generator.py",
+      "class_queries": "ast_generator.py",
+      "name_node": "ast_generator.py",
+      "functions": "ast_generator.py",
+      "function_queries": "ast_generator.py",
+      "variables": "ast_generator.py",
+      "var_queries": "ast_generator.py",
+      "rel_path_str": "ast_generator.py",
+      "file_sizes": "ast_generator.py",
+      "total_lines": "ast_generator.py",
+      "language_counts": "ast_generator.py",
+      "file_data": "ast_generator.py",
+      "lang": "ast_generator.py",
+      "root_path": "ast_generator.py",
+      "filepath": "ast_generator.py",
+      "analyzer": "ast_generator.py",
+      "source": "ast_generator.py",
+      "import_graph": "ast_generator.py",
+      "class_locations": "ast_generator.py",
+      "function_locations": "ast_generator.py",
+      "variable_locations": "ast_generator.py",
+      "dependency_map": "ast_generator.py",
+      "class_name": "ast_generator.py",
+      "var_name": "ast_generator.py",
+      "relationships": "ast_generator.py",
+      "expression": "mycode/calculator.py",
+      "num1": "mycode/calculator.py",
+      "operator": "mycode/calculator.py",
+      "num2": "mycode/calculator.py",
+      "result": "agent/core.py",
+      "current_dir": "file_ops/reader.py",
+      "structure": "file_ops/reader.py",
+      "code_extensions": "file_ops/reader.py",
+      "level": "file_ops/reader.py",
+      "indent": "file_ops/reader.py",
+      "subindent": "file_ops/reader.py",
+      "path": "claude_env/bin/activate_this.py",
+      "file_str": "file_ops/reader.py",
+      "backup_path": "file_ops/writer.py",
+      "timestamp": "file_ops/writer.py",
+      "backup_name": "file_ops/writer.py",
+      "original_lines": "file_ops/writer.py",
+      "new_lines": "file_ops/writer.py",
+      "max_lines": "file_ops/writer.py",
+      "orig_line": "file_ops/writer.py",
+      "new_line": "file_ops/writer.py",
+      "PROVIDERS": "llm/providers.py",
+      "provider_class": "llm/providers.py",
+      "abs_file": "claude_env/bin/activate_this.py",
+      "msg": "claude_env/bin/activate_this.py",
+      "bin_dir": "claude_env/bin/activate_this.py",
+      "base": "claude_env/bin/activate_this.py",
+      "prev_length": "claude_env/bin/activate_this.py",
+      "keys": "config/settings.py",
+      "value": "config/settings.py",
+      "config": "config/settings.py",
+      "api_key": "config/settings.py",
+      "model": "config/settings.py",
+      "providers": "config/settings.py",
+      "provider_choice": "config/settings.py",
+      "provider_info": "config/settings.py",
+      "default_model": "config/settings.py",
+      "description": "config/settings.py",
+      "model_choice": "config/settings.py",
+      "base_url": "config/settings.py",
+      "test_response": "config/settings.py",
+      "table": "config/settings.py",
+      "name": "config/settings.py",
+      "provider_type": "config/settings.py",
+      "masked_key": "config/settings.py",
+      "__all__": "agent/__init__.py",
+      "PLANNING": "agent/core.py",
+      "ACTING": "agent/core.py",
+      "OBSERVING": "agent/core.py",
+      "REFLECTING": "agent/core.py",
+      "COMPLETED": "agent/core.py",
+      "FAILED": "agent/core.py",
+      "READ_FILE": "agent/core.py",
+      "WRITE_FILE": "agent/core.py",
+      "CREATE_FILE": "agent/core.py",
+      "ANALYZE_CODE": "agent/core.py",
+      "SEARCH_CODEBASE": "agent/core.py",
+      "RUN_TESTS": "agent/core.py",
+      "plan": "agent/core.py",
+      "planning_prompt": "agent/core.py",
+      "plan_data": "agent/core.py",
+      "actions": "agent/core.py",
+      "action_type_str": "agent/core.py",
+      "action_type": "agent/core.py",
+      "action": "agent/core.py",
+      "summary_table": "agent/core.py",
+      "steps_table": "agent/core.py",
+      "success_count": "agent/core.py",
+      "task": "agent/core.py",
+      "file_path": "agent/core.py",
+      "analysis_prompt": "agent/core.py",
+      "clean_response": "agent/core.py",
+      "start_idx": "agent/core.py",
+      "end_idx": "agent/core.py",
+      "json_str": "agent/core.py",
+      "session_summary": "agent/core.py"
+    },
+    "file_relationships": {
+      "main.py": {
+        "imports_count": 13,
+        "imported_by": [],
+        "related_files": []
+      },
+      "context_manager.py": {
+        "imports_count": 18,
+        "imported_by": [
+          "main.py",
+          "agent/core.py"
+        ],
+        "related_files": []
+      },
+      "ast_generator.py": {
+        "imports_count": 11,
+        "imported_by": [
+          "context_manager.py"
+        ],
+        "related_files": []
+      },
+      "file_ops/reader.py": {
+        "imports_count": 3,
+        "imported_by": [
+          "main.py",
+          "agent/core.py"
+        ],
+        "related_files": []
+      },
+      "file_ops/writer.py": {
+        "imports_count": 4,
+        "imported_by": [
+          "main.py",
+          "agent/core.py"
+        ],
+        "related_files": []
+      },
+      "llm/providers.py": {
+        "imports_count": 7,
+        "imported_by": [
+          "main.py",
+          "config/settings.py"
+        ],
+        "related_files": []
+      },
+      "claude_env/bin/activate_this.py": {
+        "imports_count": 4,
+        "imported_by": [],
+        "related_files": []
+      },
+      "config/settings.py": {
+        "imports_count": 9,
+        "imported_by": [
+          "main.py"
+        ],
+        "related_files": []
+      },
+      "agent/__init__.py": {
+        "imports_count": 6,
+        "imported_by": [],
+        "related_files": []
+      },
+      "agent/core.py": {
+        "imports_count": 23,
+        "imported_by": [
+          "main.py"
+        ],
+        "related_files": []
+      }
+    }
+  }
+}

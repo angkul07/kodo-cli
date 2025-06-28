@@ -1,0 +1,30 @@
+# claude_new - AI Assistant Rules
+
+## Context Configuration
+max_context_files=8
+max_file_size=20000
+context_priority=main_files,recent_changes,query_relevant
+
+## Code Style & Standards
+- Write clean, readable code with meaningful names
+- Add comments for complex logic
+- Follow existing patterns in the codebase
+- Maintain consistent formatting
+
+## Response Guidelines
+- Provide concise, actionable answers
+- Include code examples when helpful
+- Explain reasoning for significant changes
+- Ask for clarification when requirements are unclear
+
+## Project-Specific Notes
+- Check overview.md for current project context
+- Reference history.md for past decisions and changes
+- Prioritize existing architecture patterns
+- Consider performance and maintainability
+
+## Auto-Update Triggers
+- File creation/deletion
+- Significant code changes (>50 lines)
+- New dependencies added
+- Architecture changes

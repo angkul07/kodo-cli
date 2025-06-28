@@ -9,7 +9,7 @@ class ConfigManager:
     """Manages application configuration"""
     
     def __init__(self):
-        self.config_dir = Path.home() / ".mycode"
+        self.config_dir = Path.home() / ".kodo_context"
         self.config_file = self.config_dir / "settings.json"
         self.console = Console()
         self._config: Dict[str, Any] = {}
@@ -106,7 +106,7 @@ class ConfigManager:
         
         llm_manager = LLMManager()
         
-        self.console.print("\n🚀 Welcome to MyCode CLI Setup!")
+        self.console.print("\n🚀 Welcome to Kōdō CLI Setup!")
         self.console.print("Let's configure your LLM provider.\n")
         
         # Show available providers

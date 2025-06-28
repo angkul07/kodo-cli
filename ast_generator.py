@@ -273,7 +273,7 @@ class ASTGenerator:
             '**/cache/**', '**/.cache/**',
             
             # Our own context files
-            '**/.mycode/**'
+            '**/.kodo_context/**'
         ]
         
         # Enhanced language support
@@ -318,7 +318,7 @@ class ASTGenerator:
                     
             # Additional checks for hidden files/dirs at any level
             if any(part.startswith('.') and part not in {'.', '..'} 
-                   for part in path.parts if not part.startswith('.mycode')):
+                   for part in path.parts if not part.startswith('.kodo_context')):
                 return True
                 
             return False

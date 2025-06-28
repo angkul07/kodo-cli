@@ -79,7 +79,7 @@ def configure():
 @app.command()
 def status():
     """Show current configuration status"""
-    console.print("MyCode CLI Status\n")
+    console.print("Kōdō CLI Status\n")
     
     if config_manager.is_configured():
         console.print("LLM Provider: Configured")
@@ -90,8 +90,8 @@ def status():
 
 @app.command()
 def init():
-    """Initialize mycode with advanced context management"""
-    console.print("Initializing mycode with enhanced context system...")
+    """Initialize Kōdō with advanced context management"""
+    console.print("Initializing Kōdō with enhanced context system...")
     
     if not config_manager.is_configured():
         console.print("LLM provider not configured. Let's set it up first!")
@@ -102,7 +102,7 @@ def init():
             return
     
     # Create local project config if needed
-    local_config = Path.cwd() / ".mycode.json"
+    local_config = Path.cwd() / ".Kōdō.json"
     if not local_config.exists():
         project_config = {
             "project_name": Path.cwd().name,
@@ -122,11 +122,11 @@ def init():
     if context_manager.initialize_context():
         console.print("\nProject initialized with intelligent context system!")
         console.print("\nAvailable commands:")
-        console.print("• `mycode chat \"your question\"` - Chat with AI about your code")
-        console.print("• `mycode edit <file> \"changes to make\"` - AI-assisted file editing")
-        console.print("• `mycode generate <file> \"what to create\"` - Generate new files")
-        console.print("• `mycode context` - View current project context")
-        console.print("• `mycode update-context` - Refresh project context")
+        console.print("• `Kōdō chat \"your question\"` - Chat with AI about your code")
+        console.print("• `Kōdō edit <file> \"changes to make\"` - AI-assisted file editing")
+        console.print("• `Kōdō generate <file> \"what to create\"` - Generate new files")
+        console.print("• `Kōdō context` - View current project context")
+        console.print("• `Kōdō update-context` - Refresh project context")
     else:
         console.print("Failed to initialize context system")
         raise typer.Exit(1)
@@ -331,7 +331,7 @@ def context():
     
     # Check if context exists
     if not context_manager.context_dir.exists():
-        console.print("No context found. Run 'mycode init' first.")
+        console.print("No context found. Run 'Kōdō init' first.")
         return
     
     console.print("Project Context Status\n")

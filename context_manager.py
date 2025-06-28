@@ -17,8 +17,8 @@ class ContextManager:
     
     def __init__(self, project_root: Path = None):
         self.project_root = project_root or Path.cwd()
-        self.context_dir = self.project_root / ".mycode" / "context"
-        self.cache_dir = self.project_root / ".mycode" / "cache"
+        self.context_dir = self.project_root / "kodo_context" / "context"
+        self.cache_dir = self.project_root / "kodo_context" / "cache"
         
         # Context file paths
         self.snapshot_path = self.context_dir / "snapshot.json"
