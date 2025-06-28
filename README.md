@@ -79,6 +79,15 @@ python main.py generate tests/test_auth.py "Create comprehensive tests for authe
 python main.py generate docs/api.md "Create API documentation based on the code"
 ```
 
+### 5. 🤖 Agentic Mode (NEW!)
+```bash
+# Let the agent plan and execute complex tasks autonomously
+python main.py agent "create a REST API with user authentication and database"
+python main.py agent "refactor the codebase to use dependency injection" --auto-approve
+python main.py agent "add comprehensive error handling throughout the application"
+python main.py agent "implement automated testing for all core functions"
+```
+
 ## 📋 Commands Reference
 
 ### Core Commands
@@ -90,10 +99,70 @@ python main.py generate docs/api.md "Create API documentation based on the code"
 - **`chat <message>`** - Ask questions about your codebase
 - **`edit <file> <prompt>`** - Modify files with AI assistance
 - **`generate <file> <prompt>`** - Create new files with AI
+- **`agent <goal>`** - 🤖 **NEW: Agentic Mode** - Autonomous planning and execution
 
 ### Context Commands
 - **`context`** - View current project context and recent activity
 - **`update-context`** - Refresh project analysis and AST snapshot
+
+## 🤖 Agentic Mode - Autonomous Code Assistant
+
+### **Planning, Acting, and Reflecting**
+The Code Agent brings autonomous capabilities to MyCode CLI:
+- **🧠 Planning** - Breaks down complex goals into actionable steps
+- **⚡ Acting** - Executes file operations, code analysis, and modifications
+- **🔍 Observing** - Monitors results and validates actions
+- **💭 Reflecting** - Self-corrects errors and adapts plans
+
+### **How It Works**
+1. **Goal Understanding** - Analyzes your request using full project context
+2. **Execution Planning** - Creates step-by-step plan with safety assessment
+3. **User Approval** - Shows plan for approval (or use `--auto-approve`)
+4. **Autonomous Execution** - Carries out actions with progress tracking
+5. **Session Logging** - Records all actions to project history
+
+### **Safety Features**
+- **Risk Assessment** - Rates operations on 1-5 safety scale
+- **User Confirmation** - Asks approval for high-risk operations
+- **Action Validation** - Verifies each step before proceeding
+- **Session History** - Complete audit trail of all agent actions
+
+### **Example Agent Session**
+```
+🤖 Code Agent activated
+📋 Planning phase...
+
+┌─ Execution Plan ─────────────────────────────────────────┐
+│ 🎯 Goal: Create a simple REST API with authentication    │
+│ 🧠 Reasoning: Build Flask API with JWT auth and tests    │
+│ 📊 Complexity: 7/10                                      │
+│ ⚠️  Safety Level: 3/5                                     │
+│ 📝 Steps: 6                                               │
+└───────────────────────────────────────────────────────────┘
+
+ # │ Action     │ Target              │ Reasoning                    
+───┼────────────┼─────────────────────┼──────────────────────────────
+ 1 │ Create File│ app.py              │ Main Flask application       
+ 2 │ Create File│ auth.py             │ JWT authentication logic     
+ 3 │ Create File│ models.py           │ User model and database      
+ 4 │ Create File│ requirements.txt    │ Project dependencies         
+ 5 │ Create File│ tests/test_auth.py  │ Authentication tests         
+ 6 │ Analyze Code│ .                  │ Validate project structure   
+
+⚡ Execution phase...
+✅ Step 1: Create File
+✅ Step 2: Create File  
+✅ Step 3: Create File
+✅ Step 4: Create File
+✅ Step 5: Create File
+✅ Step 6: Analyze Code
+
+🎉 All steps completed successfully!
+📊 Session Summary:
+  • Steps completed: 6/6
+  • Memory items: 12
+  • Session ID: 1704123456
+```
 
 ## 🧠 How the Context System Works
 
