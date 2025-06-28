@@ -85,7 +85,7 @@ class CodeAgent:
     
     def execute_goal(self, goal: str, auto_approve: bool = False) -> bool:
         """Main execution method - orchestrates the agent's work"""
-        self.console.print(f"\n🤖 [bold blue]Code Agent activated[/bold blue]")
+        self.console.print(f"\n[bold blue]Code Agent activated[/bold blue]")
         self.console.print(f"[dim]Session: {self.session_id}[/dim]")
         
         try:
@@ -113,7 +113,7 @@ class CodeAgent:
     
     def _plan_execution(self, goal: str) -> ExecutionPlan:
         """Create an execution plan for the given goal"""
-        self.console.print("\n📋 [yellow]Planning phase...[/yellow]")
+        self.console.print("\n[yellow]Planning phase...[/yellow]")
         
         # Get project context
         context = self.context_manager.get_context_for_query(goal)
@@ -237,7 +237,7 @@ IMPORTANT:
         
         # Check safety constraints
         if plan.safety_level >= 4:
-            self.console.print("\n⚠️  [yellow]High-risk operations detected![/yellow]")
+            self.console.print("\n[yellow]High-risk operations detected![/yellow]")
             if not auto_approve:
                 from rich.prompt import Confirm
                 if not Confirm.ask("This plan involves potentially risky operations. Continue?"):
@@ -259,13 +259,13 @@ IMPORTANT:
         summary_table.add_column("", style="bold")
         summary_table.add_column("")
         
-        summary_table.add_row("🎯 Goal:", plan.goal)
-        summary_table.add_row("🧠 Reasoning:", plan.reasoning)
-        summary_table.add_row("📊 Complexity:", f"{plan.estimated_complexity}/10")
-        summary_table.add_row("⚠️  Safety Level:", f"{plan.safety_level}/5")
-        summary_table.add_row("📝 Steps:", str(len(plan.steps)))
+        summary_table.add_row("Goal:", plan.goal)
+        summary_table.add_row("Reasoning:", plan.reasoning)
+        summary_table.add_row("Complexity:", f"{plan.estimated_complexity}/10")
+        summary_table.add_row("Safety Level:", f"{plan.safety_level}/5")
+        summary_table.add_row("Steps:", str(len(plan.steps)))
         
-        self.console.print(Panel(summary_table, title="📋 Execution Plan", border_style="blue"))
+        self.console.print(Panel(summary_table, title="Execution Plan", border_style="blue"))
         
         # Display steps
         steps_table = Table(show_header=True, header_style="bold magenta")
@@ -286,7 +286,7 @@ IMPORTANT:
     
     def _execute_plan(self) -> bool:
         """Execute the planned actions"""
-        self.console.print("\n⚡ [green]Execution phase...[/green]")
+        self.console.print("\n[green]Execution phase...[/green]")
         
         success_count = 0
         
@@ -306,9 +306,9 @@ IMPORTANT:
                 self.state = AgentState.OBSERVING
                 if result.success:
                     success_count += 1
-                    progress.update(task, completed=1, description=f"✅ Step {i+1}: {action.type.value}")
+                    progress.update(task, completed=1, description=f"Step {i+1}: {action.type.value}")
                 else:
-                    progress.update(task, completed=1, description=f"❌ Step {i+1}: {action.type.value}")
+                    progress.update(task, completed=1, description=f"Step {i+1}: {action.type.value}")
                     
                     # Reflection and potential recovery
                     self.state = AgentState.REFLECTING
@@ -319,11 +319,11 @@ IMPORTANT:
         # Final state
         if success_count == len(self.current_plan.steps):
             self.state = AgentState.COMPLETED
-            self.console.print("\n🎉 [bold green]All steps completed successfully![/bold green]")
+            self.console.print("\n[bold green]All steps completed successfully![/bold green]")
             return True
         else:
             self.state = AgentState.FAILED
-            self.console.print(f"\n⚠️  [yellow]Completed {success_count}/{len(self.current_plan.steps)} steps[/yellow]")
+            self.console.print(f"\n[yellow]Completed {success_count}/{len(self.current_plan.steps)} steps[/yellow]")
             return False
     
     def _execute_action(self, action: Action) -> ActionResult:
@@ -425,7 +425,7 @@ Keep the analysis practical and actionable."""
     def _handle_action_failure(self, action: Action, result: ActionResult) -> bool:
         """Handle action failure and attempt recovery"""
         
-        self.console.print(f"\n🔄 [yellow]Attempting to recover from failure...[/yellow]")
+        self.console.print(f"\n[yellow]Attempting to recover from failure...[/yellow]")
         self.console.print(f"[dim]Error: {result.error}[/dim]")
         
         # Simple retry logic for file operations

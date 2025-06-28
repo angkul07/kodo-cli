@@ -29,14 +29,14 @@ class ContextManager:
     def initialize_context(self) -> bool:
         """Initialize the complete context system for a project"""
         try:
-            console.print("🧠 Initializing intelligent context system...")
+            console.print("Initializing context system...")
             
             # Create directories
             self.context_dir.mkdir(parents=True, exist_ok=True)
             self.cache_dir.mkdir(parents=True, exist_ok=True)
             
             # Generate AST snapshot
-            console.print("📊 Generating AST snapshot...")
+            console.print("Generating AST snapshot...")
             ast_generator = ASTGenerator(str(self.project_root))
             snapshot = ast_generator.generate_snapshot()
             save_ast_snapshot(snapshot, self.snapshot_path)
@@ -45,24 +45,24 @@ class ContextManager:
             self._create_cache_metadata(snapshot)
             
             # Create overview.md (concise system prompt)
-            console.print("📝 Creating project overview...")
+            console.print("Creating project overview...")
             self._create_overview(snapshot)
             
             # Initialize history.md
-            console.print("📚 Initializing project history...")
+            console.print("Initializing project history...")
             self._initialize_history()
             
             # Create default rules.cline
-            console.print("📋 Setting up project rules...")
+            console.print("Setting up project rules...")
             self._create_default_rules()
             
-            console.print("✅ Context system initialized successfully!")
+            console.print("Context system initialized successfully!")
             self._show_context_summary(snapshot)
             
             return True
             
         except Exception as e:
-            console.print(f"❌ Error initializing context: {e}")
+            console.print(f"Error initializing context: {e}")
             return False
     
     def _create_overview(self, snapshot: Dict):
@@ -312,7 +312,7 @@ context_priority=main_files,recent_changes,query_relevant
             
             # Auto-update if more than 24 hours or many cache misses
             if hours_since_update > 24 or metadata.get("cache_misses", 0) > 10:
-                console.print("🔄 Auto-updating context...")
+                console.print("Auto-updating context...")
                 self.initialize_context()
                 
         except Exception:
@@ -723,7 +723,7 @@ context_priority=main_files,recent_changes,query_relevant
     
     def _show_context_summary(self, snapshot: Dict):
         """Show a summary of the created context"""
-        console.print("\n📊 Context Summary:")
+        console.print("\nContext Summary:")
         console.print(f"• Files analyzed: {snapshot['summary']['total_files']}")
         console.print(f"• Total lines: {snapshot['summary']['total_lines']:,}")
         console.print(f"• Languages: {', '.join(snapshot['summary']['languages'].keys())}")
@@ -731,7 +731,7 @@ context_priority=main_files,recent_changes,query_relevant
         console.print(f"• Functions indexed: {len(snapshot['indexes']['function_locations'])}")
         console.print(f"• Import relationships: {len(snapshot['indexes']['import_graph'])}")
         
-        console.print(f"\n📁 Context files created:")
+        console.print(f"\nContext files created:")
         console.print(f"• {self.snapshot_path.relative_to(self.project_root)}")
         console.print(f"• {self.overview_path.relative_to(self.project_root)}")
         console.print(f"• {self.history_path.relative_to(self.project_root)}")

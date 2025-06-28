@@ -1,5 +1,3 @@
-# ast_generator.py
-
 import ast
 import os
 import json

@@ -10,6 +10,7 @@ from file_ops.writer import write_file_content, show_diff
 from llm.providers import LLMManager
 from config.settings import ConfigManager
 from context_manager import ContextManager
+from agent.core import CodeAgent
 
 app = typer.Typer()
 console = Console()
@@ -119,22 +120,22 @@ def init():
     # Initialize the enhanced context system
     context_manager = ContextManager(Path.cwd())
     if context_manager.initialize_context():
-        console.print("\n🎉 Project initialized with intelligent context system!")
-        console.print("\n📋 Available commands:")
+        console.print("\nProject initialized with intelligent context system!")
+        console.print("\nAvailable commands:")
         console.print("• `mycode chat \"your question\"` - Chat with AI about your code")
         console.print("• `mycode edit <file> \"changes to make\"` - AI-assisted file editing")
         console.print("• `mycode generate <file> \"what to create\"` - Generate new files")
         console.print("• `mycode context` - View current project context")
         console.print("• `mycode update-context` - Refresh project context")
     else:
-        console.print("❌ Failed to initialize context system")
+        console.print("Failed to initialize context system")
         raise typer.Exit(1)
 
 @app.command()
 def chat(message: str):
     """Chat with AI about your code with intelligent context"""
     ensure_configured()
-    console.print("🔍 Analyzing project context...")
+    console.print("Analyzing project context...")
     
     # Get intelligent context using the new system
     context_manager = ContextManager(Path.cwd())
@@ -143,7 +144,7 @@ def chat(message: str):
     # Get AI response
     try:
         response = model_output(message, context)
-        console.print("\n💬 Response:")
+        console.print("\nResponse:")
         console.print(Markdown(response))
         
         # Log this interaction to history
@@ -167,7 +168,7 @@ def edit(filepath: str, prompt: str):
         console.print(f"File {filepath} does not exist")
         raise typer.Exit(1)
     
-    console.print(f"📖 Reading {filepath}...")
+    console.print(f"Reading {filepath}...")
     
     original_content = read_file_content(filepath)
     if original_content.startswith("Error:"):
@@ -190,7 +191,7 @@ Current file content:
 
 Return only the complete modified file content, no explanations or markdown formatting."""
 
-    console.print("🤖 Generating changes...")
+    console.print("Generating changes...")
     
     try:
         # Get AI response
@@ -213,7 +214,7 @@ Return only the complete modified file content, no explanations or markdown form
         if Confirm.ask("Apply these changes?"):
             backup_enabled = config_manager.get('behavior.auto_backup', True)
             if write_file_content(filepath, new_content, create_backup=backup_enabled):
-                console.print(f"✅ Successfully updated {filepath}")
+                console.print(f"Successfully updated {filepath}")
                 
                 # Update project history with detailed info
                 context_manager.update_history("File Edit", {
@@ -230,7 +231,7 @@ Return only the complete modified file content, no explanations or markdown form
                     files_involved=[filepath]
                 )
             else:
-                console.print(f"❌ Failed to update {filepath}")
+                console.print(f"Failed to update {filepath}")
                 raise typer.Exit(1)
         else:
             console.print("Changes cancelled")
@@ -256,7 +257,7 @@ def generate(filename: str, prompt: str):
             console.print("File generation cancelled")
             return
     
-    console.print(f"🤖 Generating {filename}...")
+    console.print(f"Generating {filename}...")
     
     try:
         # Get intelligent context for generation
@@ -283,7 +284,7 @@ Return only the file content, no explanations or markdown formatting."""
             content = '\n'.join(lines)
         
         # Show preview
-        console.print(f"📄 Generated content for {filename}:")
+        console.print(f"Generated content for {filename}:")
         console.print("=" * 50)
         console.print(content[:500] + "..." if len(content) > 500 else content)
         console.print("=" * 50)
@@ -291,7 +292,7 @@ Return only the file content, no explanations or markdown formatting."""
         # Ask for confirmation
         if Confirm.ask("Create this file?"):
             if write_file_content(filename, content, create_backup=False):
-                console.print(f"✅ Successfully created {filename}")
+                console.print(f"Successfully created {filename}")
                 
                 # Update project history
                 context_manager.update_history("File Generation", {
@@ -308,7 +309,7 @@ Return only the file content, no explanations or markdown formatting."""
                     files_involved=[filename]
                 )
             else:
-                console.print(f"❌ Failed to create {filename}")
+                console.print(f"Failed to create {filename}")
                 raise typer.Exit(1)
         else:
             console.print("File generation cancelled")
@@ -330,10 +331,10 @@ def context():
     
     # Check if context exists
     if not context_manager.context_dir.exists():
-        console.print("❌ No context found. Run 'mycode init' first.")
+        console.print("No context found. Run 'mycode init' first.")
         return
     
-    console.print("📊 Project Context Status\n")
+    console.print("Project Context Status\n")
     
     # Show overview
     if context_manager.overview_path.exists():
@@ -342,7 +343,7 @@ def context():
     
     # Show recent activity
     if context_manager.history_path.exists():
-        console.print("\n📚 Recent Activity:")
+        console.print("\nRecent Activity:")
         history = context_manager._load_recent_history(days=3)
         
         # Extract last few entries
@@ -366,12 +367,12 @@ def context():
 @app.command() 
 def update_context():
     """Update project context and AST snapshot"""
-    console.print("🔄 Updating project context...")
+    console.print("Updating project context...")
     
     context_manager = ContextManager(Path.cwd())
     
     if context_manager.initialize_context():
-        console.print("✅ Context updated successfully!")
+        console.print("Context updated successfully!")
         
         # Log the update
         context_manager.update_history("Context Update", {
@@ -381,7 +382,41 @@ def update_context():
             "impact": "Refreshed codebase understanding and indexes"
         })
     else:
-        console.print("❌ Failed to update context")
+        console.print("Failed to update context")
+        raise typer.Exit(1)
+
+@app.command()
+def agent(goal: str, auto_approve: bool = False):
+    """Run the intelligent code agent to accomplish a coding goal"""
+    ensure_configured()
+    
+    console.print("[bold cyan]Initializing Code Agent...[/bold cyan]")
+    console.print(f"[dim]Goal: {goal}[/dim]")
+    
+    try:
+        # Create the agent
+        agent = CodeAgent(llm_manager, Path.cwd())
+        
+        # Execute the goal
+        success = agent.execute_goal(goal, auto_approve)
+        
+        if success:
+            console.print("\n[bold green]Agent mission accomplished![/bold green]")
+            
+            # Show session summary
+            summary = agent.get_session_summary()
+            console.print(f"\nSession Summary:")
+            console.print(f"  • Steps completed: {summary['steps_completed']}/{summary['total_steps']}")
+            console.print(f"  • Memory items: {summary['memory_items']}")
+            console.print(f"  • Session ID: {summary['session_id']}")
+            
+        else:
+            console.print("\n[yellow]Agent could not complete all tasks[/yellow]")
+            summary = agent.get_session_summary()
+            console.print(f"  • Steps completed: {summary['steps_completed']}/{summary['total_steps']}")
+            
+    except Exception as e:
+        console.print(f"[red]Agent initialization error: {e}[/red]")
         raise typer.Exit(1)
 
 def _extract_files_from_query(query: str) -> list:
