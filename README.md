@@ -2,6 +2,10 @@
 
 An advanced AI-powered coding assistant that understands your entire codebase through intelligent context management and AST analysis.
 
+
+https://github.com/user-attachments/assets/892355e9-da1f-400c-9990-6450767d60ed
+
+
 ## Features
 
 ### Context System
